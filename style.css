@@ -516,4 +516,136 @@ canvas {
   line-height: 1;
   display: block;
 }
+/* Moved and helper styles for About page and utilities */
+.badge-pill {
+  background: #e8ecf4;
+  color: #1a1f36;
+  font-size: 0.8rem;
+  padding: 6px 14px;
+  font-weight: 500;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+.icon-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.icon-accent-blue { background: #e8f0fe; color: #1a56db; }
+.icon-amber { background: #fef3c7; color: #d97706; }
+.icon-green { background: #d1fae5; color: #065f46; }
+.icon-purple { background: #ede9fe; color: #5b21b6; }
+.icon-red { background: #fee2e2; color: #991b1b; }
+.icon-green-dark { background: #f0fdf4; color: #166534; }
+
+.tech-pill {
+  background: white;
+  border: 1px solid #e5e7eb;
+  color: #374151;
+  border-radius: 999px;
+  padding: 10px 24px;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 100px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 40px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #e5e7eb;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -60px;
+  top: 0;
+  width: 12px;
+  height: 12px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+.timeline-time {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-content h5 {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+h2 {
+  font-weight: 700;
+  color: #1a1f36;
+}
+
+.feature-card-alt {
+  border: 1px solid #e8ecf4;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.built-with-section {
+  background: #f9fafb;
+  border-radius: 16px;
+}
+
+.built-with-heading {
+  font-size: 1rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.footer-note { font-style: italic; color: #9ca3af; font-size: 0.9rem; }
+.footer-credit { font-size: 0.8rem; color: #d1d5db; }
+
+.card--accent-left {
+  border-left: 4px solid var(--accent);
+  border-radius: 0 16px 16px 0;
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
+}
+
+.about-paragraph { font-size: 1.05rem; color: #374151; line-height: 1.9; }
+.about-subtext { font-size: 0.85rem; color: #9ca3af; }
+.section-label { font-size: 0.75rem; letter-spacing: 0.1em; color: #6b7280; }
+.max-w-200 { max-width: 200px; }
+
+.max-w-120 { max-width: 120px; }
+.max-w-240 { max-width: 240px; }
+
+@media (max-width: 768px) {
+  .timeline { padding-left: 60px; }
+  .timeline-dot { left: -50px; }
+  .timeline-time { font-size: 0.75rem; }
+}
+
+/* Toast container z-index moved from inline */
+#toastContainer { z-index: 11; }
 
