@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Monever</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="icon" href="assets/Monever%20Logo.png" sizes="32x32">
+  <link rel="mask-icon" href="assets/favicon.svg" color="#0d6efd">
+  <link rel="shortcut icon" href="assets/favicon.svg">
+  <link rel="apple-touch-icon" href="assets/Monever%20Logo.png">
+  <meta name="theme-color" content="#0d6efd">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #f0f4ff, #fdf6ff);
+      min-height: 100vh;
+    }
+
+    .hero-banner {
+      border-radius: 24px;
+      background: rgba(13, 110, 253, 0.16);
+      padding: 2rem 1.75rem;
+      color: #0d2147;
+      animation: slideUp 0.8s ease-out;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-banner::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(13, 110, 253, 0.1) 0%, transparent 70%);
+      animation: rotate 20s linear infinite;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .page-title {
+      font-size: 2.6rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.75rem;
+      animation: textGlow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes textGlow {
+      from { text-shadow: 0 0 10px rgba(13, 110, 253, 0.3); }
+      to { text-shadow: 0 0 20px rgba(13, 110, 253, 0.6); }
+    }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      max-width: 720px;
+      color: #1f3153;
+      animation: fadeInUp 0.8s ease-out 0.2s both;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .badge-pill {
+      background: #e8ecf4;
+      color: #1a1f36;
+      font-size: 0.8rem;
+      padding: 6px 14px;
+      font-weight: 500;
+      border-radius: 999px;
+      display: inline-block;
+    }
+
+    .icon-circle {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    .tech-pill {
+      background: white;
+      border: 1px solid #e5e7eb;
+      color: #374151;
+      border-radius: 999px;
+      padding: 10px 24px;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 100px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 40px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #e5e7eb;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2rem;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -60px;
+      top: 0;
+      width: 12px;
+      height: 12px;
+      background: #0d6efd;
+      border-radius: 50%;
+    }
+
+    .timeline-time {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-content h5 {
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    h2 {
+      font-weight: 700;
+      color: #1a1f36;
+    }
+
+    .card {
+      border-radius: 20px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 2px 8px rgba(13, 32, 103, 0.08);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 16px rgba(13, 32, 103, 0.12);
+    }
+
+    @media (max-width: 768px) {
+      .hero-banner {
+        padding: 1.5rem 1.25rem;
+      }
+      .page-title {
+        font-size: 2rem;
+      }
+      .timeline {
+        padding-left: 60px;
+      }
+      .timeline-dot {
+        left: -50px;
+      }
+      .timeline-time {
+        font-size: 0.75rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="assets/Monever%20Logo%20%2B%20Brand%20Name.png" alt="Monever" height="36" class="me-2 brand-logo">
+      <div class="d-none d-sm-block brand-wordmark">
+        <div class="brand-name">Monever</div>
+        <small class="brand-tagline">Money Saver, Forever</small>
+      </div>
+    </a>
+    <div class="navbar-nav ms-auto d-flex flex-row gap-3 ">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="data.html">Insights</a>
+      <a class="nav-link active" href="about.html">About</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-5">
+  <!-- BLOCK 1 — HERO SECTION -->
+  <section class="hero-banner mb-4 shadow-sm">
+    <h1 class="page-title">Built in a day. Built with purpose. Built with passion.</h1>
+    <p class="hero-subtitle">Monever created for the HiH Hackathon. A 24-hour sprint to solve a real problem that millions of people silently struggle with.</p>
+    <div class="d-flex justify-content-center gap-2 mt-3 flex-wrap">
+      <span class="badge-pill">Html</span>
+      <span class="badge-pill">CSS</span>
+      <span class="badge-pill">Vanilla JS</span>
+      <span class="badge-pill">Chart.js</span>
+      <span class="badge-pill">Bootstrap</span>
+      <span class="badge-pill">Love</span>
+    </div>
+  </section>
+
+  <!-- BLOCK 2 — THE PROBLEM STATEMENT -->
+  <div class="card mb-3" style="border-left: 4px solid #0d6efd; border-radius: 0 16px 16px 0; border-top: none; border-right: none; border-bottom: none;">
+    <div class="card-body">
+      <div class="text-uppercase mb-2" style="font-size: 0.75rem; letter-spacing: 0.1em; color: #6b7280;">The Challenge</div>
+      <h3>Why S.E.T. exists ?</h3>
+      <p style="font-size: 1.05rem; color: #374151; line-height: 1.9;">"People do not track their daily expenses effectively, which leads to poor budgeting. The goal was to create an application where users can add expenses, categorize them, and view their total spending, all in one simple place."</p>
+      <p style="font-size: 0.85rem; color: #9ca3af;">HiH Hackathon (Problem Statement #2)</p>
+    </div>
+  </div>
+
+  <!-- BLOCK 3 — WHAT Set DOES -->
+  <h2 class="mb-4">Everything we track for you</h2>
+  <div class="row g-4 mb-5">
+    <div class="col-md-4">
+      <div class="card h-100" style="border: 1px solid #e8ecf4; border-radius: 16px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+        <div class="d-flex align-items-center mb-3">
+          <div class="icon-circle" style="background: #e8f0fe; color: #1a56db;">₹</div>
+          <h5 class="ms-3 mb-0">Expense Tracking</h5>
+        </div>
+        <p>Log daily expenses with custom categories. Your last-used category is remembered so adding entries is fast.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card h-100" style="border: 1px solid #e8ecf4; border-radius: 16px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+        <div class="d-flex align-items-center mb-3">
+          <div class="icon-circle" style="background: #fef3c7; color: #d97706;">📅</div>
+          <h5 class="ms-3 mb-0">EMI Reminders</h5>
+        </div>
+        <p>Add recurring EMIs with due dates and amounts. Mark them as paid with one tap, it logs the expense automatically.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card h-100" style="border: 1px solid #e8ecf4; border-radius: 16px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+        <div class="d-flex align-items-center mb-3">
+          <div class="icon-circle" style="background: #d1fae5; color: #065f46;">⇌</div>
+          <h5 class="ms-3 mb-0">People Ledger</h5>
+        </div>
+        <p>Track who you lent money to and who owes you. See your net balance at a glance and close transactions when settled.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card h-100" style="border: 1px solid #e8ecf4; border-radius: 16px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+        <div class="d-flex align-items-center mb-3">
+          <div class="icon-circle" style="background: #ede9fe; color: #5b21b6;">📊</div>
+          <h5 class="ms-3 mb-0">Visual Insights</h5>
+        </div>
+        <p>A pie chart breaks down your monthly spending by category. Filter by any past month to see exactly where your money went.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card h-100" style="border: 1px solid #e8ecf4; border-radius: 16px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+        <div class="d-flex align-items-center mb-3">
+          <div class="icon-circle" style="background: #fee2e2; color: #991b1b;">⚠</div>
+          <h5 class="ms-3 mb-0">Budget Alerts</h5>
+        </div>
+        <p>Set a monthly budget ceiling. Finly warns you the moment you overshoot, so surprises stay out of your bank statement.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card h-100" style="border: 1px solid #e8ecf4; border-radius: 16px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+        <div class="d-flex align-items-center mb-3">
+          <div class="icon-circle" style="background: #f0fdf4; color: #166534;">↕</div>
+          <h5 class="ms-3 mb-0">Easy Import & Exports </h5>
+        </div>
+        <p>Your data never gets locked in. Export everything as JSON and import it back anytime, full control, zero dependency on a server.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card h-100" style="border: 1px solid #e8ecf4; border-radius: 16px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+        <div class="d-flex align-items-center mb-3">
+          <div class="icon-circle" style="background: #f0fdf4; color: #166534;">🗝️</div>
+          <h5 class="ms-3 mb-0">Fully Private, Fully Yours</h5>
+        </div>
+        <p>We believe in your privacy. Your data stays with you it's never shared, never sold, fully under your control.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCK 4 — BUILT WITH -->
+  <div class="text-center py-4 mb-5" style="background: #f9fafb; border-radius: 16px;">
+    <h4 style="font-size: 1rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.08em;">Built with</h4>
+    <div class="d-flex justify-content-center gap-3 mt-3 flex-wrap">
+      <span class="tech-pill">HTML 5</span>
+      <span class="tech-pill">CSS 3</span>
+      <span class="tech-pill">Bootstrap 5.3</span>
+      <span class="tech-pill">JavaScript (ES6)</span>
+      <span class="tech-pill">Love 3000 </span>
+    </div>
+  </div>
+
+  <!-- BLOCK 5 — TIMELINE -->
+  <h2 class="mb-4">One day. Five phases.</h2>
+  <div class="timeline mb-5">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-time">0–2 hrs</div>
+        <h5>Problem Breakdown</h5>
+        <p>Analyzed the problem statement. Mapped out the three core user needs: tracking, categorizing, and visualizing.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-time">2–6 hrs</div>
+        <h5>UI Scaffolding</h5>
+        <p>Built the HTML structure, navbar, forms, and tab layout using Bootstrap 5.3. Set up localStorage data model.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-time">6–14 hrs</div>
+        <h5>Core Logic</h5>
+        <p>Wrote all JavaScript. add/delete/render for expenses, EMIs, and ledger. Implemented Chart.js pie chart.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-time">14–20 hrs</div>
+        <h5>Features & Polish</h5>
+        <p>Added budget alerts, monthly filter, EMI mark-paid, export/import, and toast notifications.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-time">20–24 hrs</div>
+        <h5>Final Touches</h5>
+        <p>Refined typography, responsive layout, color theme, and tested edge cases before submission.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCK 6 — FOOTER -->
+  <footer class="text-center py-4">
+    <p style="font-style: italic; color: #9ca3af; font-size: 0.9rem;">Made with focus and very little sleep.</p>
+    <p style="font-size: 0.8rem; color: #d1d5db;">Hero Harshit</p>
+  </footer>
+</div>
+
+<div id="toastContainer" class="position-fixed bottom-0 end-0 p-3" style="z-index: 11"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
