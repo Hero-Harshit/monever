@@ -1,3 +1,5 @@
+//Complete JavaScript code for the expense tracker application
+
 let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
 let emis = JSON.parse(localStorage.getItem("emis")) || [];
 let people = JSON.parse(localStorage.getItem("people")) || [];
