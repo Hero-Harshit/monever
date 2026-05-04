@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-labelledby="title" preserveAspectRatio="xMidYMid slice">
-  <title id="title">Monever</title>
-  <rect width="64" height="64" rx="12" fill="#0d6efd" />
-  <text x="50%" y="58%" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="700" font-size="36" fill="#ffffff">M</text>
-</svg>

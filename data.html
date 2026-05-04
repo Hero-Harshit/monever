@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Monever</title>
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="icon" href="assets/Monever%20Logo.png" sizes="32x32">
-  <link rel="mask-icon" href="assets/favicon.svg" color="#0d6efd">
-  <link rel="shortcut icon" href="assets/favicon.svg">
+  <link rel="shortcut icon" href="assets/Monever%20Logo.png">
   <link rel="apple-touch-icon" href="assets/Monever%20Logo.png">
-  <meta name="theme-color" content="#0d6efd">
+  <meta name="theme-color" content="#000080">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
   <link rel="stylesheet" href="style.css">
@@ -17,201 +16,429 @@
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand d-flex align-items-center" href="index.html">
-      <img src="assets/Monever%20Logo%20%2B%20Brand%20Name.png" alt="Monever" height="36" class="me-2 brand-logo">
-      <div class="d-none d-sm-block brand-wordmark">
-        <div class="brand-name">Monever</div>
-        <small class="brand-tagline">Money Saver, Forever</small>
+
+  <nav class="navbar">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand" href="index.html">
+        <img src="assets/Monever%20Logo.png" alt="Monever" height="40" class="brand-logo">
+        <div class="brand-wordmark">
+          <span class="brand-name">Monever</span>
+          <span class="brand-tagline">Money Saver, Forever</span>
+        </div>
+      </a>
+      <div class="navbar-nav ms-auto d-flex flex-row gap-4">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link active" href="data.html">Insights</a>
+        <a class="nav-link" href="about.html">About</a>
       </div>
-    </a>
-    <div class="navbar-nav ms-auto d-flex flex-row gap-3 ">
-      <a class="nav-link" href="index.html">Home</a>
-      <a class="nav-link active" href="data.html">Insights</a>
-      <a class="nav-link" href="about.html">About</a>
+    </div>
+  </nav>
+
+  <div class="container mt-5">
+    <ul class="nav nav-pills mb-5" id="dataTabs" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="stats-tab" data-bs-toggle="tab" data-bs-target="#stats" type="button"
+          role="tab">Overview</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="expenses-tab" data-bs-toggle="tab" data-bs-target="#expenses" type="button"
+          role="tab">Expenses</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="emis-tab" data-bs-toggle="tab" data-bs-target="#emis" type="button"
+          role="tab">EMIs</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="people-tab" data-bs-toggle="tab" data-bs-target="#people" type="button"
+          role="tab">Ledger</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="history-tab" data-bs-toggle="tab" data-bs-target="#history" type="button"
+          role="tab">History</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="summary-tab" data-bs-toggle="tab" data-bs-target="#summary" type="button"
+          role="tab">Summary</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button"
+          role="tab">Settings</button>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="dataTabsContent">
+      <div class="tab-pane fade show active" id="stats" role="tabpanel">
+        <div class="card section-card">
+          <h4 class="mb-4">Monthly Financial Overview</h4>
+          <div class="row g-4 mb-4 align-items-end">
+            <div class="col-md-4">
+              <label for="monthSelector" class="form-label text-muted small fw-bold">Select Analysis Month</label>
+              <input type="month" id="monthSelector" class="form-control" onchange="updateStats()">
+            </div>
+            <div class="col-md-8">
+              <div id="budgetAlert"></div>
+            </div>
+          </div>
+
+          <div class="row g-4 mb-5">
+            <div class="col-md-4">
+              <div class="summary-stat-card shadow-sm">
+                <h6>Monthly Spend</h6>
+                <p id="totalExpense" class="stat-value text-primary">₹0</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="summary-stat-card shadow-sm">
+                <h6>Daily Burn</h6>
+                <p id="avgDaily" class="stat-value">₹0</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="summary-stat-card shadow-sm">
+                <h6>Projected Total</h6>
+                <p id="projected" class="stat-value text-secondary">₹0</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chart moved to Summary Tab -->
+        </div>
+      </div>
+      <div class="tab-pane fade" id="expenses" role="tabpanel" aria-labelledby="expenses-tab">
+        <h3>Expenses</h3>
+        <ul id="expenseList" class="list-group mb-3"></ul>
+      </div>
+      <div class="tab-pane fade" id="emis" role="tabpanel" aria-labelledby="emis-tab">
+        <h3 class="mt-4">EMIs</h3>
+        <ul id="emiList" class="list-group mb-3"></ul>
+      </div>
+      <div class="tab-pane fade" id="people" role="tabpanel" aria-labelledby="people-tab">
+        <h3 class="mt-4">People Ledger</h3>
+        <ul id="peopleList" class="list-group"></ul>
+      </div>
+      <div class="tab-pane fade" id="history" role="tabpanel" aria-labelledby="history-tab">
+        <div class="card p-3">
+          <h4>Expense History</h4>
+          <div class="mb-3">
+            <input type="text" id="historySearchInput" class="form-control" placeholder="Search by category..."
+              onkeyup="filterHistory()">
+            <p id="historyCount" class="mt-2 text-muted">Showing 0 of 0 expenses</p>
+          </div>
+          <ul id="historyList" class="list-group"></ul>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="summary" role="tabpanel">
+        <div class="card section-card">
+          <h4 class="mb-4 text-dark border-0">Financial Summary</h4>
+          <div class="row g-3 mb-4">
+            <div class="col-md-3">
+              <div class="summary-stat-card">
+                <h6><i class="bi bi-wallet2 me-2"></i>All-Time Total</h6>
+                <p id="allTimeTotal" class="stat-value">₹0</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <div class="summary-stat-card shadow-sm">
+                <h6><i class="bi bi-fire me-2"></i>Biggest Spend</h6>
+                <p id="biggestExpense" class="stat-value text-danger">—</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <div class="summary-stat-card shadow-sm">
+                <h6><i class="bi bi-tag me-2"></i>Top Category</h6>
+                <p id="topCategory" class="stat-value text-primary">—</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <div class="summary-stat-card shadow-sm">
+                <h6><i class="bi bi-arrow-left-right me-2"></i>Net Lent</h6>
+                <p id="totalLent" class="stat-value">₹0</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="card section-card p-3">
+                <h4 class="mb-3">Spending Distribution</h4>
+                <canvas id="expenseChart" style="max-height: 350px;"></canvas>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card section-card p-3">
+                <h4 class="mb-3">Expenditure Trends</h4>
+                <canvas id="summaryChart" style="max-height: 350px;"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="settings" role="tabpanel">
+        <div class="card section-card">
+          <h4 class="mb-4">Application Settings</h4>
+
+          <div class="row g-5">
+            <!-- LEFT COLUMN -->
+            <div class="col-md-6">
+              <div class="mb-5">
+                <h5 class="mb-4 fw-bold"><i class="bi bi-cash-stack me-2"></i>Core Financials</h5>
+                <div class="mb-4">
+                  <label class="form-label text-muted small fw-bold">Monthly Budget</label>
+                  <div class="input-group">
+                    <span class="input-group-text border-end-0">₹</span>
+                    <input type="number" id="monthlyBudget" class="form-control border-start-0" placeholder="0.00">
+                    <button class="btn btn-primary" onclick="saveBudget()">Save Budget</button>
+                  </div>
+                </div>
+
+                <div class="mb-4">
+                  <label class="form-label text-muted small fw-bold">Currency Symbol</label>
+                  <input type="text" id="currencySymbol" class="form-control" maxlength="3" placeholder="₹">
+                </div>
+
+                <div class="mb-4">
+                  <label class="form-label text-muted small fw-bold">Default Expense Category</label>
+                  <input type="text" id="defaultCategory" class="form-control" placeholder="General">
+                </div>
+              </div>
+
+              <div class="mt-5">
+                <h5 class="mb-4 fw-bold"><i class="bi bi-tools me-2"></i>Operations & Maintenance</h5>
+                <div class="mb-4">
+                  <label class="form-label text-muted small fw-bold">Database Maintenance</label>
+                  <div class="d-flex gap-2">
+                    <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#compactModal">Compact
+                      Database</button>
+                    <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#rebuildModal">Rebuild
+                      Index</button>
+                  </div>
+                </div>
+
+                <div class="mb-4">
+                  <label class="form-label text-muted small fw-bold">Local Data Portability</label>
+                  <div class="row g-2">
+                    <div class="col-6">
+                      <button class="btn btn-primary w-100" onclick="exportData()">Export JSON</button>
+                    </div>
+                    <div class="col-6">
+                      <label for="importFile" class="btn btn-primary w-100 mb-0">Import JSON</label>
+                      <input type="file" id="importFile" hidden accept=".json" onchange="importData()">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- RIGHT COLUMN -->
+            <div class="col-md-6">
+              <div class="mb-5">
+                <h5 class="mb-4 fw-bold"><i class="bi bi-palette me-2"></i>Interface & Regional</h5>
+                <div class="mb-4">
+                  <label class="form-label text-muted small fw-bold">Background Style</label>
+                  <div class="input-group">
+                    <select id="bgStyle" class="form-control">
+                      <option value="Soft Gradient">Soft Gradient</option>
+                      <option value="Corporate Blue">Corporate Blue</option>
+                      <option value="Classic Gray">Classic Gray</option>
+                    </select>
+                    <button class="btn btn-primary" onclick="saveAppearance()">Apply Theme</button>
+                  </div>
+                </div>
+
+                <div class="mb-4">
+                  <label class="form-label text-muted small fw-bold">Display Date Format</label>
+                  <select id="dateFormat" class="form-control">
+                    <option value="DD/MM/YYYY">DD/MM/YYYY</option>
+                    <option value="MM/DD/YYYY">MM/DD/YYYY</option>
+                    <option value="YYYY-MM-DD">YYYY-MM-DD</option>
+                  </select>
+                </div>
+                <button class="btn btn-primary w-100" onclick="savePreferences()">Save All Regional Preferences</button>
+              </div>
+
+              <div class="mt-5">
+                <h5 class="mb-4 fw-bold"><i class="bi bi-info-circle me-2"></i>System Info & Danger Zone</h5>
+                <div class="row g-3 mb-4">
+                  <div class="col-6">
+                    <label class="form-label text-muted small fw-bold">App Version</label>
+                    <input type="text" class="form-control" value="v2.4.0-Stable" disabled>
+                  </div>
+                  <div class="col-6">
+                    <label class="form-label text-muted small fw-bold">Storage Type</label>
+                    <input type="text" class="form-control" value="Local-Only" disabled>
+                  </div>
+                </div>
+                
+                <div class="p-3 border border-danger">
+                  <label class="form-label text-danger small fw-bold mb-3">Hard Reset (Destructive)</label>
+                  <button class="btn btn-danger w-100" onclick="showEraseModal()">Wipe All Local Data Permanently</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-5 text-center border-top pt-5">
+            <h5 class="mb-4 fw-bold"><i class="bi bi-rocket-takeoff me-2"></i>Product Development Roadmap</h5>
+            <button class="btn btn-primary btn-wide mb-3" type="button" data-bs-toggle="collapse"
+              data-bs-target="#upcomingFeaturesCollapse" aria-expanded="false" aria-controls="upcomingFeaturesCollapse">
+              View Future Milestones
+            </button>
+          </div>
+
+          <div class="collapse" id="upcomingFeaturesCollapse">
+                <div class="upcoming-features-container mt-4 mb-3 text-center">
+                  <div class="card section-card feature-card mx-auto p-3">
+                    <div class="d-flex flex-column align-items-center justify-content-between gap-3 mb-3">
+                      <div class="text-center">
+                        <h4 class="mb-1 border-0">Upcoming Roadmap</h4>
+                        <p class="text-muted small mb-0">Standard utility updates and technical milestones.</p>
+                      </div>
+                      <div class="d-flex gap-2 justify-content-center">
+                        <button class="btn btn-primary btn-wide feature-control" type="button"
+                          data-bs-target="#featureCarousel" data-bs-slide="prev">
+                          <i class="bi bi-chevron-left"></i>
+                        </button>
+                        <button class="btn btn-primary btn-wide feature-control" type="button"
+                          data-bs-target="#featureCarousel" data-bs-slide="next">
+                          <i class="bi bi-chevron-right"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <div id="featureCarousel" class="carousel slide feature-carousel" data-bs-ride="false">
+                      <div class="carousel-inner">
+                        <div class="carousel-item active">
+                          <div class="row g-4">
+                            <div class="col-md-4">
+                              <div class="card feature-card-small">
+                                <div class="icon-circle mb-3">🔐</div>
+                                <h6>Authentication</h6>
+                                <p class="text-muted small">Secure cloud sync for your data.</p>
+                              </div>
+                            </div>
+                            <div class="col-md-4">
+                              <div class="card feature-card-small">
+                                <div class="icon-circle mb-3">📱</div>
+                                <h6>Mobile PWA</h6>
+                                <p class="text-muted small">Native app feel for quick access.</p>
+                              </div>
+                            </div>
+                            <div class="col-md-4">
+                              <div class="card feature-card-small">
+                                <div class="icon-circle mb-3">🤖</div>
+                                <h6>AI Insights</h6>
+                                <p class="text-muted small">Smart suggestions for spending.</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="carousel-item">
+                          <div class="row g-4">
+                            <div class="col-md-4">
+                              <div class="card feature-card-small">
+                                <div class="icon-circle mb-3">🧾</div>
+                                <h6>OCR Scanning</h6>
+                                <p class="text-muted small">Snap a photo to auto-log expenses.</p>
+                              </div>
+                            </div>
+                            <div class="col-md-4">
+                              <div class="card feature-card-small">
+                                <div class="icon-circle mb-3">👥</div>
+                                <h6>Split Bills</h6>
+                                <p class="text-muted small">Split expenses with friends.</p>
+                              </div>
+                            </div>
+                            <div class="col-md-4">
+                              <div class="card feature-card-small">
+                                <div class="icon-circle mb-3">📊</div>
+                                <h6>Deep Analytics</h6>
+                                <p class="text-muted small">Export custom financial reports.</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</nav>
 
-<div class="container mt-4">
-
-  <ul class="nav nav-tabs" id="dataTabs" role="tablist">
-    <li class="nav-item" role="presentation">
-      <button class="nav-link active" id="stats-tab" data-bs-toggle="tab" data-bs-target="#stats" type="button" role="tab" aria-controls="stats" aria-selected="true">Overview</button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="expenses-tab" data-bs-toggle="tab" data-bs-target="#expenses" type="button" role="tab" aria-controls="expenses" aria-selected="false">Expenses</button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="emis-tab" data-bs-toggle="tab" data-bs-target="#emis" type="button" role="tab" aria-controls="emis" aria-selected="false">EMIs</button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="people-tab" data-bs-toggle="tab" data-bs-target="#people" type="button" role="tab" aria-controls="people" aria-selected="false">Ledger</button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="history-tab" data-bs-toggle="tab" data-bs-target="#history" type="button" role="tab" aria-controls="history" aria-selected="false">History</button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="summary-tab" data-bs-toggle="tab" data-bs-target="#summary" type="button" role="tab" aria-controls="summary" aria-selected="false">Summary</button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">Settings</button>
-    </li>
-  </ul>
-
-  <div class="tab-content mt-3" id="dataTabsContent">
-    <div class="tab-pane fade show active" id="stats" role="tabpanel" aria-labelledby="stats-tab">
-      <div class="card p-3">
-        <h4>Monthly Statistics</h4>
-        <div class="mb-3">
-          <label for="monthSelector" class="form-label">Select Month:</label>
-          <input type="month" id="monthSelector" class="form-control max-w-200" onchange="updateStats()">
+  <div class="modal" id="compactModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Compact Database</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div id="budgetAlert"></div>
-        <p id="totalExpense">Total Expense: ₹0</p>
-        <p id="avgDaily">Avg Daily Expense: ₹0</p>
-        <p id="projected">Projected Total: ₹0</p>
-        <canvas id="expenseChart"></canvas>
-      </div>
-    </div>
-    <div class="tab-pane fade" id="expenses" role="tabpanel" aria-labelledby="expenses-tab">
-      <h3 class="text-primary">Expenses</h3>
-      <ul id="expenseList" class="list-group mb-3"></ul>
-    </div>
-    <div class="tab-pane fade" id="emis" role="tabpanel" aria-labelledby="emis-tab">
-      <h3 class="mt-4 text-warning">EMIs</h3>
-      <ul id="emiList" class="list-group mb-3"></ul>
-    </div>
-    <div class="tab-pane fade" id="people" role="tabpanel" aria-labelledby="people-tab">
-      <h3 class="mt-4 text-info">People Ledger</h3>
-      <ul id="peopleList" class="list-group"></ul>
-    </div>
-    <div class="tab-pane fade" id="history" role="tabpanel" aria-labelledby="history-tab">
-      <div class="card p-3">
-        <h4>Expense History</h4>
-        <div class="mb-3">
-          <input type="text" id="historySearchInput" class="form-control" placeholder="Search by category..." onkeyup="filterHistory()">
-          <p id="historyCount" class="mt-2 text-muted">Showing 0 of 0 expenses</p>
+        <div class="modal-body">
+          Database compaction scheduled. This will optimize storage and improve performance.
         </div>
-        <ul id="historyList" class="list-group"></ul>
-      </div>
-    </div>
-    <div class="tab-pane fade" id="summary" role="tabpanel" aria-labelledby="summary-tab">
-      <div class="card p-3">
-        <h4>Financial Summary</h4>
-        <div class="row mb-4">
-          <div class="col-md-6 mb-3">
-            <div class="summary-stat-card">
-              <h6>All-Time Total</h6>
-              <p id="allTimeTotal" class="stat-value">₹0</p>
-            </div>
-          </div>
-          <div class="col-md-6 mb-3">
-            <div class="summary-stat-card">
-              <h6>Biggest Single Expense</h6>
-              <p id="biggestExpense" class="stat-value">—</p>
-            </div>
-          </div>
-          <div class="col-md-6 mb-3">
-            <div class="summary-stat-card">
-              <h6>Most Spent Category</h6>
-              <p id="topCategory" class="stat-value">—</p>
-            </div>
-          </div>
-          <div class="col-md-6 mb-3">
-            <div class="summary-stat-card">
-              <h6>Total Lent (Open)</h6>
-              <p id="totalLent" class="stat-value text-success">₹0</p>
-            </div>
-          </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Execute Optimization</button>
         </div>
-        <h5>Last 6 Months Spending</h5>
-        <canvas id="summaryChart"></canvas>
-      </div>
-    </div>
-    <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="settings-tab">
-      <div class="card p-3">
-        <h4>Settings</h4>
-        <div class="mb-3">
-          <label for="monthlyBudget" class="form-label">Set Monthly Budget (₹):</label>
-          <input type="number" id="monthlyBudget" class="form-control max-w-200" min="0" step="0.01">
-          <button class="btn btn-primary mt-2" onclick="saveBudget()">Save Budget</button>
-        </div>
-
-        <hr>
-        <div class="mb-4">
-          <h5>Preferences</h5>
-          <div class="mb-3">
-              <label for="currencySymbol" class="form-label">App Currency Symbol</label>
-              <input type="text" id="currencySymbol" class="form-control max-w-120" maxlength="3" placeholder="₹">
-          </div>
-          <div class="mb-3">
-            <label for="defaultCategory" class="form-label">Default Category</label>
-            <input type="text" id="defaultCategory" class="form-control" placeholder="General">
-          </div>
-          <div class="mb-3">
-              <label for="dateFormat" class="form-label">Date Format</label>
-              <select id="dateFormat" class="form-control max-w-240">
-              <option value="DD/MM/YYYY">DD/MM/YYYY</option>
-              <option value="MM/DD/YYYY">MM/DD/YYYY</option>
-              <option value="YYYY-MM-DD">YYYY-MM-DD</option>
-            </select>
-          </div>
-          <button class="btn btn-primary" onclick="savePreferences()">Save Preferences</button>
-        </div>
-
-        <hr>
-        <div class="mb-4">
-          <h5>Appearance</h5>
-          <div class="mb-3">
-            <label for="accentColor" class="form-label">Accent Color</label>
-            <input type="color" id="accentColor" class="form-control form-control-color max-w-120" value="#0d6efd">
-          </div>
-          <div class="mb-3">
-            <label for="bgStyle" class="form-label">Background Style</label>
-            <select id="bgStyle" class="form-control max-w-240">
-              <option value="Soft Gradient">Soft Gradient</option>
-              <option value="Pure White">Pure White</option>
-              <option value="Warm Cream">Warm Cream</option>
-            </select>
-          </div>
-          <button class="btn btn-primary" onclick="saveAppearance()">Save Appearance</button>
-        </div>
-
-        <hr>
-        <button class="btn btn-danger" onclick="showEraseModal()">Erase All Data</button>
-        <button class="btn btn-secondary mt-2" onclick="exportData()">Export Data</button>
-        <input type="file" id="importFile" class="form-control mt-2" accept=".json">
-        <button class="btn btn-secondary mt-2" onclick="importData()">Import Data</button>
       </div>
     </div>
   </div>
 
-<div id="toastContainer" class="position-fixed bottom-0 end-0 p-3"></div>
-
-<div class="modal fade" id="eraseModal" tabindex="-1" aria-labelledby="eraseLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="eraseLabel">Confirm Erase</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Are you sure you want to permanently erase all data? This action cannot be undone.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-danger" onclick="eraseAllData()">Erase All Data</button>
+  <div class="modal" id="rebuildModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Rebuild Index</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to rebuild the data indexes? This may take a few seconds.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Rebuild Now</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-</div>
+  <div class="modal" id="eraseModal" tabindex="-1" aria-labelledby="eraseLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="eraseLabel">Confirm Erase</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to permanently erase all data? This action cannot be undone.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-danger" onclick="eraseAllData()">Erase All Data</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <div id="toastContainer" class="position-fixed bottom-0 end-0 p-3"></div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="script.js"></script>
+  <footer>
+    <div class="footer-content">
+      <div class="status-indicator">
+        <div class="status-dot"></div>
+        <span>Data Status: Local / Secure</span>
+      </div>
+      <div>
+        <span>&copy; 1997-2024 Monever Corporation</span>
+      </div>
+      <div>
+        <span class="footer-credit">v2.4.0-Stable</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
 </body>
+
 </html>
