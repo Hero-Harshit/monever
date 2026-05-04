@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Monever - Tools</title>
+  <link rel="icon" href="assets/Monever%20Logo.png" sizes="32x32">
+  <link rel="shortcut icon" href="assets/Monever%20Logo.png">
+  <link rel="apple-touch-icon" href="assets/Monever%20Logo.png">
+  <meta name="theme-color" content="#000080">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="mobile-block">
+    <div class="win95-dialog">
+      <div class="win95-title-bar">
+        <span>⚠️ Incompatible Device</span>
+      </div>
+      <div class="win95-dialog-body">
+        <p>This application is optimised for desktop computers. Mobile handsets were not commonplace during the era this software was designed for. Please access Monever from a desktop or laptop computer for the intended experience.</p>
+        <p class="mt-4 fw-bold text-uppercase" style="font-size: 12px; letter-spacing: 1px; color: #800000;">Access from a computer</p>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand" href="index.html">
+        <img src="assets/Monever%20Logo.png" alt="Monever" height="40" class="brand-logo">
+        <div class="brand-wordmark">
+          <span class="brand-name">Monever</span>
+          <span class="brand-tagline">Money Saver, Forever</span>
+        </div>
+      </a>
+      <div class="navbar-nav ms-auto d-flex flex-row gap-4">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="data.html">Insights</a>
+        <a class="nav-link active" href="tools.html">Tools</a>
+        <a class="nav-link" href="about.html">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mt-4">
+    <section class="hero-banner">
+      <h1 class="page-title">Financial Tools</h1>
+      <p class="hero-subtitle">Calculators to help you plan smarter.</p>
+    </section>
+
+    <div class="text-center">
+      <ul class="nav nav-pills mb-5" id="toolTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="emicalc-tab" data-bs-toggle="pill" data-bs-target="#emicalc" type="button"
+            role="tab">
+            <i class="bi bi-calculator me-2"></i>EMI Calc
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="fdcalc-tab" data-bs-toggle="pill" data-bs-target="#fdcalc" type="button"
+            role="tab">
+            <i class="bi bi-piggy-bank me-2"></i>FD Calc
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="sipcalc-tab" data-bs-toggle="pill" data-bs-target="#sipcalc" type="button"
+            role="tab">
+            <i class="bi bi-graph-up-arrow me-2"></i>SIP Calc
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="ppfcalc-tab" data-bs-toggle="pill" data-bs-target="#ppfcalc" type="button"
+            role="tab">
+            <i class="bi bi-shield-lock me-2"></i>PPF Calc
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="npscalc-tab" data-bs-toggle="pill" data-bs-target="#npscalc" type="button"
+            role="tab">
+            <i class="bi bi-person-check me-2"></i>NPS Calc
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="elsscalc-tab" data-bs-toggle="pill" data-bs-target="#elsscalc" type="button"
+            role="tab">
+            <i class="bi bi-percent me-2"></i>ELSS Calc
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="rentvsbuy-tab" data-bs-toggle="pill" data-bs-target="#rentvsbuy" type="button"
+            role="tab">
+            <i class="bi bi-house-door me-2"></i>Rent vs Buy
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="budget503020-tab" data-bs-toggle="pill" data-bs-target="#budget503020" type="button"
+            role="tab">
+            <i class="bi bi-pie-chart me-2"></i>50/30/20
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="inflationcalc-tab" data-bs-toggle="pill" data-bs-target="#inflationcalc" type="button"
+            role="tab">
+            <i class="bi bi-graph-down-arrow me-2"></i>Inflation
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <div class="tab-content" id="toolTabsContent">
+      <div class="tab-pane fade show active" id="emicalc" role="tabpanel">
+        <div class="card section-card">
+          <h4 class="mb-4"><i class="bi bi-calculator me-3"></i>Loan EMI Calculator</h4>
+          <div class="row g-3">
+            <div class="col-md-4">
+              <label class="form-label text-muted small fw-bold">Loan Amount</label>
+              <div class="input-group">
+                <span class="input-group-text currency-prefix">₹</span>
+                <input type="number" id="calcLoanAmount" class="form-control" placeholder="100000">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label text-muted small fw-bold">Interest Rate (%)</label>
+              <input type="number" id="calcInterestRate" class="form-control" placeholder="10.5" step="0.1">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label text-muted small fw-bold">Tenure (Months)</label>
+              <input type="number" id="calcTenure" class="form-control" placeholder="12">
+            </div>
+            <div class="col-12 mt-4">
+              <button class="btn btn-primary btn-wide" onclick="calculateLoanEMI()">Calculate EMI</button>
+            </div>
+          </div>
+
+          <div id="emiCalcResults" class="mt-5 d-none">
+            <div class="row g-4">
+              <div class="col-md-4">
+                <div class="summary-stat-card shadow-sm border-primary">
+                  <h6>Monthly EMI</h6>
+                  <p id="resMonthlyEMI" class="stat-value text-primary">₹0</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="summary-stat-card shadow-sm">
+                  <h6>Total Interest</h6>
+                  <p id="resTotalInterest" class="stat-value text-danger">₹0</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="summary-stat-card shadow-sm">
+                  <h6>Total Amount</h6>
+                  <p id="resTotalPayable" class="stat-value">₹0</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="fdcalc" role="tabpanel">
+        <div class="card section-card">
+          <h4 class="mb-4"><i class="bi bi-piggy-bank me-3"></i>Fixed Deposit Calculator</h4>
+          <div class="row g-3">
+            <div class="col-md-3">
+              <label class="form-label text-muted small fw-bold">Principal Amount</label>
+              <div class="input-group">
+                <span class="input-group-text currency-prefix">₹</span>
+                <input type="number" id="fdPrincipal" class="form-control" placeholder="50000">
+              </div>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label text-muted small fw-bold">Interest Rate (%)</label>
+              <input type="number" id="fdRate" class="form-control" placeholder="7.0" step="0.1">
+            </div>
+            <div class="col-md-3">
+              <label class="form-label text-muted small fw-bold">Tenure (Years)</label>
+              <input type="number" id="fdTenure" class="form-control" placeholder="5">
+            </div>
+            <div class="col-md-3">
+              <label class="form-label text-muted small fw-bold">Compounding</label>
+              <select id="fdCompounding" class="form-control">
+                <option value="1">Annually</option>
+                <option value="2">Half-Yearly</option>
+                <option value="4">Quarterly</option>
+                <option value="12">Monthly</option>
+              </select>
+            </div>
+            <div class="col-12 mt-4">
+              <button class="btn btn-primary btn-wide" onclick="calculateFD()">Calculate Maturity</button>
+            </div>
+          </div>
+
+          <div id="fdCalcResults" class="mt-5 d-none">
+            <div class="row g-4 mb-5">
+              <div class="col-md-4">
+                <div class="summary-stat-card shadow-sm border-success">
+                  <h6>Maturity Amount</h6>
+                  <p id="resFDTotal" class="stat-value text-success">₹0</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="summary-stat-card shadow-sm">
+                  <h6>Total Interest</h6>
+                  <p id="resFDInterest" class="stat-value text-primary">₹0</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="summary-stat-card shadow-sm">
+                  <h6>Yield (%)</h6>
+                  <p id="resFDYield" class="stat-value">0%</p>
+                </div>
+              </div>
+            </div>
+
+            <h5 class="mb-3 fw-bold">Yearly Growth Table</h5>
+            <div class="table-responsive">
+              <table class="table table-hover border">
+                <thead class="table-light">
+                  <tr>
+                    <th>Year</th>
+                    <th>Interest Earned</th>
+                    <th>Closing Balance</th>
+                  </tr>
+                </thead>
+                <tbody id="fdGrowthTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="sipcalc" role="tabpanel">
+        <div class="card section-card">
+          <h4 class="mb-4"><i class="bi bi-graph-up-arrow me-3"></i>SIP Investment Calculator</h4>
+          <div class="row g-3">
+            <div class="col-md-4">
+              <label class="form-label text-muted small fw-bold">Monthly Investment</label>
+              <div class="input-group">
+                <span class="input-group-text currency-prefix">₹</span>
+                <input type="number" id="sipMonthly" class="form-control" placeholder="5000">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label text-muted small fw-bold">Expected Return (%)</label>
+              <input type="number" id="sipRate" class="form-control" placeholder="12" step="0.1">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label text-muted small fw-bold">Tenure (Years)</label>
+              <input type="number" id="sipTenure" class="form-control" placeholder="10">
+            </div>
+            <div class="col-12 mt-4">
+              <button class="btn btn-primary btn-wide" onclick="calculateSIP()">Calculate Growth</button>
+            </div>
+          </div>
+
+          <div id="sipCalcResults" class="mt-5 d-none">
+            <div class="row g-4 mb-5">
+              <div class="col-md-4">
+                <div class="summary-stat-card shadow-sm">
+                  <h6>Total Invested</h6>
+                  <p id="resSIPInvested" class="stat-value">₹0</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="summary-stat-card shadow-sm">
+                  <h6>Estimated Returns</h6>
+                  <p id="resSIPReturns" class="stat-value text-success">₹0</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="summary-stat-card shadow-sm border-success">
+                  <h6>Total Value</h6>
+                  <p id="resSIPTotal" class="stat-value text-success">₹0</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="row g-4">
+              <div class="col-md-6">
+                <h5 class="mb-3 fw-bold">SIP vs Lump Sum Comparison</h5>
+                <div class="summary-stat-card shadow-sm border-info bg-light">
+                  <h6>Lump Sum Equivalent</h6>
+                  <p id="resLumpSumTotal" class="stat-value text-info">₹0</p>
+                  <p class="text-muted small">Value if the same total investment was made as a one-time lump sum today.</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <h5 class="mb-3 fw-bold">Future Milestones</h5>
+                <div class="table-responsive">
+                  <table class="table table-sm border">
+                    <thead class="table-light">
+                      <tr>
+                        <th>Period</th>
+                        <th>Value</th>
+                      </tr>
+                    </thead>
+                    <tbody id="sipMilestoneTable"></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <hr class="my-5">
+          <h4 class="mb-4"><i class="bi bi-graph-up me-3"></i>Step-up SIP</h4>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label text-muted small fw-bold">Annual Step-up Rate (%)</label>
+              <input type="number" id="sipStepUpRate" class="form-control" value="10" placeholder="10">
+              <p class="text-muted small mt-1" style="font-size: 0.75rem;">Uses Monthly Investment and Return Rate from above.</p>
+            </div>
+            <div class="col-md-6 d-flex align-items-end">
+              <button class="btn btn-primary btn-wide w-100" onclick="calculateStepUpSIP()">Calculate Step-up SIP</button>
+            </div>
+          </div>
+
+          <div id="stepUpResults" class="mt-5 d-none">
+            <div class="row g-4 mb-5">
+              <div class="col-md-3">
+                <div class="summary-stat-card shadow-sm">
+                  <h6>Final Monthly Investment</h6>
+                  <p id="resStepUpFinalMonthly" class="stat-value">₹0</p>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="summary-stat-card shadow-sm">
+                  <h6>Total Invested</h6>
+                  <p id="resStepUpInvested" class="stat-value">₹0</p>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="summary-stat-card shadow-sm">
+                  <h6>Estimated Returns</h6>
+                  <p id="resStepUpReturns" class="stat-value text-success">₹0</p>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="summary-stat-card shadow-sm border-success">
+                  <h6>Total Maturity Value</h6>
+                  <p id="resStepUpTotal" class="stat-value text-success">₹0</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="table-responsive mb-4">
+              <table class="table table-sm border">
+                <thead class="table-light">
+                  <tr>
+                    <th>Year</th>
+                    <th>Monthly Investment</th>
+                    <th>Cumulative Invested</th>
+                    <th>Projected Value</th>
+                  </tr>
+                </thead>
+                <tbody id="stepUpYearlyTable"></tbody>
+              </table>
+            </div>
+
+            <div class="alert alert-info py-3 shadow-sm border-info bg-light">
+              <i class="bi bi-info-circle me-2"></i>
+              <span id="stepUpComparisonText" class="fw-bold"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="ppfcalc" role="tabpanel">
+        <div class="card section-card">
+          <h4 class="mb-4"><i class="bi bi-shield-lock me-3"></i>PPF Savings Calculator</h4>
+          <div class="row g-3">
+            <div class="col-md-3">
+              <label class="form-label text-muted small fw-bold">Yearly Deposit (Max ₹1.5L)</label>
+              <div class="input-group">
+                <span class="input-group-text currency-prefix">₹</span>
+                <input type="number" id="ppfDeposit" class="form-control" placeholder="150000">
+              </div>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label text-muted small fw-bold">Interest Rate (%)</label>
+              <input type="number" id="ppfRate" class="form-control" value="7.1" step="0.1">
+            </div>
+            <div class="col-md-3">
+              <label class="form-label text-muted small fw-bold">Start Year</label>
+              <input type="number" id="ppfYear" class="form-control" value="2024">
+            </div>
+            <div class="col-md-3 d-flex align-items-end">
+              <div class="form-check form-switch mb-2">
+                <input class="form-check-input" type="checkbox" id="ppfExtend">
+                <label class="form-check-label text-muted small fw-bold" for="ppfExtend">Extend by 10 years</label>
+              </div>
+            </div>
+            <div class="col-12 mt-4">
+              <button class="btn btn-primary btn-wide" onclick="calculatePPF()">Calculate Maturity</button>
+            </div>
+          </div>
+
+          <div id="ppfCalcResults" class="mt-5 d-none">
+            <div class="row g-4 mb-5">
+              <div class="col-md-3">
+                <div class="summary-stat-card shadow-sm border-info">
+                  <h6>Total Deposited</h6>
+                  <p id="resPPFInvested" class="stat-value text-info">₹0</p>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="summary-stat-card shadow-sm">
+                  <h6>Total Interest</h6>
+                  <p id="resPPFInterest" class="stat-value text-success">₹0</p>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="summary-stat-card shadow-sm border-success">
+                  <h6>Maturity Value</h6>
+                  <p id="resPPFTotal" class="stat-value text-success">₹0</p>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="summary-stat-card shadow-sm">
+                  <h6>Duration</h6>
+                  <p id="resPPFDuration" class="stat-value">15 Years</p>
+                </div>
+              </div>
+            </div>
+
+            <h5 class="mb-3 fw-bold">Projected Schedule <span class="text-muted small fw-normal">(Simplified Annual
+                Compounding)</span></h5>
+            <div class="table-responsive">
+              <table class="table table-hover border small">
+                <thead class="table-light">
+                  <tr>
+                    <th>Year</th>
+                    <th>Opening</th>
+                    <th>Deposit</th>
+                    <th>Interest</th>
+                    <th>Closing</th>
+                  </tr>
+                </thead>
+                <tbody id="ppfTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="npscalc" role="tabpanel">
+        <div class="card section-card">
+          <h4 class="mb-2"><i class="bi bi-person-check me-3"></i>NPS Calculator</h4>
+          <p class="text-muted small mb-4">National Pension System — Retirement & Tax Planning.</p>
+
+          <div class="row g-3">
+            <div class="col-md-4">
+              <label class="form-label text-muted small fw-bold">Current Age</label>
+              <input type="number" id="npsAge" class="form-control" placeholder="30" min="18" max="60">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label text-muted small fw-bold">Retirement Age</label>
+              <input type="number" id="npsRetirementAge" class="form-control" value="60" min="40" max="70">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label text-muted small fw-bold">Monthly Contribution</label>
+              <div class="input-group">
+                <span class="input-group-text currency-prefix">₹</span>
+                <input type="number" id="npsMonthly" class="form-control" placeholder="10000">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label text-muted small fw-bold">Expected Return (%)</label>
+              <input type="number" id="npsRate" class="form-control" value="10" step="0.1">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label text-muted small fw-bold">Annuity Rate (%)</label>
+              <input type="number" id="npsAnnuityRate" class="form-control" value="6" step="0.1">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label text-muted small fw-bold">Annuity Purchase (%)</label>
+              <select id="npsAnnuityPercent" class="form-control">
+                <option value="40" selected>40%</option>
+                <option value="60">60%</option>
+                <option value="80">80%</option>
+                <option value="100">100%</option>
+              </select>
+            </div>
+            <div class="col-12 mt-4">
+              <button class="btn btn-primary btn-wide" onclick="calculateNPS()">Calculate NPS Corpus</button>
+            </div>
+          </div>
+
+          <div id="npsCalcResults" class="mt-5 d-none">
+            <div class="row g-4 mb-5">
+              <div class="col-md-3">
+                <div class="summary-stat-card shadow-sm border-success">
+                  <h6>Total Corpus</h6>
+                  <p id="resNPSCorpus" class="stat-value text-success">₹0</p>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="summary-stat-card shadow-sm border-info">
+                  <h6>Lump Sum (Tax-Free)</h6>
+                  <p id="resNPSLumpSum" class="stat-value text-info">₹0</p>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="summary-stat-card shadow-sm">
+                  <h6>Annuity Corpus</h6>
+                  <p id="resNPSAnnuity" class="stat-value text-primary">₹0</p>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="summary-stat-card shadow-sm">
+                  <h6>Monthly Pension</h6>
+                  <p id="resNPSPension" class="stat-value text-primary">₹0</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="alert alert-info py-3 mb-5 border-info bg-light">
+              <h6 class="fw-bold mb-2"><i class="bi bi-info-circle me-2"></i>NPS Tax Benefits (Section 80CCD)</h6>
+              <div class="small">
+                <div>• <strong>80CCD(1) benefit:</strong> Up to ₹1,50,000 deduction (part of 80C limit)</div>
+                <div class="mt-1">• <strong>80CCD(1B) benefit:</strong> Additional ₹50,000 deduction exclusively for NPS — over and
+                  above 80C.</div>
+              </div>
+            </div>
+
+            <h5 class="mb-3 fw-bold">Projected Corpus Growth <span class="text-muted small fw-normal">(5-Year Intervals)</span>
+            </h5>
+            <div class="table-responsive">
+              <table class="table table-hover border">
+                <thead class="table-light">
+                  <tr>
+                    <th>Age</th>
+                    <th>Annual Contribution</th>
+                    <th>Cumulative Investment</th>
+                    <th>Projected Corpus</th>
+                  </tr>
+                </thead>
+                <tbody id="npsGrowthTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="elsscalc" role="tabpanel">
+        <div class="card section-card">
+          <h4 class="mb-2"><i class="bi bi-percent me-3"></i>ELSS Calculator</h4>
+          <p class="text-muted small mb-4">Equity Linked Savings Scheme — 80C Tax Saving with Wealth Creation.</p>
+
+          <div class="row g-3">
+            <div class="col-md-3">
+              <label class="form-label text-muted small fw-bold">Monthly Investment</label>
+              <div class="input-group">
+                <span class="input-group-text currency-prefix">₹</span>
+                <input type="number" id="elssMonthly" class="form-control" placeholder="5000">
+              </div>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label text-muted small fw-bold">Expected Return (%)</label>
+              <input type="number" id="elssRate" class="form-control" value="12" step="0.1">
+            </div>
+            <div class="col-md-3">
+              <label class="form-label text-muted small fw-bold">Duration (Years)</label>
+              <input type="number" id="elssTenure" class="form-control" value="3" min="3">
+            </div>
+            <div class="col-md-3">
+              <label class="form-label text-muted small fw-bold">Tax Slab</label>
+              <select id="elssTaxSlab" class="form-control">
+                <option value="5">5%</option>
+                <option value="20">20%</option>
+                <option value="30">30%</option>
+              </select>
+            </div>
+            <div class="col-12 mt-4">
+              <button class="btn btn-primary btn-wide" onclick="calculateELSS()">Calculate ELSS Returns</button>
+            </div>
+          </div>
+
+          <div id="elssCalcResults" class="mt-5 d-none">
+            <div class="row g-4 mb-5">
+              <div class="col-md-4">
+                <div class="summary-stat-card shadow-sm border-success">
+                  <h6>Maturity Value</h6>
+                  <p id="resELSSMaturity" class="stat-value text-success">₹0</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="summary-stat-card shadow-sm">
+                  <h6>Total Invested</h6>
+                  <p id="resELSSInvested" class="stat-value">₹0</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="summary-stat-card shadow-sm">
+                  <h6>Estimated Returns</h6>
+                  <p id="resELSSReturns" class="stat-value text-primary">₹0</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="summary-stat-card shadow-sm border-info bg-light">
+                  <h6>Total Tax Saved</h6>
+                  <p id="resELSSTaxSaved" class="stat-value text-info">₹0</p>
+                  <p class="text-muted extra-small">Over the full tenure of investment.</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="summary-stat-card shadow-sm border-primary">
+                  <h6>Effective Return %</h6>
+                  <p id="resELSSEffectiveRate" class="stat-value text-primary">0%</p>
+                  <p class="text-muted extra-small">Accounting for upfront tax benefits.</p>
+                </div>
+              </div>
+            </div>
+
+            <h5 class="mb-3 fw-bold">Tax-Saving Instruments Comparison</h5>
+            <div class="table-responsive">
+              <table class="table table-hover border small">
+                <thead class="table-light">
+                  <tr>
+                    <th>Feature</th>
+                    <th>ELSS</th>
+                    <th>Tax-Saving FD</th>
+                    <th>PPF</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="fw-bold">Lock-in Period</td>
+                    <td>3 Years</td>
+                    <td>5 Years</td>
+                    <td>15 Years</td>
+                  </tr>
+                  <tr>
+                    <td class="fw-bold">Exp. Returns</td>
+                    <td>12 - 15%</td>
+                    <td>6.5 - 7%</td>
+                    <td>7.1% (Fixed)</td>
+                  </tr>
+                  <tr>
+                    <td class="fw-bold">Tax on Maturity</td>
+                    <td>10% (above ₹1L)</td>
+                    <td>Taxable</td>
+                    <td>Tax-free</td>
+                  </tr>
+                  <tr>
+                    <td class="fw-bold">80C Benefit</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                  </tr>
+                  <tr>
+                    <td class="fw-bold">Risk Level</td>
+                    <td>High (Equity)</td>
+                    <td>Low / None</td>
+                    <td>None (Govt)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="text-muted extra-small mt-2">
+              Note: LTCG above ₹1,0,000 per year is taxed at 10% without indexation as per current tax laws. This calculator does not account for LTCG tax on maturity.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="rentvsbuy" role="tabpanel">
+        <div class="card section-card">
+          <h4 class="mb-2"><i class="bi bi-house-door me-3"></i>Rent vs Buy Calculator</h4>
+          <p class="text-muted small mb-4">Should you rent or take a home loan?</p>
+
+          <div class="row g-4">
+            <div class="col-md-6 border-end">
+              <h5 class="fw-bold mb-3 text-primary">Renting</h5>
+              <div class="row g-3">
+                <div class="col-12">
+                  <label class="form-label text-muted small fw-bold">Monthly Rent</label>
+                  <div class="input-group">
+                    <span class="input-group-text currency-prefix">₹</span>
+                    <input type="number" id="rvbRent" class="form-control" placeholder="25000">
+                  </div>
+                </div>
+                <div class="col-12">
+                  <label class="form-label text-muted small fw-bold">Annual Rent Increase (%)</label>
+                  <input type="number" id="rvbRentIncrease" class="form-control" value="5">
+                </div>
+                <div class="col-12">
+                  <label class="form-label text-muted small fw-bold">Surplus Invested Monthly</label>
+                  <div class="input-group">
+                    <span class="input-group-text currency-prefix">₹</span>
+                    <input type="number" id="rvbSurplus" class="form-control bg-light" readonly placeholder="Auto-computed">
+                  </div>
+                  <p class="text-muted mt-1" style="font-size: 0.7rem;">Difference between EMI and Rent.</p>
+                </div>
+                <div class="col-12">
+                  <label class="form-label text-muted small fw-bold">Expected Returns (%)</label>
+                  <input type="number" id="rvbRentReturn" class="form-control" value="12">
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <h5 class="fw-bold mb-3 text-danger">Buying</h5>
+              <div class="row g-3">
+                <div class="col-6">
+                  <label class="form-label text-muted small fw-bold">Property Price</label>
+                  <input type="number" id="rvbPrice" class="form-control" placeholder="5000000">
+                </div>
+                <div class="col-6">
+                  <label class="form-label text-muted small fw-bold">Down Payment</label>
+                  <input type="number" id="rvbDownPayment" class="form-control" placeholder="1000000">
+                </div>
+                <div class="col-6">
+                  <label class="form-label text-muted small fw-bold">Interest Rate (%)</label>
+                  <input type="number" id="rvbLoanRate" class="form-control" value="8.5" step="0.1">
+                </div>
+                <div class="col-6">
+                  <label class="form-label text-muted small fw-bold">Tenure (Years)</label>
+                  <input type="number" id="rvbLoanTenure" class="form-control" value="20">
+                </div>
+                <div class="col-12">
+                  <label class="form-label text-muted small fw-bold">Monthly EMI</label>
+                  <div class="input-group">
+                    <span class="input-group-text currency-prefix">₹</span>
+                    <input type="number" id="rvbEMI" class="form-control bg-light" readonly placeholder="Auto-computed">
+                  </div>
+                </div>
+                <div class="col-6">
+                  <label class="form-label text-muted small fw-bold">Annual Appreciation (%)</label>
+                  <input type="number" id="rvbAppreciation" class="form-control" value="6">
+                </div>
+                <div class="col-6">
+                  <label class="form-label text-muted small fw-bold">Maintenance/Tax (Mo.)</label>
+                  <input type="number" id="rvbMaintenance" class="form-control" value="3000">
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label class="form-label text-muted small fw-bold">Analysis Period (Years)</label>
+              <input type="number" id="rvbAnalysisPeriod" class="form-control" value="10">
+            </div>
+
+            <div class="col-12 mt-4">
+              <button class="btn btn-primary btn-wide w-100" onclick="calculateRentVsBuy()">Compare Now</button>
+            </div>
+          </div>
+
+          <div id="rvbResults" class="mt-5 d-none">
+            <div class="card mb-4 border-0 shadow-sm">
+              <div class="card-body text-center py-4 bg-light">
+                <h3 id="rvbVerdictTitle" class="fw-bold mb-2"></h3>
+                <p id="rvbVerdictDesc" class="text-muted mb-0"></p>
+              </div>
+            </div>
+
+            <div class="row g-4 mb-5">
+              <div class="col-md-6">
+                <div class="summary-stat-card shadow-sm border-primary">
+                  <h5 class="fw-bold text-primary mb-3">Renting Summary</h5>
+                  <div class="mb-2 d-flex justify-content-between">
+                    <span class="text-muted small">Total Rent Paid:</span>
+                    <span id="resRentTotalPaid" class="fw-bold"></span>
+                  </div>
+                  <div class="mb-2 d-flex justify-content-between">
+                    <span class="text-muted small">Final Net Worth:</span>
+                    <span id="resRentNetWorth" class="fw-bold text-success"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="summary-stat-card shadow-sm border-danger">
+                  <h5 class="fw-bold text-danger mb-3">Buying Summary</h5>
+                  <div class="mb-2 d-flex justify-content-between">
+                    <span class="text-muted small">Total Outflow:</span>
+                    <span id="resBuyTotalOutflow" class="fw-bold"></span>
+                  </div>
+                  <div class="mb-2 d-flex justify-content-between">
+                    <span class="text-muted small">Final Net Worth:</span>
+                    <span id="resBuyNetWorth" class="fw-bold text-success"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <h5 class="mb-3 fw-bold">Yearly Net Worth Comparison</h5>
+            <div class="table-responsive">
+              <table class="table table-hover border small">
+                <thead class="table-light">
+                  <tr>
+                    <th>Year</th>
+                    <th>Buying Net Worth</th>
+                    <th>Renting Net Worth</th>
+                    <th>Difference</th>
+                  </tr>
+                </thead>
+                <tbody id="rvbComparisonTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="budget503020" role="tabpanel">
+        <div class="card section-card">
+          <h4 class="mb-2"><i class="bi bi-pie-chart me-3"></i>50/30/20 Budget Planner</h4>
+          <p class="text-muted small mb-4">A simple framework to allocate your monthly income.</p>
+
+          <div class="row g-3 align-items-end mb-4">
+            <div class="col-md-8">
+              <label class="form-label text-muted small fw-bold">Monthly Take-Home Income</label>
+              <div class="input-group">
+                <span class="input-group-text currency-prefix">₹</span>
+                <input type="number" id="budgetIncome" class="form-control form-control-lg" placeholder="50000">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <button class="btn btn-primary btn-wide w-100" onclick="generateBudget()">Generate Budget</button>
+            </div>
+          </div>
+
+          <div id="budgetResults" class="d-none">
+            <div class="row g-4 mb-5">
+              <div class="col-md-4">
+                <div class="summary-stat-card shadow-sm border-0" style="background-color: #008080; color: white;">
+                  <h6 class="text-white-50">Needs (50%)</h6>
+                  <p id="resNeedsAmt" class="stat-value text-white">₹0</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="summary-stat-card shadow-sm border-0" style="background-color: #800000; color: white;">
+                  <h6 class="text-white-50">Wants (30%)</h6>
+                  <p id="resWantsAmt" class="stat-value text-white">₹0</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="summary-stat-card shadow-sm border-0" style="background-color: #000080; color: white;">
+                  <h6 class="text-white-50">Savings (20%)</h6>
+                  <p id="resSavingsAmt" class="stat-value text-white">₹0</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion mb-5" id="budgetAccordion">
+              <div class="accordion-item border shadow-sm mb-3 rounded overflow-hidden">
+                <h2 class="accordion-header">
+                  <button class="accordion-button bg-light fw-bold" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseNeeds">
+                    Needs Breakdown (50%)
+                  </button>
+                </h2>
+                <div id="collapseNeeds" class="accordion-collapse collapse show">
+                  <div class="accordion-body p-0">
+                    <div class="table-responsive">
+                      <table class="table table-hover mb-0">
+                        <thead class="table-light">
+                          <tr>
+                            <th>Category</th>
+                            <th>Suggested</th>
+                            <th>Your Plan</th>
+                          </tr>
+                        </thead>
+                        <tbody id="needsTableBody"></tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item border shadow-sm mb-3 rounded overflow-hidden">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed bg-light fw-bold" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseWants">
+                    Wants Breakdown (30%)
+                  </button>
+                </h2>
+                <div id="collapseWants" class="accordion-collapse collapse">
+                  <div class="accordion-body p-0">
+                    <div class="table-responsive">
+                      <table class="table table-hover mb-0">
+                        <thead class="table-light">
+                          <tr>
+                            <th>Category</th>
+                            <th>Suggested</th>
+                            <th>Your Plan</th>
+                          </tr>
+                        </thead>
+                        <tbody id="wantsTableBody"></tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item border shadow-sm mb-3 rounded overflow-hidden">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed bg-light fw-bold" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseSavings">
+                    Savings Breakdown (20%)
+                  </button>
+                </h2>
+                <div id="collapseSavings" class="accordion-collapse collapse">
+                  <div class="accordion-body p-0">
+                    <div class="table-responsive">
+                      <table class="table table-hover mb-0">
+                        <thead class="table-light">
+                          <tr>
+                            <th>Category</th>
+                            <th>Suggested</th>
+                            <th>Your Plan</th>
+                          </tr>
+                        </thead>
+                        <tbody id="savingsTableBody"></tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="alert alert-dark shadow-sm py-4 text-center mb-4">
+              <h4 id="allocatedCounter" class="fw-bold mb-0">Allocated: ₹0 of ₹0 income — ₹0 remaining</h4>
+            </div>
+
+            <div class="text-center">
+              <button class="btn btn-outline-secondary btn-wide" onclick="copyBudgetSummary()">
+                <i class="bi bi-clipboard me-2"></i>Copy Budget Summary
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="inflationcalc" role="tabpanel">
+        <div class="card section-card">
+          <h4 class="mb-2"><i class="bi bi-graph-down-arrow me-3"></i>Inflation Calculator</h4>
+          <p class="text-muted small mb-4">What is your money really worth over time?</p>
+
+          <ul class="nav nav-pills nav-fill mb-4 p-1 bg-light rounded shadow-sm border small" id="inflationModes"
+            role="tablist">
+            <li class="nav-item">
+              <button class="nav-link active py-2" id="future-mode-tab" data-bs-toggle="pill"
+                data-bs-target="#future-mode" type="button">Future Value</button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link py-2" id="past-mode-tab" data-bs-toggle="pill" data-bs-target="#past-mode"
+                type="button">Past Value</button>
+            </li>
+          </ul>
+
+          <div class="tab-content" id="inflationModesContent">
+            <!-- Future Value Mode -->
+            <div class="tab-pane fade show active" id="future-mode">
+              <div class="row g-3">
+                <div class="col-md-4">
+                  <label class="form-label text-muted small fw-bold">Current Amount</label>
+                  <div class="input-group">
+                    <span class="input-group-text currency-prefix">₹</span>
+                    <input type="number" id="infFutureAmount" class="form-control" placeholder="100000">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label text-muted small fw-bold">Inflation Rate (%)</label>
+                  <input type="number" id="infFutureRate" class="form-control" value="6" step="0.1">
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label text-muted small fw-bold">Number of Years</label>
+                  <input type="number" id="infFutureYears" class="form-control" placeholder="10">
+                </div>
+              </div>
+            </div>
+
+            <!-- Past Value Mode -->
+            <div class="tab-pane fade" id="past-mode">
+              <div class="row g-3">
+                <div class="col-md-4">
+                  <label class="form-label text-muted small fw-bold">Past Amount</label>
+                  <div class="input-group">
+                    <span class="input-group-text currency-prefix">₹</span>
+                    <input type="number" id="infPastAmount" class="form-control" placeholder="100000">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label text-muted small fw-bold">Inflation Rate (%)</label>
+                  <input type="number" id="infPastRate" class="form-control" value="6" step="0.1">
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label text-muted small fw-bold">Years Ago</label>
+                  <input type="number" id="infPastYears" class="form-control" placeholder="10">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <button class="btn btn-primary btn-wide w-100" onclick="calculateInflation()">Calculate Impact</button>
+          </div>
+
+          <div id="inflationResults" class="mt-5 d-none">
+            <div class="row g-4 mb-4">
+              <div class="col-md-4">
+                <div class="summary-stat-card shadow-sm border-danger text-center">
+                  <h6 id="resInfMainLabel">Future Amount Needed</h6>
+                  <p id="resInfMainVal" class="stat-value text-danger">₹0</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="summary-stat-card shadow-sm text-center">
+                  <h6 id="resInfSecondaryLabel">Purchasing Power Lost</h6>
+                  <p id="resInfSecondaryVal" class="stat-value">₹0</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="summary-stat-card shadow-sm border-info text-center">
+                  <h6>Monthly Equivalent</h6>
+                  <p id="resInfMonthlyVal" class="stat-value text-info">₹0</p>
+                </div>
+              </div>
+            </div>
+
+            <div id="infErosionSection" class="mb-5">
+              <h5 class="fw-bold mb-3 small text-uppercase tracking-wider text-muted">Year-by-Year Value Needed</h5>
+              <div class="table-responsive">
+                <table class="table table-hover border small">
+                  <thead class="table-light">
+                    <tr>
+                      <th>Year</th>
+                      <th>Value Needed to Match Today's <span class="resInfCurrentBase">₹0</span></th>
+                    </tr>
+                  </thead>
+                  <tbody id="infErosionTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="card bg-light border-0 shadow-sm mb-5">
+              <div class="card-body">
+                <h5 class="fw-bold mb-3"><i class="bi bi-shop me-2 text-primary"></i>Real-World Context</h5>
+                <div class="table-responsive">
+                  <table class="table table-sm table-borderless mb-0 small">
+                    <thead>
+                      <tr class="text-muted border-bottom">
+                        <th>Expense Category</th>
+                        <th>Today's Cost</th>
+                        <th class="text-end">Future Cost (<span class="resInfYearsLabel">10</span> yrs)</th>
+                      </tr>
+                    </thead>
+                    <tbody id="infContextTableBody"></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="alert alert-dark shadow-sm py-4 border-0">
+              <div class="row align-items-center">
+                <div class="col-md-7">
+                  <h6 class="fw-bold mb-1 text-white-50 small text-uppercase">Inflation vs Investment</h6>
+                  <p id="infComparisonText" class="mb-0 text-white"></p>
+                </div>
+                <div class="col-md-5">
+                  <div class="input-group input-group-sm mt-3 mt-md-0">
+                    <span class="input-group-text bg-dark border-secondary text-white small">Inv. Return Rate</span>
+                    <input type="number" id="infReturnRate" class="form-control bg-dark text-white border-secondary"
+                      value="12" oninput="calculateInflation()">
+                    <span class="input-group-text bg-dark border-secondary text-white small">%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="mt-5 mb-4 text-center text-muted small border-top pt-4">
+      © 1995 Monever Corporation. All rights reserved.
+    </footer>
+  </div>
+
+  <div id="toastContainer" class="toast-container position-fixed bottom-0 end-0 p-3"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="utils.js"></script>
+  <script src="tools.js"></script>
+</body>
+
+</html>

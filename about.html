@@ -14,6 +14,17 @@
 </head>
 
 <body>
+  <div id="mobile-block">
+    <div class="win95-dialog">
+      <div class="win95-title-bar">
+        <span>⚠️ Incompatible Device</span>
+      </div>
+      <div class="win95-dialog-body">
+        <p>This application is optimised for desktop computers. Mobile handsets were not commonplace during the era this software was designed for. Please access Monever from a desktop or laptop computer for the intended experience.</p>
+        <p class="mt-4 fw-bold text-uppercase" style="font-size: 12px; letter-spacing: 1px; color: #800000;">Access from a computer</p>
+      </div>
+    </div>
+  </div>
 
 
   <nav class="navbar">
@@ -28,6 +39,7 @@
       <div class="navbar-nav ms-auto d-flex flex-row gap-4">
         <a class="nav-link" href="index.html">Home</a>
         <a class="nav-link" href="data.html">Insights</a>
+        <a class="nav-link" href="tools.html">Tools</a>
         <a class="nav-link active" href="about.html">About</a>
       </div>
     </div>
@@ -135,7 +147,7 @@
         <span>Data Status: Local / Secure</span>
       </div>
       <div>
-        <span>&copy; 1997-2024 Monever Corporation</span>
+        <span>&copy; 1995 Monever</span>
       </div>
       <div>
         <span class="footer-credit">v2.4.0-Stable</span>
@@ -147,7 +159,12 @@
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="script.js"></script>
+  <script src="utils.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      applyAppearance();
+    });
+  </script>
 </body>
 
 </html>
