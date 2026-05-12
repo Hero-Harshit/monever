@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Help & Documentation  Monever</title>
+  <link rel="icon" href="assets/Monever%20Logo.png" sizes="32x32">
+  <link rel="shortcut icon" href="assets/Monever%20Logo.png">
+  <link rel="apple-touch-icon" href="assets/Monever%20Logo.png">
+  <meta name="theme-color" content="#404040">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="mobile-block">
+    <div class="win95-dialog">
+      <div class="win95-title-bar">
+        <span>⚠️ Incompatible Device</span>
+      </div>
+      <div class="win95-dialog-body">
+        <p>This application is optimised for desktop computers. Mobile handsets were not commonplace during the era this
+          software was designed for. Please access Monever from a desktop or laptop computer for the intended
+          experience.</p>
+        <p class="mt-4 fw-bold text-uppercase" style="font-size: 12px; letter-spacing: 1px; color: #606060;">Access from
+          a computer</p>
+      </div>
+    </div>
+  </div>
+
+
+  <nav class="navbar" style="position: relative;">
+    <div class="container-fluid px-4" style="display: flex; justify-content: space-between; align-items: center;">
+      <a class="navbar-brand" href="index.html" style="flex: 1; display: flex; align-items: center;">
+        <img src="assets/Monever%20Logo.png" alt="Monever" height="40" class="brand-logo">
+        <div class="brand-wordmark">
+          <span class="brand-name">Monever</span>
+          <span class="brand-tagline">Money Saver, Forever</span>
+        </div>
+      </a>
+
+      <!-- PROFILE BUTTON - CENTERED VIA FLEX -->
+      <button id="profileNavBtn" onclick="openProfileModal()" style="background-color: #c0c0c0; border: 2px solid; border-color: #ffffff #808080 #808080 #ffffff;
+        padding: 2px 10px; font-size: 0.8rem; cursor: pointer; display: flex; align-items: center; gap: 5px;
+        white-space: nowrap; flex-shrink: 0;" title="My Profile" onmouseenter="this.style.backgroundColor='#d0d0d0'"
+        onmouseleave="this.style.backgroundColor='#c0c0c0'">
+        <i class="bi bi-person-fill"></i> My Profile
+      </button>
+
+      <div class="navbar-nav ms-0 d-flex flex-row gap-1" style="flex: 1; justify-content: flex-end;">
+        <a class="nav-link" href="index.html"><i class="bi bi-house-door me-2"></i>Home</a>
+        <a class="nav-link" href="data.html"><i class="bi bi-bar-chart me-2"></i>Insights</a>
+        <a class="nav-link" href="tools.html"><i class="bi bi-tools me-2"></i>Tools</a>
+        <a class="nav-link" href="lab.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black"
+            class="me-2" viewBox="0 0 16 16" style="vertical-align: -0.125em; position: relative; top: 0.5px;">
+            <path
+              d="M2 4.5A.5.5 0 0 1 2.5 4h1a.5.5 0 0 1 .5.5v.5h1v-1a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v1h1v-.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1.238L14.502 11h-1.074l-3.292-3.292A.5.5 0 0 0 9.782 7.5h-3.564a.5.5 0 0 0-.354.146L2.572 11H1.498L2 5.738V4.5zM13.372 12l1.64-1.64a.5.5 0 0 0 .134-.354V8.5h-1v1.238L11.502 12h1.87zM2.628 12 1 10.36V8.5h1v1.238L4.498 12H2.628zM10 13H6v1h4v-1zm4 1.5c0 .276-.224.5-.5.5h-11a.5.5 0 0 1-.5-.5V14h12v.5z" />
+          </svg>Lab</a>
+        <a class="nav-link" href="about.html"><i class="bi bi-info-circle me-2"></i>About</a>
+        <li class="nav-item">
+          <a class="nav-link active" href="help.html">
+            <i class="bi bi-question-circle me-1"></i>Help
+          </a>
+        </li>
+      </div>
+    </div>
+  </nav>
+
+  <div id="mainScrollArea" style="display: flex; grid-area: main; overflow-y: auto; overflow-x: hidden;">
+
+    <!-- LEFT SIDEBAR -->
+    <div id="helpSidebar" style="position: fixed; top: 56px; left: 0;
+      width: 240px; height: calc(100vh - 56px); overflow-y: auto;
+      background-color: #c0c0c0; border-right: 2px solid;
+      border-color: #808080 #ffffff #ffffff #808080;
+      padding: 0; z-index: 100;">
+
+      <!-- Search box -->
+      <div style="padding: 10px 12px; border-bottom: 1px solid #808080;">
+        <input type="text" id="helpSearch"
+          placeholder="Search documentation..."
+          oninput="searchHelp(this.value)"
+          style="width: 100%; font-size: 0.75rem; padding: 3px 6px;
+          border: 2px solid; border-color: #808080 #ffffff #ffffff #808080;
+          font-family: 'Courier New', monospace; background: #ffffff;
+          box-sizing: border-box;">
+        <div id="helpSearchCount"
+          style="font-size: 0.65rem; color: #555; margin-top: 4px;
+          display: none;"></div>
+      </div>
+
+      <!-- Navigation will be injected here in next prompt -->
+      <nav id="helpNav">
+        <span style="display: block; padding: 6px 12px 2px; font-size: 0.65rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; color: #555; margin-top: 10px; border-top: 1px solid #808080;">GETTING STARTED</span>
+        <a href="#intro" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">What is Monever?</a>
+        <a href="#quickstart" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">Quick Start Guide</a>
+        <a href="#demomode" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">Demo Mode</a>
+        <a href="#profile-doc" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">Your Profile</a>
+
+        <span style="display: block; padding: 6px 12px 2px; font-size: 0.65rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; color: #555; margin-top: 10px; border-top: 1px solid #808080;">HOME PAGE</span>
+        <a href="#expenses-doc" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">Adding Expenses</a>
+        <a href="#emi-doc" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">EMI Tracker</a>
+        <a href="#ledger-doc" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">People Ledger</a>
+        <a href="#notes-doc" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">Quick Notes</a>
+        <a href="#reminders-doc" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">Reminders</a>
+        <a href="#splitter-doc" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">Bill Splitter</a>
+
+        <span style="display: block; padding: 6px 12px 2px; font-size: 0.65rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; color: #555; margin-top: 10px; border-top: 1px solid #808080;">INSIGHTS PAGE</span>
+        <a href="#overview-doc" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">Overview Dashboard</a>
+        <a href="#history-doc" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">Expense History</a>
+        <a href="#goals-doc" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">Financial Goals</a>
+        <a href="#networth-doc" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">Net Worth Tracker</a>
+        <a href="#charts-doc" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">Summary Charts</a>
+
+        <span style="display: block; padding: 6px 12px 2px; font-size: 0.65rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; color: #555; margin-top: 10px; border-top: 1px solid #808080;">TOOLS PAGE</span>
+        <a href="#tool-emi" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">EMI Calculator</a>
+        <a href="#tool-fd" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">FD Calculator</a>
+        <a href="#tool-sip" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">SIP & Step-up SIP</a>
+        <a href="#tool-ppf" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">PPF Calculator</a>
+        <a href="#tool-nps" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">NPS Calculator</a>
+        <a href="#tool-elss" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">ELSS Calculator</a>
+        <a href="#tool-rvb" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">Rent vs Buy</a>
+        <a href="#tool-503020" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">50/30/20 Planner</a>
+        <a href="#tool-inflation" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">Inflation Calculator</a>
+        <a href="#tool-salary" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">Salary Breakup</a>
+        <a href="#tool-clock" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">Money Clock</a>
+        <a href="#tool-wealth" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">Wealth Timeline</a>
+        <a href="#tool-crore" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">Crore Counter</a>
+        <a href="#tool-job" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">Job Comparator</a>
+
+        <span style="display: block; padding: 6px 12px 2px; font-size: 0.65rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; color: #555; margin-top: 10px; border-top: 1px solid #808080;">MONEVER LAB</span>
+        <a href="#lab-intro" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">What is the Lab?</a>
+        <a href="#lab-quit" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">Should I Quit?</a>
+        <a href="#lab-lifestyle" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">Lifestyle Inflation</a>
+        <a href="#lab-freedom" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">Financial Freedom</a>
+        <a href="#lab-age" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">Financial Age Test</a>
+        <a href="#lab-hours" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">Salary to Hours</a>
+        <a href="#lab-fortune" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">Fortune Teller</a>
+        <a href="#lab-ticker" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">Stock Ticker</a>
+        <a href="#lab-compat" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">Compatibility Test</a>
+        <a href="#lab-briefing" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">Daily Briefing</a>
+
+        <span style="display: block; padding: 6px 12px 2px; font-size: 0.65rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; color: #555; margin-top: 10px; border-top: 1px solid #808080;">WIDGETS</span>
+        <a href="#widget-intro" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">What are Widgets?</a>
+        <a href="#widget-manage" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">Adding & Removing</a>
+        <a href="#widget-financial" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">Financial Widgets</a>
+        <a href="#widget-analytical" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">Analytical Widgets</a>
+        <a href="#widget-visual" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">Visual & Fun Widgets</a>
+
+        <span style="display: block; padding: 6px 12px 2px; font-size: 0.65rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; color: #555; margin-top: 10px; border-top: 1px solid #808080;">DATA & SETTINGS</span>
+        <a href="#data-storage" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">Data Storage</a>
+        <a href="#data-export" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">Export Data</a>
+        <a href="#data-import" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">Import Data</a>
+        <a href="#data-clear" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">Clearing Data</a>
+        <a href="#settings-doc" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">Currency & Budget</a>
+
+        <span style="display: block; padding: 6px 12px 2px; font-size: 0.65rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; color: #555; margin-top: 10px; border-top: 1px solid #808080;">REFERENCE</span>
+        <a href="#pro-tips" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">Pro Tips</a>
+        <a href="#faq" style="display: block; padding: 3px 12px 3px 22px; font-size: 0.75rem; color: #000; text-decoration: none; font-family: 'Courier New', monospace;" onmouseenter="this.style.backgroundColor='#d0d0d0'" onmouseleave="this.style.backgroundColor=''">FAQ</a>
+      </nav>
+    </div>
+
+    <!-- RIGHT CONTENT AREA -->
+    <div id="helpContent" style="margin-left: 240px; padding: 2rem 3rem 4rem;
+      flex: 1; max-width: 960px; min-width: 0;">
+
+      <!-- Page title -->
+      <div style="border-bottom: 3px solid #000; padding-bottom: 8px; margin-bottom: 2rem;">
+        <h1 style="font-size: 1.4rem; font-weight: bold;
+          font-family: 'Courier New', monospace; margin: 0;">
+          MONEVER  HELP & DOCUMENTATION
+        </h1>
+        <p style="font-size: 0.8rem; color: #555; margin: 4px 0 0;">
+          Complete reference guide for all features, tools, and settings.
+        </p>
+      </div>
+
+      <!-- Documentation sections injected in subsequent prompts -->
+      <div style="background-color: #eeeeee; border: 2px solid;
+        border-color: #808080 #ffffff #ffffff #808080;
+        padding: 1rem 1.25rem; margin-bottom: 2rem;">
+        <div style="font-size: 0.75rem; font-family: 'Courier New', monospace;
+          color: #555; margin-bottom: 6px;">MONEVER · HELP CENTER · v2.4.0 Classic Edition</div>
+        <p style="font-size: 0.84rem; line-height: 1.7; margin: 0;">
+          This documentation covers every feature in Monever. Use the sidebar to navigate
+          by section or use the search box to find a specific topic. All features described
+          here are available without any account or internet connection.
+        </p>
+      </div>
+
+      <div id="helpSections">
+
+        <!-- 1. What is Monever? -->
+        <div class="help-section">
+          <h2 id="intro" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">What is Monever?</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Monever is a personal finance management app running entirely in your browser. There is no account, no server, and no internet required. All your data is stored locally on your device via <code style="background:#eeeeee; border: 1px solid #808080; padding: 1px 5px; font-family: 'Courier New', monospace; font-size: 0.8rem;">localStorage</code>. The Windows 95 aesthetic is a deliberate choice  software of that era was direct, highly functional, and completely free of dark patterns and subscription walls.</p>
+          <table style="width:100%; border-collapse:collapse; font-size:0.82rem; margin:1rem 0;">
+            <thead>
+              <tr>
+                <th style="background:#c0c0c0; padding:6px 10px; border:1px solid #808080; text-align:left;">Page</th>
+                <th style="background:#c0c0c0; padding:6px 10px; border:1px solid #808080; text-align:left;">Purpose</th>
+                <th style="background:#c0c0c0; padding:6px 10px; border:1px solid #808080; text-align:left;">Key Features</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Home</td>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Add Data</td>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Log expenses, EMIs, ledger, notes, reminders, and split bills.</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Insights</td>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Analyse Data</td>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">View spending history, track financial goals, and monitor net worth.</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Tools</td>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Calculate</td>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Use calculators for EMIs, FDs, SIPs, PPF, NPS, ELSS, taxes, and more.</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Lab</td>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Experience</td>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Gain self-awareness through lifestyle and behavioral finance tools.</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">About</td>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Project Story</td>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Learn about the philosophy and origins of the Monever project.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 2. Quick Start Guide -->
+        <div class="help-section">
+          <h2 id="quickstart" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">Quick Start Guide</h2>
+          <ol style="font-size: 0.84rem; line-height: 2; padding-left: 1.4rem;">
+            <li>Click <strong>Load Demo Data</strong> from the hero banner to explore immediately.</li>
+            <li>Fill out <strong>Your Profile</strong> via the navbar button to enable auto-fill across all tools.</li>
+            <li>Add your first expense on the Home page under the <strong>Expense</strong> tab.</li>
+            <li>Set a Monthly Budget in <strong>Profile Settings</strong> to unlock budget tracking.</li>
+            <li>Go to the <strong>Insights</strong> page to see spending charts populate.</li>
+            <li>Click any <code style="background:#eeeeee; border: 1px solid #808080; padding: 1px 5px; font-family: 'Courier New', monospace; font-size: 0.8rem;">+</code> widget placeholder and add a <strong>Budget Tracker</strong> widget.</li>
+          </ol>
+        </div>
+
+        <!-- 3. Demo Mode -->
+        <div class="help-section">
+          <h2 id="demomode" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">Demo Mode</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Demo Mode loads 57 expenses across 12 months, 2 EMIs, 3 reminders, 2 goals, and 5 ledger entries.</p>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Activate it via the <strong>Load Demo Data</strong> button on the Home page hero. Clear it using the <strong>[Clear]</strong> button in the navy banner.</p>
+          <div style="background:#eeeeee; border-left: 4px solid #808080; padding: 10px 14px; margin: 1rem 0; font-size: 0.81rem; line-height: 1.7;"><strong>⚠️ Note:</strong> Demo and real data can coexist. Only demo entries are removed on clear.</div>
+          <div style="background:#eeeeee; border-left: 4px solid #404040; padding: 10px 14px; margin: 1rem 0; font-size: 0.81rem; line-height: 1.7;"><strong>💡 Tip:</strong> Loading demo data is the best way to see all features and visualizations populated instantly.</div>
+        </div>
+
+        <!-- 4. Your Profile -->
+        <div class="help-section">
+          <h2 id="profile-doc" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">Your Profile</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">The Profile is Monever's memory, enabling auto-fill across the app. Open it via the <strong>My Profile</strong> button in the navbar.</p>
+          <table style="width:100%; border-collapse:collapse; font-size:0.82rem; margin:1rem 0;">
+            <thead>
+              <tr>
+                <th style="background:#c0c0c0; padding:6px 10px; border:1px solid #808080; text-align:left;">Tab</th>
+                <th style="background:#c0c0c0; padding:6px 10px; border:1px solid #808080; text-align:left;">Information Stored</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">User Bio</td>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Name, age, city, employment type.</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Cashflow</td>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">In-hand, side income, expenses, rent, savings.</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Strategy</td>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Corpus, expected return, risk appetite, tax regime, retirement age.</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Work</td>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">CTC, hours, commute, WFH days, professional tax.</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Settings</td>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Budget, income, currency, export/import, factory reset.</td>
+              </tr>
+            </tbody>
+          </table>
+          <div style="background:#eeeeee; border-left: 4px solid #808080; padding: 10px 14px; margin: 1rem 0; font-size: 0.81rem; line-height: 1.7;"><strong>⚠️ Note:</strong> Everything stays in your browser's <code style="background:#eeeeee; border: 1px solid #808080; padding: 1px 5px; font-family: 'Courier New', monospace; font-size: 0.8rem;">localStorage</code>. No data ever leaves your device.</div>
+        </div>
+
+        <!-- 5. Adding Expenses -->
+        <div class="help-section">
+          <h2 id="expenses-doc" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">Adding Expenses</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">To add an expense:</p>
+          <ol style="font-size: 0.84rem; line-height: 2; padding-left: 1.4rem;">
+            <li>Enter the <strong>Amount</strong>.</li>
+            <li>Enter the <strong>Category</strong> (free text, recommend: Food, Transport, Groceries, Dining Out, Shopping, Health, Utilities, Subscriptions, Rent).</li>
+            <li>Select the <strong>Transaction Date</strong> (defaults today).</li>
+            <li>Add an optional <strong>Description</strong>.</li>
+            <li>Check <strong>Repeat monthly</strong> for recurring items.</li>
+            <li>Click <strong>Add Expense Entry</strong>.</li>
+          </ol>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">To edit, click the Edit button in Recent Entries to load it back into the form. You can also delete entries from there.</p>
+          <div style="background:#eeeeee; border-left: 4px solid #808080; padding: 10px 14px; margin: 1rem 0; font-size: 0.81rem; line-height: 1.7;"><strong>⚠️ Note:</strong> Consistent category naming is vital. <code style="background:#eeeeee; border: 1px solid #808080; padding: 1px 5px; font-family: 'Courier New', monospace; font-size: 0.8rem;">Food</code> and <code style="background:#eeeeee; border: 1px solid #808080; padding: 1px 5px; font-family: 'Courier New', monospace; font-size: 0.8rem;">food</code> are treated as different categories.</div>
+          <div style="background:#eeeeee; border-left: 4px solid #404040; padding: 10px 14px; margin: 1rem 0; font-size: 0.81rem; line-height: 1.7;"><strong>💡 Tip:</strong> Use the Description field generously to help track specific habits later.</div>
+        </div>
+
+        <!-- 6. EMI Tracker -->
+        <div class="help-section">
+          <h2 id="emi-doc" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">EMI Tracker</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">EMIs represent recurring monthly obligations. To add, provide the name, amount, and due date. Clicking <strong>Mark as Paid</strong> creates an expense entry and removes the EMI.</p>
+          <div style="background:#eeeeee; border-left: 4px solid #808080; padding: 10px 14px; margin: 1rem 0; font-size: 0.81rem; line-height: 1.7;"><strong>⚠️ Note:</strong> Use the EMI tracker for loan repayments. Use standard Expenses (with 'Repeat monthly' checked) for subscriptions, rent, and utilities.</div>
+        </div>
+
+        <!-- 7. People Ledger -->
+        <div class="help-section">
+          <h2 id="ledger-doc" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">People Ledger</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Tracks money lent to or borrowed from others. Enter the person name, amount, type (Lent/Borrowed), and optional description. Use the <strong>Mark Settled</strong> button to clear the debt. Overview totals are shown at the top.</p>
+        </div>
+
+        <!-- 8. Quick Notes -->
+        <div class="help-section">
+          <h2 id="notes-doc" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">Quick Notes</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">A simple notepad for financial thoughts. Add a note via the text area and click <strong>Save Note</strong>. Notes are auto-timestamped, and the last 20 are kept.</p>
+          <div style="background:#eeeeee; border-left: 4px solid #404040; padding: 10px 14px; margin: 1rem 0; font-size: 0.81rem; line-height: 1.7;"><strong>💡 Tip:</strong> Capture financial intentions in the moment. Writing it down often reduces the urge for impulse buys.</div>
+        </div>
+
+        <!-- 9. Reminders -->
+        <div class="help-section">
+          <h2 id="reminders-doc" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">Reminders</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Date-tagged alerts for upcoming events. Add a reminder text and due date. Reminders show as Upcoming, Due Today, or Overdue. Past-due reminders stay until deleted. Recurring expenses and widgets also connect to this data.</p>
+        </div>
+
+        <!-- 10. Bill Splitter -->
+        <div class="help-section">
+          <h2 id="splitter-doc" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">Bill Splitter</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Divide a shared expense among multiple people.</p>
+          <ol style="font-size: 0.84rem; line-height: 2; padding-left: 1.4rem;">
+            <li>Enter the total bill amount and names.</li>
+            <li>Click <strong>Split Equally</strong>.</li>
+            <li>Or choose <strong>Unequal Split</strong> with custom amounts and a running total.</li>
+            <li>Use the <strong>Copy Summary</strong> button for a WhatsApp-ready text.</li>
+          </ol>
+          <div style="background:#eeeeee; border-left: 4px solid #808080; padding: 10px 14px; margin: 1rem 0; font-size: 0.81rem; line-height: 1.7;"><strong>⚠️ Note:</strong> Bill Splitter data is session-only and does not save to <code style="background:#eeeeee; border: 1px solid #808080; padding: 1px 5px; font-family: 'Courier New', monospace; font-size: 0.8rem;">localStorage</code>.</div>
+        </div>
+
+        <!-- 11. Overview Dashboard -->
+        <div class="help-section">
+          <h2 id="overview-doc" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">Overview Dashboard</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">The first tab on the Insights page displays a high-level summary of your finances. It features four main stat cards: Total Spent, Budget %, Monthly Income, and Savings Rate.</p>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">A budget progress bar visually tracks your spending, showing a warning state at 80% and a critical state at 100%. The dashboard also highlights per-category budget alerts, a doughnut chart for category breakdown, and a monthly trend bar chart detailing the last 6 months.</p>
+          <div style="background:#eeeeee; border-left: 4px solid #808080; padding: 10px 14px; margin: 1rem 0; font-size: 0.81rem; line-height: 1.7;"><strong>⚠️ Note:</strong> Your monthly budget and income must be configured in your Profile settings for these metrics to function fully.</div>
+        </div>
+
+        <!-- 12. Expense History -->
+        <div class="help-section">
+          <h2 id="history-doc" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">Expense History</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">A searchable, chronologically ordered list of all your expenses, sorted newest first. The search bar is highly flexible and works across categories, descriptions, amounts, and dates.</p>
+          <div style="background:#eeeeee; border-left: 4px solid #404040; padding: 10px 14px; margin: 1rem 0; font-size: 0.81rem; line-height: 1.7;"><strong>💡 Tip:</strong> Searching for <code style="background:#eeeeee; border: 1px solid #808080; padding: 1px 5px; font-family: 'Courier New', monospace; font-size: 0.8rem;">2024-03</code> instantly filters the list to show all entries from March 2024.</div>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">You can Edit or Delete any individual entry directly from this list.</p>
+        </div>
+
+        <!-- 13. Financial Goals -->
+        <div class="help-section">
+          <h2 id="goals-doc" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">Financial Goals</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Track long-term savings objectives. To add a goal, enter a name, target amount, target date, and a starting amount. A progress card will track your journey.</p>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">The card displays a progress bar, the remaining amount, days left until the target date, and the monthly contribution needed to succeed. Use the <strong>Add Contribution</strong> button to update your progress. Goals automatically transition between active, missed, and completed states.</p>
+        </div>
+
+        <!-- 14. Net Worth Tracker -->
+        <div class="help-section">
+          <h2 id="networth-doc" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">Net Worth Tracker</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Calculate your true wealth by subtracting Total Liabilities from Total Assets. Add assets by specifying name, value, and type (Cash, Investments, Property, Other). Add liabilities by specifying name and outstanding amount. Update these values monthly to accurately track your financial trajectory.</p>
+          <div style="background:#eeeeee; border-left: 4px solid #404040; padding: 10px 14px; margin: 1rem 0; font-size: 0.81rem; line-height: 1.7;"><strong>💡 Tip:</strong> Net worth is a long-game metric. The overall trend matters far more than any single day's number.</div>
+        </div>
+
+        <!-- 15. Summary Charts -->
+        <div class="help-section">
+          <h2 id="charts-doc" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">Summary Charts</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">The Summary tab on the Insights page displays a combined bar chart of your income versus spending by month. This visualization makes it easy to spot periods where spending outpaced earnings and to quickly assess your historical savings margin.</p>
+        </div>
+
+        <!-- 16. EMI Calculator -->
+        <div class="help-section">
+          <h2 id="tool-emi" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">EMI Calculator</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Calculates loan repayments using the standard formula: <code style="background:#eeeeee; border: 1px solid #808080; padding: 1px 5px; font-family: 'Courier New', monospace; font-size: 0.8rem;">P � r � (1+r)^n / ((1+r)^n − 1)</code>.</p>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Inputs: Loan amount, annual interest rate, and tenure in months. Outputs: Your exact monthly EMI, the total amount payable, and the total interest burden.</p>
+        </div>
+
+        <!-- 17. FD Calculator -->
+        <div class="help-section">
+          <h2 id="tool-fd" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">FD Calculator</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Calculates Fixed Deposit returns using compound interest: <code style="background:#eeeeee; border: 1px solid #808080; padding: 1px 5px; font-family: 'Courier New', monospace; font-size: 0.8rem;">A = P � (1 + r/n)^(n�t)</code>.</p>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Inputs: Principal amount, annual rate, tenure, and compounding frequency. Outputs: Maturity amount, total interest earned, effective annual rate, and a detailed year-by-year growth table.</p>
+        </div>
+
+        <!-- 18. SIP & Step-up SIP -->
+        <div class="help-section">
+          <h2 id="tool-sip" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">SIP & Step-up SIP</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Calculates Systematic Investment Plan returns using: <code style="background:#eeeeee; border: 1px solid #808080; padding: 1px 5px; font-family: 'Courier New', monospace; font-size: 0.8rem;">M = P � ((1+r)^n − 1) / r � (1+r)</code>.</p>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Inputs: Monthly investment, expected annual return, and duration. Outputs: Total invested, total returns, and final maturity value.</p>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;"><strong>Step-up SIP:</strong> This advanced mode automatically increases your monthly investment by X% each year. For example, investing ₹5,000 flat for 20 years at 12% yields ₹49.9L. However, applying a 10% annual step-up transforms that exact same scenario into a massive ₹1.35Cr maturity corpus.</p>
+        </div>
+
+        <!-- 19. PPF Calculator -->
+        <div class="help-section">
+          <h2 id="tool-ppf" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">PPF Calculator</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Projects Public Provident Fund growth across its mandatory 15-year lock-in period. Currently defaults to 7.1% (verify with India Post, as rates update quarterly). The maximum permitted annual deposit is ₹1,50,000. Features a year-by-year table and an extension toggle to project 20 and 25-year extended maturities.</p>
+        </div>
+
+        <!-- 20. NPS Calculator -->
+        <div class="help-section">
+          <h2 id="tool-nps" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">NPS Calculator</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Projects retirement corpus through the National Pension System. Inputs: Current age, retirement age, monthly contribution, expected accumulation return, expected annuity rate, and the percentage of corpus dedicated to purchasing the annuity (minimum 40%).</p>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Outputs: Total corpus, tax-free lump sum withdrawal, annuity corpus size, and projected monthly pension.</p>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;"><strong>Tax benefits:</strong> Under Section 80CCD(1) up to ₹1,50,000 (within 80C limits), plus an additional, exclusive ₹50,000 deduction under Section 80CCD(1B).</p>
+        </div>
+
+        <!-- 21. ELSS Calculator -->
+        <div class="help-section">
+          <h2 id="tool-elss" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">ELSS Calculator</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Equity Linked Savings Schemes offer tax benefits with a 3-year lock-in. Inputs: Monthly investment, expected return (pre-filled to 12%), duration, and your current tax slab.</p>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Outputs: Maturity amount, total tax saved under Section 80C, and your effective return rate after factoring in the tax benefit. Includes a comparison table against FD and PPF.</p>
+          <div style="background:#eeeeee; border-left: 4px solid #808080; padding: 10px 14px; margin: 1rem 0; font-size: 0.81rem; line-height: 1.7;"><strong>⚠️ Note:</strong> ELSS returns are subject to Long-Term Capital Gains (LTCG) tax upon withdrawal.</div>
+        </div>
+
+        <!-- 22. Rent vs Buy Calculator -->
+        <div class="help-section">
+          <h2 id="tool-rvb" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">Rent vs Buy Calculator</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">A comprehensive simulation comparing home ownership against renting and investing the difference.</p>
+          <ul style="font-size: 0.84rem; line-height: 2; padding-left: 1.4rem; list-style: square;">
+            <li><strong>Buying:</strong> Tracks home EMI, property appreciation over time, and ongoing maintenance costs.</li>
+            <li><strong>Renting:</strong> Tracks monthly rent paid (with inflation) and assumes the surplus capital (down payment + difference between EMI and rent) is invested at a specified market return.</li>
+          </ul>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">The verdict explicitly declares which scenario wins mathematically and by exactly how much, supported by a detailed year-by-year table.</p>
+          <div style="background:#eeeeee; border-left: 4px solid #404040; padding: 10px 14px; margin: 1rem 0; font-size: 0.81rem; line-height: 1.7;"><strong>💡 Tip:</strong> This calculator is highly sensitive to assumptions. Merely changing expected property appreciation from 6% to 4% will often entirely flip the verdict from Buy to Rent.</div>
+        </div>
+
+        <!-- 23. 50/30/20 Budget Planner -->
+        <div class="help-section">
+          <h2 id="tool-503020" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">50/30/20 Budget Planner</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Applies the standard budgeting rule: 50% for Needs, 30% for Wants, and 20% for Savings. Input your monthly take-home salary to instantly see your three allocated bucket amounts.</p>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">The planner provides detailed sub-category breakdown tables with an editable 'Your Plan' column and a live running total. Once customized, use the Copy Summary button to save or share your budget plan.</p>
+        </div>
+
+        <!-- 24. Inflation Calculator -->
+        <div class="help-section">
+          <h2 id="tool-inflation" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">Inflation Calculator</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Operates in two distinct modes:</p>
+          <ul style="font-size: 0.84rem; line-height: 2; padding-left: 1.4rem; list-style: square;">
+            <li><strong>Future Value:</strong> Calculates how much money you will need in the future to match today's purchasing power.</li>
+            <li><strong>Past Value:</strong> Calculates what a historical amount of money is worth in today's terms.</li>
+          </ul>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Includes a real-world context table for common expenses and an Inflation vs Investment section that demonstrates your actual real return above inflation.</p>
+        </div>
+
+        <!-- 25. Salary Breakup Analyser -->
+        <div class="help-section">
+          <h2 id="tool-salary" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">Salary Breakup Analyser</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Deconstructs an Annual CTC into a realistic monthly in-hand estimate. Calculates Basic Pay, HRA, Special Allowances, and Employer PF components. Determines HRA exemption based on the standard 'minimum of three values' rule.</p>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Estimates TDS automatically using the New Tax Regime 2024-25 slabs.</p>
+          <div style="background:#eeeeee; border-left: 4px solid #808080; padding: 10px 14px; margin: 1rem 0; font-size: 0.81rem; line-height: 1.7;"><strong>⚠️ Note:</strong> This output is an estimate. Actual in-hand salary may differ based on your specific company's compensation structure and your declared tax investments.</div>
+        </div>
+
+        <!-- 26. Money Clock -->
+        <div class="help-section">
+          <h2 id="tool-clock" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">Money Clock</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">A live, ticking terminal-style display showing your earnings per second, minute, hour, and day. Features a fun context table that translates the cost of common items (coffee, smartphone, car) into the actual hours of your life required to afford them. Includes a custom price lookup tool.</p>
+        </div>
+
+        <!-- 27. Wealth Timeline -->
+        <div class="help-section">
+          <h2 id="tool-wealth" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">Wealth Timeline</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Visualizes your wealth progression by predicting exactly when you will cross major milestones (₹1L, ₹10L, ₹1Cr, etc.). Displays a vertical timeline mapped to your age, your projected corpus at 5/10/20/30 year intervals, and incorporates insights from the Rule of 72.</p>
+        </div>
+
+        <!-- 28. Crore Counter -->
+        <div class="help-section">
+          <h2 id="tool-crore" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">Crore Counter</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">A focused tracker with a single question: When do I hit my target? Select a custom target from the dropdown to see an announcement block, three major progress bars (25%, 50%, 100%), and a detailed milestone timeline table.</p>
+        </div>
+
+        <!-- 29. Job Offer Comparator -->
+        <div class="help-section">
+          <h2 id="tool-job" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">Job Offer Comparator</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Evaluates two competing job offers using weighted scoring across four primary factors: pure compensation (CTC, bonus), location variables (city, WFH days), time commitment (working hours), and subjective prospects (growth, work-life balance).</p>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Outputs a clear verdict bar, a granular breakdown table, a direct financial comparison, and a 5-year earnings projection.</p>
+          <div style="background:#eeeeee; border-left: 4px solid #808080; padding: 10px 14px; margin: 1rem 0; font-size: 0.81rem; line-height: 1.7;"><strong>⚠️ Note:</strong> While financially comprehensive, this tool cannot measure critical intangible factors like company culture, team dynamics, or management quality.</div>
+        </div>
+
+        <!-- 30. What is Monever Lab? -->
+        <div class="help-section">
+          <h2 id="lab-intro" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">What is Monever Lab?</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">The Lab is Monever's experimental wing. Moving beyond mere calculations, it delves into self-awareness, psychology, and storytelling. While the Tools page answers 'what will happen mathematically', the Lab helps you understand 'why' and answers the question: 'what kind of financial person am I?'.</p>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">It operates via a simple card grid launcher: click a card to expand the tool below, and click 'Back to Lab' to return to the main grid.</p>
+          <table style="width:100%; border-collapse:collapse; font-size:0.82rem; margin:1rem 0;">
+            <thead>
+              <tr>
+                <th style="background:#c0c0c0; padding:6px 10px; border:1px solid #808080; text-align:left;">Tool Name</th>
+                <th style="background:#c0c0c0; padding:6px 10px; border:1px solid #808080; text-align:left;">What it does</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Should I Quit My Job?</td>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Calculates your financial runway to see if you can safely resign.</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Lifestyle Inflation Tracker</td>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Measures if your spending is outpacing your salary growth.</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Time to Financial Freedom</td>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Calculates the exact date you can stop working via FIRE logic.</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Financial Age Test</td>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">A psychological test mapping your financial maturity to an age.</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Salary to Hours</td>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Converts item prices into hours of your actual working life.</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Fortune Teller</td>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">A mock-serious oracle that predicts your financial future.</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Stock Ticker Screensaver</td>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">A manual terminal-style portfolio tracker and screensaver.</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Financial Compatibility Test</td>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Scores financial alignment between two people via a shared test.</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Daily Briefing</td>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Generates a retro newspaper front page from your actual data.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 31. Should I Quit My Job? -->
+        <div class="help-section">
+          <h2 id="lab-quit" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">Should I Quit My Job?</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">A deep analytical tool to evaluate the safety of leaving your employment.</p>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Inputs require your monthly in-hand salary, essential and non-essential expenses, current savings, any side income, your specific job situation, the expected months needed to find a new role, and a target expense reduction percentage.</p>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">The logic relies on a rigorous runway formula: <code style="background:#eeeeee; border: 1px solid #808080; padding: 1px 5px; font-family: 'Courier New', monospace; font-size: 0.8rem;">Monthly Burn Rate = essentials + reduced non-essentials − side income</code>. Then, <code style="background:#eeeeee; border: 1px solid #808080; padding: 1px 5px; font-family: 'Courier New', monospace; font-size: 0.8rem;">Runway = savings ÷ burn rate</code>.</p>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">It outputs one of three verdicts:</p>
+          <ul style="font-size: 0.84rem; line-height: 2; padding-left: 1.4rem; list-style: square;">
+            <li><strong>SAFE TO QUIT:</strong> Runway is at least 1.5� your expected job search window.</li>
+            <li><strong>PROCEED WITH CAUTION:</strong> Runway is within 20% of the minimum threshold.</li>
+            <li><strong>NOT RECOMMENDED YET:</strong> Runway is insufficient. If triggered, the tool precisely calculates how many more months of saving are required to become ready.</li>
+          </ul>
+        </div>
+
+        <!-- 32. Lifestyle Inflation Tracker -->
+        <div class="help-section">
+          <h2 id="lab-lifestyle" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">Lifestyle Inflation Tracker</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">A dynamic history tracker that exposes whether your spending is creeping up alongside your income. Add multiple consecutive years of salary and expense data.</p>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">For each year-over-year period, it computes salary growth %, expense growth %, the lifestyle inflation rate (expense growth minus salary growth), and the change in savings rate.</p>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">The verdict table labels each transition:</p>
+          <ul style="font-size: 0.84rem; line-height: 2; padding-left: 1.4rem; list-style: square;">
+            <li><strong>INFLATED:</strong> Expenses grew faster than salary.</li>
+            <li><strong>CONTROLLED:</strong> Expenses grew within 5% of salary growth.</li>
+            <li><strong>DISCIPLINED:</strong> Expenses grew slower than salary.</li>
+          </ul>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">The results include a visual bar comparison per year and a harsh summary verdict calculating exactly what percentage of your total salary growth over all years was completely absorbed by lifestyle upgrades.</p>
+        </div>
+
+        <!-- 33. Time to Financial Freedom -->
+        <div class="help-section">
+          <h2 id="lab-freedom" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">Time to Financial Freedom</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Calculates precisely when you can stop working by reaching your FIRE (Financial Independence, Retire Early) corpus.</p>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Inputs: Current age, current monthly expenses, expected retirement expenses, current corpus, monthly investment, accumulation return %, a safe withdrawal rate (pre-filled to a standard 4%), and inflation %.</p>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">The underlying FIRE corpus formula is: <code style="background:#eeeeee; border: 1px solid #808080; padding: 1px 5px; font-family: 'Courier New', monospace; font-size: 0.8rem;">(annual retirement expenses) / (safe withdrawal rate / 100)</code>.</p>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">A terminal-style announcement block reveals your required target corpus and the exact age you will hit it. Additionally, a sensitivity table displays how adjusting your monthly investment amount shifts your freedom date.</p>
+        </div>
+
+        <!-- 34. Financial Age Test -->
+        <div class="help-section">
+          <h2 id="lab-age" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">Financial Age Test</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">A 10-question psychological assessment measuring your financial maturity. Questions cover your emergency fund, savings rate, investment activity, expense tracking, debt situation, insurance, net worth awareness, response to salary hikes, goal-setting, and retirement planning.</p>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Each answer contributes 0–5 points toward a maximum of 50. The resulting score maps to a specific 'Financial Age':</p>
+          <ul style="font-size: 0.84rem; line-height: 2; padding-left: 1.4rem; list-style: square;">
+            <li>0–10 points = Age 60 (Requires urgent intervention)</li>
+            <li>11–20 points = Age 45</li>
+            <li>21–30 points = Age 35</li>
+            <li>31–38 points = Age 28</li>
+            <li>39–44 points = Age 24</li>
+            <li>45–50 points = Age 20 (Highly agile and prepared)</li>
+          </ul>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Results are presented as a retro report card. The system analyzes your answers to generate three highly specific, actionable improvement tips based on your three lowest-scoring responses.</p>
+        </div>
+
+        <!-- 35. Salary to Hours -->
+        <div class="help-section">
+          <h2 id="lab-hours" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">Salary to Hours</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">A behavioral tool that converts financial costs into units of your actual working life. Inputs require your annual CTC, monthly take-home, work hours per day, work days per week, daily commute hours, and work-related monthly expenses.</p>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">The tool computes a hyper-accurate 'effective hourly rate' by aggressively deducting work expenses and classifying commute time as uncompensated work hours. A terminal displays your earnings per second, minute, hour, and day.</p>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">A pre-built table converts 8 common purchases into hours of life. Use the custom price lookup to type any amount and see its cost in hours and minutes. The tool finishes with a customized, philosophical insight based strictly on your hourly valuation.</p>
+        </div>
+
+        <!-- 36. Fortune Teller -->
+        <div class="help-section">
+          <h2 id="lab-fortune" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">Fortune Teller</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">The Monever 3000 Oracle is a mock-serious, slightly humorous predictive tool. Provide your name, current monthly savings, biggest financial weakness, financial spirit animal, year intentions, and birth month.</p>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">The generated fortune is fully deterministic  submitting the identical inputs will always yield the exact same fortune text, revealed via a retro typewriter animation effect. To add authenticity, the oracle dynamically pulls a 'lucky category' and an 'avoid spending on' category derived directly from your actual logged expense data.</p>
+        </div>
+
+        <!-- 37. Stock Ticker Screensaver -->
+        <div class="help-section">
+          <h2 id="lab-ticker" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">Stock Ticker Screensaver</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">A manual portfolio tracker styled as a vintage Bloomberg or Reuters terminal. You can manually add stocks by providing the ticker symbol, current price, day change %, and quantity held.</p>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Clicking <strong>Launch Ticker</strong> transitions the screen to a scrolling horizontal marquee in green monospace on a solid black background. It includes a terminal portfolio summary table and calculates your total P&L for the day.</p>
+          <div style="background:#eeeeee; border-left: 4px solid #808080; padding: 10px 14px; margin: 1rem 0; font-size: 0.81rem; line-height: 1.7;"><strong>⚠️ Note:</strong> Monever works entirely offline. Therefore, portfolio values, prices, and gains are completely manual and must be updated by you. A 'Load Demo Stocks' button is available to pre-fill 5 example Indian stocks for immediate testing.</div>
+        </div>
+
+        <!-- 38. Financial Compatibility Test -->
+        <div class="help-section">
+          <h2 id="lab-compat" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">Financial Compatibility Test</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">A shared assessment tool where Person A and Person B each privately answer 8 identical questions on the same device. Topics cover payment habits after salary, attitude to debt, savings rate, approach to major purchase decisions, reaction to financial emergencies, expense splitting philosophy, financial goal priority, and overall relationship with money.</p>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Compatibility is rigorously scored out of 80. Identical answers score highest, while diametrically opposed answers score lowest. The result is presented as a retro report card featuring an overall rating label, a progress bar, and a per-question breakdown table.</p>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Crucially, the <strong>Key Differences</strong> section analyzes any question where the combined score fell below 5, providing highly specific, conversation-starting tips to help bridge the philosophical gap.</p>
+          <div style="background:#eeeeee; border-left: 4px solid #808080; padding: 10px 14px; margin: 1rem 0; font-size: 0.81rem; line-height: 1.7;"><strong>⚠️ Note:</strong> This tool is designed as a shared physical experience. It requires both people to be present at the same device to input their answers sequentially.</div>
+        </div>
+
+        <!-- 39. Daily Briefing -->
+        <div class="help-section">
+          <h2 id="lab-briefing" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">Daily Briefing</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">An immersive tool that synthesizes your disparate financial data into a cohesive, fake retro newspaper front page. It reads your expenses, EMIs, reminders, budget, and income directly from <code style="background:#eeeeee; border: 1px solid #808080; padding: 1px 5px; font-family: 'Courier New', monospace; font-size: 0.8rem;">localStorage</code>.</p>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">The layout auto-generates headlines: your highest single expense becomes the lead breaking story, while your budget versus actual spending metric populates the second story column. The right sidebar features a 'Market Summary' of your actual stats, a list of upcoming reminders, and an editorial opinion paragraph generated dynamically from your current savings rate.</p>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">The interface includes a full-width footer disclaimer and a dedicated <strong>Print / Save as PDF</strong> button for physical archiving. If the system detects insufficient expense data, it gracefully displays a friendly message prompting you to add data on the Home page first.</p>
+        </div>
+
+        <!-- 40. What are Widgets? -->
+        <div class="help-section">
+          <h2 id="widget-intro" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">What are Widgets?</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Widgets are live data panels that occupy the column areas on the Home and Insights pages. There are six slots per page (three on the left, three on the right). All slots start as empty <code style="background:#eeeeee; border: 1px solid #808080; padding: 1px 5px; font-family: 'Courier New', monospace; font-size: 0.8rem;">+</code> placeholders.</p>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Data is drawn automatically from <code style="background:#eeeeee; border: 1px solid #808080; padding: 1px 5px; font-family: 'Courier New', monospace; font-size: 0.8rem;">localStorage</code>  widgets require no separate data entry. Your widget layout is saved securely and persists across all your sessions. The available widgets are grouped into three categories: Financial, Analytical, and Visual & Fun.</p>
+        </div>
+
+        <!-- 41. Adding and Removing Widgets -->
+        <div class="help-section">
+          <h2 id="widget-manage" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">Adding and Removing Widgets</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;"><strong>Adding:</strong> Click any empty <code style="background:#eeeeee; border: 1px solid #808080; padding: 1px 5px; font-family: 'Courier New', monospace; font-size: 0.8rem;">+</code> placeholder to open the Widget Picker. The picker features three category tabs plus an 'All' tab and a search bar at the top. Simply click any card to place that widget into the slot.</p>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;"><strong>Removing:</strong> Click the <code style="background:#eeeeee; border: 1px solid #808080; padding: 1px 5px; font-family: 'Courier New', monospace; font-size: 0.8rem;">✕</code> in the top-right corner of any active widget to remove it and restore the placeholder.</p>
+          <div style="background:#eeeeee; border-left: 4px solid #808080; padding: 10px 14px; margin: 1rem 0; font-size: 0.81rem; line-height: 1.7;"><strong>⚠️ Note:</strong> To maintain browser performance, there is a maximum limit of 4 animated widgets simultaneously. Also, widget layouts can be toggled between global (same across all pages) or local (unique to each page) in your Profile Settings.</div>
+        </div>
+
+        <!-- 42. Financial Widgets -->
+        <div class="help-section">
+          <h2 id="widget-financial" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">Financial Widgets</h2>
+          
+          <h3 style="font-size: 0.88rem; font-weight: bold; margin: 1.2rem 0 0.4rem;">Smart Insights</h3>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Shows today's financial insight by comparing today's spending versus yesterday by category. The 'This Week' section shows total spending, your highest category (as a name and percentage), and a comparison versus last week. Includes a 'View Detailed Insights' button linking to the Insights page. The insight updates dynamically on each page load.</p>
+
+          <h3 style="font-size: 0.88rem; font-weight: bold; margin: 1.2rem 0 0.4rem;">Budget Tracker</h3>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Displays your monthly budget usage for the currently viewed month. Navigation arrows let you browse past months. It shows the Monthly Budget, Spent So Far (with percentage), a retro striped progress bar, and the Remaining amount. The progress bar turns maroon when you go over budget. The 'Manage Budgets' button links to Profile Settings. Requires a monthly budget to be set in your Profile.</p>
+
+          <h3 style="font-size: 0.88rem; font-weight: bold; margin: 1.2rem 0 0.4rem;">Upcoming Payments</h3>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Lists the next 3 upcoming reminders and EMIs due within the next 30 days, sorted by due date. Each entry shows the name, due date, and amount. Items due within 3 days are shown in a warning color. The 'View All Payments' button links to the Insights page. Displays 'No payments due' if nothing is upcoming.</p>
+
+          <h3 style="font-size: 0.88rem; font-weight: bold; margin: 1.2rem 0 0.4rem;">Financial Health Score</h3>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Calculates a comprehensive score out of 100 across five pillars: Budget Adherence (25pts), Savings Rate (25pts), Expense Tracking Consistency (20pts), EMI Burden (15pts), and Financial Goals (15pts). The score determines a mood emoji and verdict text. A five-row breakdown table shows points earned per pillar. Includes a 'View Full Report' button linking to Insights. Requires budget and income to be set for meaningful scoring.</p>
+
+          <h3 style="font-size: 0.88rem; font-weight: bold; margin: 1.2rem 0 0.4rem;">Spending Heatmap</h3>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Provides a calendar grid for the current month where each day cell is shaded based on that day's total spending  white for zero spending, progressing through four shades of gray up to near-black for your highest-spending days. Today's cell features an outline. A legend at the bottom shows Low / Medium / High / Max intensity. This is a purely visual tool with no interaction.</p>
+
+          <h3 style="font-size: 0.88rem; font-weight: bold; margin: 1.2rem 0 0.4rem;">Spending Alert</h3>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Monitors for unusual spending today versus your historical daily average per category. If today's spending in any category is 2� or more above that category's daily average, an alert is triggered showing the category name, today's amount, and the average amount. An 'all-clear' state shows when spending is normal. The 'View Transactions' button links to Insights History.</p>
+        </div>
+
+        <!-- 43. Analytical Widgets -->
+        <div class="help-section">
+          <h2 id="widget-analytical" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">Analytical Widgets</h2>
+          
+          <h3 style="font-size: 0.88rem; font-weight: bold; margin: 1.2rem 0 0.4rem;">Expense DNA</h3>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Draws a unique waveform spiral on a black canvas in gray, generated from your daily expense totals for the current month. The waveform spikes outward on high-spending days and stays flat on zero-spend days, creating a visual fingerprint of your spending pattern. Shows your transaction count, category count, and average per transaction.</p>
+
+          <h3 style="font-size: 0.88rem; font-weight: bold; margin: 1.2rem 0 0.4rem;">Daily Average Tracker</h3>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Shows your average spend per transaction today versus your this-month daily average versus last month's daily average. A 7-day mini bar chart visualizes the last 7 days' spending as gray bars  today's bar is distinctly darker. Directional arrows indicate whether you are trending up or down compared to last month.</p>
+
+          <h3 style="font-size: 0.88rem; font-weight: bold; margin: 1.2rem 0 0.4rem;">Weekend vs Weekday</h3>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Splits your current month's spending into a weekday total and a weekend total. Two progress bars display their proportions of total spending. A breakdown table shows each period's daily average and issues a verdict on which costs you more. Most users discover that weekends cost 2–3� more per day than weekdays.</p>
+
+          <h3 style="font-size: 0.88rem; font-weight: bold; margin: 1.2rem 0 0.4rem;">Savings XP Bar</h3>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Gamifies your total cumulative savings as an XP (experience points) system. Features eight distinct levels ranging from 'Penny Watcher' (under ₹10,000) to 'Monever Master' (₹10,00,000+). A green-on-black retro XP bar displays your progress within the current level. Shows this month's savings, total corpus as XP, current level, and the threshold for the next level.</p>
+
+          <h3 style="font-size: 0.88rem; font-weight: bold; margin: 1.2rem 0 0.4rem;">Daily Horoscope</h3>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Generates a mock-serious financial horoscope for today based on your star sign (determined from today's date) and your actual spending data. Your top spending category and savings rate seed the predictions. It highlights a lucky category, a category to avoid, and a Financial Energy rating (Saving / Balanced / Spending / Chaotic). Purely for entertainment  predictions are deterministic, not random.</p>
+
+          <h3 style="font-size: 0.88rem; font-weight: bold; margin: 1.2rem 0 0.4rem;">Achievements</h3>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Tracks 12 distinct financial milestones: first expense logged, 10 expenses, 50 expenses, budget set, month under budget, goal created, EMI tracked, 7-day streak, 5 categories used, profile complete, positive savings, and first note added. Displays as a 4�3 grid of badge icons  navy/dark gray for unlocked, light gray for locked. Hover over any badge to see its name and description.</p>
+
+          <h3 style="font-size: 0.88rem; font-weight: bold; margin: 1.2rem 0 0.4rem;">Spending Personality</h3>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Analyses your last 3 months of expense data and assigns one of 8 personality types: The Foodie (food/dining dominates), The Homebody (rent/utilities dominate), The Impulse Artist (many small transactions across many categories), The Disciplined Saver (low transaction count, high savings rate), The Weekend Warrior (weekend spending over 60% of total), The Bill Payer (EMIs and fixed expenses dominate), The Ghost (fewer than 5 entries in 3 months), and The Balanced One (no single category over 30%). Shows personality icon, type name, tagline, description, top trait, spending style, and biggest weakness.</p>
+
+          <h3 style="font-size: 0.88rem; font-weight: bold; margin: 1.2rem 0 0.4rem;">Peer Comparison</h3>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Compares your spending per category against static benchmark data for your age group and city (pulled from your Profile). Benchmark data covers 6 categories: Food, Transport, Shopping, Entertainment, Utilities, and Health. Each category row shows your amount, peer average, and percentage above or below average. An overall verdict summarises whether you spend more or less than peers. Requires Profile city and age to be set for accurate comparison  defaults to national averages otherwise.</p>
+
+          <h3 style="font-size: 0.88rem; font-weight: bold; margin: 1.2rem 0 0.4rem;">Net Worth Snapshot</h3>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">A compact view of your net worth data synchronized from the Insights Net Worth Tracker. Shows Total Assets, Total Liabilities, and Net Worth in a clean table. A visual split bar shows the proportion of assets to liabilities. A status label displays POSITIVE ↑, BUILDING �, or NEGATIVE ↓ based on your current net worth. The 'Update Net Worth' button links to Insights. Falls back to the basic Profile corpus value if no detailed assets/liabilities have been entered.</p>
+
+          <h3 style="font-size: 0.88rem; font-weight: bold; margin: 1.2rem 0 0.4rem;">Weather & Spend</h3>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Fetches today's live weather for your location using the free Open-Meteo API (no API key required). Shows current conditions, temperature, and a weather icon. It compares today's spending to your daily average. Over time, it builds a historical log correlating weather conditions with spending  eventually revealing whether you spend more on rainy or sunny days. Requires an internet connection for weather data. Falls back to city coordinates from your Profile if browser location permission is denied.</p>
+        </div>
+
+        <!-- 44. Visual & Fun Widgets -->
+        <div class="help-section">
+          <h2 id="widget-visual" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">Visual & Fun Widgets</h2>
+
+          <h3 style="font-size: 0.88rem; font-weight: bold; margin: 1.2rem 0 0.4rem;">Money Tree</h3>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">A pixel art tree drawn on a canvas that grows through 7 stages based on your net worth: Bare Ground (≤0), Sprout (₹1–9,999), Sapling (₹10K–49,999), Young Tree (₹50K–1,99,999), Mature Tree (₹2L–9,99,999), Full Tree (₹10L–49,99,999), Ancient Tree (₹50L+). Gold coin pixel-art elements appear at the highest stage.</p>
+
+          <h3 style="font-size: 0.88rem; font-weight: bold; margin: 1.2rem 0 0.4rem;">Savings Garden</h3>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">A canvas garden where each financial goal is represented by a plant. Plant growth stage corresponds to goal completion: Seed (0%), Sprout (1–25%), Budding (26–50%), Flowering (51–75%), Full Bloom (76–99%), and Complete with sparkle (100%). Wilting plants indicate goals with no recent contributions. Up to 5 goals are shown simultaneously.</p>
+
+          <h3 style="font-size: 0.88rem; font-weight: bold; margin: 1.2rem 0 0.4rem;">Coral Reef</h3>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">An animated underwater reef on a dark canvas whose richness directly corresponds to your Financial Health Score. You will see dead coral stumps at 0–20%, bleached corals at 21–40%, branching corals at 41–60%, a small swimming fish appears at 61–80%, and a full thriving reef complete with brain coral and starfish blooms at 81–100%.</p>
+
+          <h3 style="font-size: 0.88rem; font-weight: bold; margin: 1.2rem 0 0.4rem;">City Skyline</h3>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">A pixel art cityscape that scales through 6 stages based on your net worth: Empty Land, Village (huts), Town (5 buildings), City (7 buildings with antennae), Metropolis (9 skyscrapers, airplane in sky), and Megacity (full dense skyline, moon visible). Buildings feature lit windows that vary deterministically.</p>
+
+          <h3 style="font-size: 0.88rem; font-weight: bold; margin: 1.2rem 0 0.4rem;">Space Colony</h3>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">A space surface scene on a black canvas that develops through 6 stages based on net worth: Barren (crashed spacecraft), Outpost (one dome with flag), Base Camp (two domes with tunnel), Settlement (three domes with solar panels), Colony (rover and rocket added), and Space City (five domes, ring station in sky, multiple vehicles).</p>
+
+          <h3 style="font-size: 0.88rem; font-weight: bold; margin: 1.2rem 0 0.4rem;">Grandfather Clock</h3>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">A pixel art grandfather clock with an animated pendulum and live clock hands showing the exact current time. The pendulum's swing speed increases as you approach your monthly budget limit  swinging slowly when spending is low, and frantically fast as the budget is consumed. The budget percentage is displayed below.</p>
+
+          <h3 style="font-size: 0.88rem; font-weight: bold; margin: 1.2rem 0 0.4rem;">Hourglass</h3>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">A pixel art hourglass where gray sand falls from top to bottom representing both the passage of the month (day of month ÷ days in month) and budget consumption (amount spent ÷ budget). The two measures are combined  whichever percentage is higher drives the current sand level. Days elapsed and budget percentage are shown below.</p>
+
+          <h3 style="font-size: 0.88rem; font-weight: bold; margin: 1.2rem 0 0.4rem;">Time Capsule</h3>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Write a message to your future self. The message is sealed and a strict one-year countdown begins. When the year expires, the capsule 'opens' and displays your past message. Only one capsule can be active at a time. The sealed date and future opening date are shown.</p>
+
+          <h3 style="font-size: 0.88rem; font-weight: bold; margin: 1.2rem 0 0.4rem;">Pixel Portrait</h3>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Generates a completely unique 16�16 pixel art face on a canvas, deterministically derived using your name and spending data as a seed. The same profile will always produce the exact same portrait. The artwork is horizontally mirrored for facial symmetry. Shows your financial personality type below the portrait.</p>
+
+          <h3 style="font-size: 0.88rem; font-weight: bold; margin: 1.2rem 0 0.4rem;">Lava Lamp</h3>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">An animated canvas lava lamp with rising and falling blobs. Blob count and movement speed are driven by your transaction volume this month  0–5 transactions: 2 slow blobs, 6–15: 3 medium blobs, 16–30: 4 fast blobs, 30+: 5 very fast blobs. A purely visual, live representation of your financial activity level.</p>
+
+          <h3 style="font-size: 0.88rem; font-weight: bold; margin: 1.2rem 0 0.4rem;">Vinyl Record</h3>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">An animated spinning vinyl record. The record label reads 'MONEVER FM' and the currently playing track name playfully reflects your top spending category (e.g., 'FOOD BLUES', 'TRANSPORT JAM'). Spin speed is proportional to today's spending relative to your daily average  the record stops completely on zero-spend days.</p>
+
+          <h3 style="font-size: 0.88rem; font-weight: bold; margin: 1.2rem 0 0.4rem;">Kaleidoscope</h3>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">An animated, continuously rotating geometric pattern whose structure is driven by your top 3 expense categories. Each specific category contributes a different geometric element (triangles, squares, circles) to the wedge pattern. The number of segments equals your number of unique categories (capped between 3–8).</p>
+
+          <h3 style="font-size: 0.88rem; font-weight: bold; margin: 1.2rem 0 0.4rem;">Lucky Cat</h3>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">A pixel art Maneki-neko (beckoning cat) whose raised paw waves when your finances are healthy and stops completely when you go over budget. Wave speed adjusts dynamically: slow (under 60% budget used), medium (60–85%), fast nervous wave (85–100%), and stopped entirely with a sad face (over budget).</p>
+
+          <h3 style="font-size: 0.88rem; font-weight: bold; margin: 1.2rem 0 0.4rem;">Piggy Bank</h3>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">A pixel art piggy bank that fills with coins as your monthly savings grow. The fill level equals your monthly savings divided by your monthly income. The coin fill is shown inside the body using a clip region. Warning crack lines appear on the pig when you have been over budget for 3 or more consecutive months.</p>
+
+          <h3 style="font-size: 0.88rem; font-weight: bold; margin: 1.2rem 0 0.4rem;">Wall of Fame</h3>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">A pixel art corkboard wall displaying up to 6 framed achievement portraits. Unlocked achievements show an ornate frame with a symbol inside. Locked achievements show a dark frame with a padlock. Hover over any frame to see the achievement name and description.</p>
+
+          <h3 style="font-size: 0.88rem; font-weight: bold; margin: 1.2rem 0 0.4rem;">Black Hole</h3>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">An animated canvas black hole whose size actively grows with your total debt and overspending. Zero debt means a tiny event horizon (radius 8px). High debt results in a massive black hole (up to radius 43px). Accretion disk rings rotate around the event horizon, matter-infall dots spiral inward, and at maximum size, gravitational lensing distortion lines appear.</p>
+
+          <h3 style="font-size: 0.88rem; font-weight: bold; margin: 1.2rem 0 0.4rem;">Budget Pinball</h3>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">A simplified pinball table where each expense this month acts as a potential ball. Features three bumpers in the table body. Click the canvas to launch a ball. Ball physics accurately simulate bouncing off walls and bumpers. Your 'Score' equals your total expenses this month as an integer. Bumpers flash white briefly when hit.</p>
+
+          <h3 style="font-size: 0.88rem; font-weight: bold; margin: 1.2rem 0 0.4rem;">Fortune Cookie</h3>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">A pixel art fortune cookie on a dark canvas. Click it to physically crack it open and reveal today's fortune  one of 30 possible financial wisdoms, selected deterministically by today's date. The fortune text is styled like classic fortune cookies. Lucky numbers (seeded by date) are shown below the fortune. Resets daily.</p>
+
+          <h3 style="font-size: 0.88rem; font-weight: bold; margin: 1.2rem 0 0.4rem;">Financial Butterfly</h3>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">A canvas butterfly whose transformation stage corresponds strictly to your total savings: Egg (0–₹999), Caterpillar (₹1K–₹9,999), Chrysalis (₹10K–₹49,999), Butterfly with animated flapping wings (₹50K–₹4,99,999), and a majestic Monarch Butterfly with larger wings and trailing motion lines (₹5,00,000+). Stages 1–3 are static; stages 4–5 are animated.</p>
+
+          <h3 style="font-size: 0.88rem; font-weight: bold; margin: 1.2rem 0 0.4rem;">Tamagotchi Pet</h3>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">A pixel pet named 'Rupee' displayed in a terminal-style black screen in green monospace. Pet health (0–100) is calculated directly from your monthly budget history  Rupee loses 25HP for each consecutive over-budget month, and gains health for under-budget months. Features four states: Thriving (80+), Happy (60+), Hungry (40+), Sick (20+), and Critical (below 20). A health bar is shown below the pet.</p>
+
+          <h3 style="font-size: 0.88rem; font-weight: bold; margin: 1.2rem 0 0.4rem;">Combo Streak</h3>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Counts consecutive days where your total spending was at or below your daily average  styled intensely as a fighting game combo counter. A dark terminal-style display flashes 'COMBO x7' in large monospace type. Streak labels escalate aggressively: 1–2 days 'Just getting started', 3–6 'Keep going!', 7–13 '🔥 ON FIRE', 14–29 '⚡ MEGA COMBO', 30+ '👑 LEGENDARY'. The last 7 days are shown as colored dot indicators.</p>
+
+          <h3 style="font-size: 0.88rem; font-weight: bold; margin: 1.2rem 0 0.4rem;">Screensaver</h3>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">A purely decorative, bouncing 'MONEVER' logo on a black canvas, perfectly replicating the classic DVD screensaver. The logo bounces off all four walls, and the color cycles through 7 grayscale shades every time you click the canvas. A bounce counter tracks total wall hits. Most importantly, a special corner hit message appears when the logo hits a corner perfectly. Includes a Pause/Resume button.</p>
+        </div>
+
+        <!-- 45. Where is My Data Stored? -->
+        <div class="help-section">
+          <h2 id="data-storage" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">Where is My Data Stored?</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Monever uses your web browser's built-in <code style="background:#eeeeee; border: 1px solid #808080; padding: 1px 5px; font-family: 'Courier New', monospace; font-size: 0.8rem;">localStorage</code> database. This means:</p>
+          <ul style="font-size: 0.84rem; line-height: 2; padding-left: 1.4rem; list-style: square;">
+            <li>Data <strong>never</strong> leaves your device. There is no server and no cloud backup.</li>
+            <li>Data persists across sessions, even after closing the tab.</li>
+            <li>Data is specific to the browser (e.g., Chrome data is separate from Firefox).</li>
+            <li>Data does not sync across devices (e.g., laptop data is separate from phone).</li>
+            <li>Clearing your browser cache completely erases the data.</li>
+            <li>Incognito mode data is deleted immediately upon closing the window.</li>
+          </ul>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Here is the full list of <code style="background:#eeeeee; border: 1px solid #808080; padding: 1px 5px; font-family: 'Courier New', monospace; font-size: 0.8rem;">localStorage</code> keys used by Monever:</p>
+          <table style="width:100%; border-collapse:collapse; font-size:0.82rem; margin:1rem 0;">
+            <thead>
+              <tr>
+                <th style="background:#c0c0c0; padding:6px 10px; border:1px solid #808080; text-align:left;">Key Name</th>
+                <th style="background:#c0c0c0; padding:6px 10px; border:1px solid #808080; text-align:left;">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;"><code style="background:#eeeeee; border: 1px solid #808080; padding: 1px 5px; font-family: 'Courier New', monospace; font-size: 0.8rem;">moneverExpenses</code></td>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">All main expense transactions</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;"><code style="background:#eeeeee; border: 1px solid #808080; padding: 1px 5px; font-family: 'Courier New', monospace; font-size: 0.8rem;">moneverEMIs</code></td>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Active EMI tracking entries</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;"><code style="background:#eeeeee; border: 1px solid #808080; padding: 1px 5px; font-family: 'Courier New', monospace; font-size: 0.8rem;">moneverReminders</code></td>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Calendar reminders and alerts</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;"><code style="background:#eeeeee; border: 1px solid #808080; padding: 1px 5px; font-family: 'Courier New', monospace; font-size: 0.8rem;">moneverPeople</code></td>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">People Ledger debts and loans</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;"><code style="background:#eeeeee; border: 1px solid #808080; padding: 1px 5px; font-family: 'Courier New', monospace; font-size: 0.8rem;">financialGoals</code></td>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Long-term savings goals</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;"><code style="background:#eeeeee; border: 1px solid #808080; padding: 1px 5px; font-family: 'Courier New', monospace; font-size: 0.8rem;">moneverAssets</code></td>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Net worth positive items</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;"><code style="background:#eeeeee; border: 1px solid #808080; padding: 1px 5px; font-family: 'Courier New', monospace; font-size: 0.8rem;">moneverLiabilities</code></td>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Net worth negative items</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;"><code style="background:#eeeeee; border: 1px solid #808080; padding: 1px 5px; font-family: 'Courier New', monospace; font-size: 0.8rem;">monthlyBudget</code></td>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Configured total budget</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;"><code style="background:#eeeeee; border: 1px solid #808080; padding: 1px 5px; font-family: 'Courier New', monospace; font-size: 0.8rem;">monthlyIncome</code></td>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Configured monthly earnings</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;"><code style="background:#eeeeee; border: 1px solid #808080; padding: 1px 5px; font-family: 'Courier New', monospace; font-size: 0.8rem;">currencySymbol</code></td>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Selected UI currency prefix</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;"><code style="background:#eeeeee; border: 1px solid #808080; padding: 1px 5px; font-family: 'Courier New', monospace; font-size: 0.8rem;">moneverProfile</code></td>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">User demographic and base config</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;"><code style="background:#eeeeee; border: 1px solid #808080; padding: 1px 5px; font-family: 'Courier New', monospace; font-size: 0.8rem;">moneverWidgets</code></td>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Saved widget layout assignment</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;"><code style="background:#eeeeee; border: 1px solid #808080; padding: 1px 5px; font-family: 'Courier New', monospace; font-size: 0.8rem;">moneverDemoActive</code></td>
+                <td style="padding:6px 10px; border:1px solid #eeeeee;">Flag indicating demo mode state</td>
+              </tr>
+            </tbody>
+          </table>
+          <div style="background:#eeeeee; border-left: 4px solid #808080; padding: 10px 14px; margin: 1rem 0; font-size: 0.81rem; line-height: 1.7;"><strong>⚠️ Note:</strong> Monever has no server backup. If you lose your device or clear your browser data without a JSON export, your data is gone permanently.</div>
+        </div>
+
+        <!-- 46. Exporting Your Data -->
+        <div class="help-section">
+          <h2 id="data-export" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">Exporting Your Data</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Monever offers two export formats, both available in the Profile modal under the Settings tab:</p>
+          <ul style="font-size: 0.84rem; line-height: 2; padding-left: 1.4rem; list-style: square;">
+            <li><strong>JSON Export:</strong> A complete, raw database backup of all your data. This is the only file type that can be re-imported into Monever. Use this for device backup and migrations.</li>
+            <li><strong>CSV Export:</strong> Exports only your expense entries in a standard spreadsheet format. The columns are Date, Category, Description, and Amount. Use this for external analysis in Excel/Google Sheets or for tax records.</li>
+          </ul>
+          <div style="background:#eeeeee; border-left: 4px solid #404040; padding: 10px 14px; margin: 1rem 0; font-size: 0.81rem; line-height: 1.7;"><strong>💡 Tip:</strong> We strongly recommend downloading a JSON export at the end of every month and storing it safely in your cloud drive (Google Drive, iCloud, etc.).</div>
+        </div>
+
+        <!-- 47. Importing Data -->
+        <div class="help-section">
+          <h2 id="data-import" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">Importing Data</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">To import data, open the Profile modal, go to the Settings tab, click the 'Import Data' file input, and select your saved <code style="background:#eeeeee; border: 1px solid #808080; padding: 1px 5px; font-family: 'Courier New', monospace; font-size: 0.8rem;">.json</code> backup file. The data will load instantly, and the page will automatically reload to apply it.</p>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;"><strong>Important note:</strong> Importing a file performs a merge  it adds the new records alongside your existing data, rather than replacing it entirely. If you want a clean restore, perform a Factory Reset first, and then import.</p>
+          <div style="background:#eeeeee; border-left: 4px solid #808080; padding: 10px 14px; margin: 1rem 0; font-size: 0.81rem; line-height: 1.7;"><strong>⚠️ Note:</strong> Only Monever JSON files can be imported. Attempting to import a CSV file is not supported and will result in an error.</div>
+        </div>
+
+        <!-- 48. Clearing Data -->
+        <div class="help-section">
+          <h2 id="data-clear" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">Clearing Data</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Monever provides three database tools in Profile Settings:</p>
+          <ul style="font-size: 0.84rem; line-height: 2; padding-left: 1.4rem; list-style: square;">
+            <li><strong>Compact DB:</strong> Removes orphaned or corrupted data nodes without deleting your actual entries. It is completely safe to run at any time.</li>
+            <li><strong>Rebuild Index:</strong> Rebuilds internal data references. Use this tool if you ever notice display inconsistencies after a large import.</li>
+            <li><strong>Factory Reset:</strong> Permanently deletes absolutely all data  expenses, goals, profile settings, widgets, everything. A confirmation dialog will appear first. It cannot be undone.</li>
+          </ul>
+          <div style="background:#eeeeee; border-left: 4px solid #808080; padding: 10px 14px; margin: 1rem 0; font-size: 0.81rem; line-height: 1.7;"><strong>⚠️ Note:</strong> Always export a JSON backup before performing a Factory Reset. There is no recovery option.</div>
+        </div>
+
+        <!-- 49. Currency, Budget and Appearance Settings -->
+        <div class="help-section">
+          <h2 id="settings-doc" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">Currency, Budget and Appearance Settings</h2>
+          <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">All application configuration is centrally located in the Profile modal under the Settings tab.</p>
+          <ul style="font-size: 0.84rem; line-height: 2; padding-left: 1.4rem; list-style: square;">
+            <li><strong>Currency Symbol:</strong> Change from <code style="background:#eeeeee; border: 1px solid #808080; padding: 1px 5px; font-family: 'Courier New', monospace; font-size: 0.8rem;">₹</code> to any global symbol ($ / € / £). This takes effect immediately across all currency displays on the page upon clicking Apply.</li>
+            <li><strong>Monthly Budget:</strong> Sets the baseline ceiling. Used heavily by the Budget Tracker widget, Overview dashboard, Health Score widget, and the dynamic budget alert system.</li>
+            <li><strong>Monthly Income:</strong> Used extensively to calculate your Savings Rate stat, the Health Score savings pillar, Tamagotchi pet health, and multiple analytical Lab tools.</li>
+            <li><strong>Date Format:</strong> Controls how dates are uniformly formatted and displayed across the app.</li>
+            <li><strong>Background Style:</strong> Controls the page background appearance (Classic Gray, Plain White, etc.).</li>
+            <li><strong>Widget Layout Mode:</strong> Toggle between 'Global' (the same 6 widgets mirror across all pages) or 'Local' (you can configure different widgets unique to each individual page).</li>
+          </ul>
+        </div>
+
+        <!-- 50. Pro Tips -->
+        <div class="help-section">
+          <h2 id="pro-tips" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">Pro Tips</h2>
+          <ol style="font-size: 0.84rem; line-height: 2; padding-left: 1.4rem;">
+            <li><strong>Profile first, always.</strong> Fill your profile before using any tool. Auto-fill saves minutes every session and ensures consistent salary, age, and preference assumptions across all 16 calculators and 9 Lab tools.</li>
+            <li><strong>Consistent category names are everything.</strong> Monever matches categories by exact text. 'Food', 'food', and 'Foods' are three different categories in every chart, filter, and widget. Choose your category names once and never deviate.</li>
+            <li><strong>Set a budget even if it's rough.</strong> Without a monthly budget, the Overview dashboard, Budget Tracker widget, Budget Health Score widget, and per-category alerts all show limited information. Even a rough number unlocks the most useful monitoring features immediately.</li>
+            <li><strong>Log expenses on the same day.</strong> Memory degrades fast  a Friday dinner logged on Sunday is accurate; a Friday dinner logged next Tuesday is a guess. The Recent Entries widget on the Home page makes daily verification quick.</li>
+            <li><strong>Load Demo Data to learn any feature.</strong> If any feature seems unclear, load demo data and navigate to that section. Seeing charts, widgets, and tools with realistic populated data is always more instructive than reading about them.</li>
+            <li><strong>Export monthly, without exception.</strong> Set a calendar reminder for the first of every month to export a JSON backup. The export takes 10 seconds. Recovering from a cache clear without a backup takes zero seconds  because the data is gone.</li>
+            <li><strong>The Lab is for reflection, not just calculation.</strong> Run the Financial Age Test and the Lifestyle Inflation Tracker at least once. The results are frequently surprising and the Financial Age Test in particular has a way of making abstract financial habits feel concrete.</li>
+            <li><strong>The Salary to Hours tool changes how you see prices.</strong> Once you know your effective hourly rate, checking how many hours of your life something costs before buying it becomes a natural reflex. It is one of the most effective spending filters available.</li>
+            <li><strong>Net Worth compounds faster than you expect.</strong> Add your assets and liabilities once and update quarterly. After 12 months of tracking, the trend line tells you more about your financial direction than any monthly snapshot can.</li>
+            <li><strong>The Fortune Cookie and Daily Briefing are daily habits, not one-time features.</strong> The Fortune Cookie resets daily  check it each morning. The Daily Briefing is most interesting mid-month when enough expense data has accumulated to generate meaningful headlines.</li>
+            <li><strong>Use the Job Comparator before negotiating, not after.</strong> The 5-year projection section often reveals that a ₹2L higher CTC at a company with slower growth is worth less than a ₹1L lower CTC at a fast-growth company over 5 years.</li>
+            <li><strong>The Procrastination Cost tool is the most motivating calculator on the site.</strong> Run it once. See exactly what delaying investment by one year costs you in rupees at your current salary and intended investment amount. The number is always larger than people expect.</li>
+          </ol>
+        </div>
+
+        <!-- 51. Frequently Asked Questions -->
+        <div class="help-section">
+          <h2 id="faq" style="font-size: 1rem; font-weight: bold; font-family: 'Courier New', monospace; border-bottom: 2px solid #000; padding-bottom: 4px; margin: 2.5rem 0 1rem;">Frequently Asked Questions</h2>
+          
+          <div style="margin-bottom: 1.25rem;">
+            <p style="font-weight: bold; margin-bottom: 4px; font-size: 0.85rem;">Is Monever free?</p>
+            <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Yes, completely. No subscription, no premium tier, no ads, no in-app purchases, no account required.</p>
+          </div>
+          
+          <div style="margin-bottom: 1.25rem;">
+            <p style="font-weight: bold; margin-bottom: 4px; font-size: 0.85rem;">Does Monever work offline?</p>
+            <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Yes. Once loaded, Monever works entirely offline. The only exceptions are the Weather & Spend widget (fetches live weather from Open-Meteo) and any AI-powered Lab features if implemented.</p>
+          </div>
+          
+          <div style="margin-bottom: 1.25rem;">
+            <p style="font-weight: bold; margin-bottom: 4px; font-size: 0.85rem;">Can I use Monever on mobile?</p>
+            <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Monever is intentionally desktop-only. A blocking screen appears on mobile explaining the design choice. Use a laptop or desktop for the full experience.</p>
+          </div>
+          
+          <div style="margin-bottom: 1.25rem;">
+            <p style="font-weight: bold; margin-bottom: 4px; font-size: 0.85rem;">What happens if I clear my browser cache?</p>
+            <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">All your Monever data is erased. Export a JSON backup before clearing browser data. Monthly exports are strongly recommended.</p>
+          </div>
+          
+          <div style="margin-bottom: 1.25rem;">
+            <p style="font-weight: bold; margin-bottom: 4px; font-size: 0.85rem;">Why is there no sync between devices?</p>
+            <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">By design. No server, no cloud, no sync  your financial data stays on your device only. To move data between devices, export JSON on the source device and import it on the destination device.</p>
+          </div>
+          
+          <div style="margin-bottom: 1.25rem;">
+            <p style="font-weight: bold; margin-bottom: 4px; font-size: 0.85rem;">The charts are empty  what do I do?</p>
+            <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Charts require expense data. Add a few expenses on the Home page or click Load Demo Data in the hero banner. All charts populate as soon as data exists.</p>
+          </div>
+          
+          <div style="margin-bottom: 1.25rem;">
+            <p style="font-weight: bold; margin-bottom: 4px; font-size: 0.85rem;">My widgets show no data  what is wrong?</p>
+            <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">First, ensure you have expense data entered (or load demo data). Second, verify your Monthly Income and Monthly Budget are set in Profile → Settings  several widgets require these to display meaningful information. Third, check that your expense categories are spelled consistently.</p>
+          </div>
+          
+          <div style="margin-bottom: 1.25rem;">
+            <p style="font-weight: bold; margin-bottom: 4px; font-size: 0.85rem;">Can I change the currency symbol?</p>
+            <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Yes. Open Profile, go to Settings tab, change the Currency Symbol field, and click Apply. All currency prefix displays update immediately.</p>
+          </div>
+          
+          <div style="margin-bottom: 1.25rem;">
+            <p style="font-weight: bold; margin-bottom: 4px; font-size: 0.85rem;">How do I back up my data?</p>
+            <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Open Profile → Settings → Export JSON. Store the downloaded file somewhere safe. Repeat monthly.</p>
+          </div>
+          
+          <div style="margin-bottom: 1.25rem;">
+            <p style="font-weight: bold; margin-bottom: 4px; font-size: 0.85rem;">I accidentally deleted an expense  can I recover it?</p>
+            <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">No. Deletions are immediate and permanent. There is no undo. This is a known limitation of the current version. Keeping regular JSON exports is the only protection against accidental deletion.</p>
+          </div>
+          
+          <div style="margin-bottom: 1.25rem;">
+            <p style="font-weight: bold; margin-bottom: 4px; font-size: 0.85rem;">What is the difference between Tools and Lab?</p>
+            <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Tools gives you a specific number (how much will my SIP grow, what is my in-hand salary). Lab helps you understand yourself (am I financially ahead of my age, what does my spending say about me, when can I stop working). Both are useful  they serve different questions.</p>
+          </div>
+          
+          <div style="margin-bottom: 1.25rem;">
+            <p style="font-weight: bold; margin-bottom: 4px; font-size: 0.85rem;">Can two people use Monever on the same computer?</p>
+            <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Monever uses the browser's localStorage which is shared by all users of the same browser on the same device. Two users sharing a computer should use different browser profiles (most modern browsers support this) to keep their data separate.</p>
+          </div>
+          
+          <div style="margin-bottom: 1.25rem;">
+            <p style="font-weight: bold; margin-bottom: 4px; font-size: 0.85rem;">How do I contact the developer?</p>
+            <p style="font-size: 0.84rem; line-height: 1.85; margin-bottom: 0.75rem;">Hero Harshit  contact details on the About page.</p>
+          </div>
+          
+        </div>
+
+      </div>
+      <div style="height: 4rem;"></div>
+
+      <div style="text-align: center; padding: 2rem 0;">
+        <button onclick="document.getElementById('mainScrollArea').scrollTo({top:0,behavior:'smooth'})"
+          style="background-color: #c0c0c0; border: 2px solid;
+          border-color: #ffffff #808080 #808080 #ffffff;
+          padding: 4px 20px; font-size: 0.78rem; cursor: pointer;
+          font-family: 'Courier New', monospace;">
+          ↑ Back to Top
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="status-indicator">
+        <div class="status-dot"></div>
+        <span>Data Status: Local / Secure</span>
+      </div>
+      <div>
+        <span>&copy; 1995 Monever</span>
+      </div>
+      <div>
+        <span class="footer-credit">Classic Edition</span>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toastContainer" class="position-fixed bottom-0 end-0 p-3"></div>
+
+  <script src="utils.js"></script>
+  <script src="profile.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      applyAppearance();
+    });
+
+    function searchHelp(query) {
+      const q = query.trim().toLowerCase();
+      const sections = document.querySelectorAll('.help-section');
+      const countEl = document.getElementById('helpSearchCount');
+      let visible = 0;
+      sections.forEach(s => {
+        const match = !q || s.textContent.toLowerCase().includes(q);
+        s.style.display = match ? '' : 'none';
+        if (match) visible++;
+      });
+      if (countEl) {
+        countEl.style.display = q ? 'block' : 'none';
+        countEl.textContent = q ? visible + ' result' + (visible !== 1 ? 's' : '') + ' found' : '';
+      }
+    }
+
+    // Scroll spy
+    document.getElementById('mainScrollArea').addEventListener('scroll', () => {
+      const sections = document.querySelectorAll('.help-section');
+      let currentId = '';
+      sections.forEach(section => {
+        const h2 = section.querySelector('h2[id]');
+        if (!h2) return;
+        const rect = h2.getBoundingClientRect();
+        if (rect.top <= 130) currentId = h2.id;
+      });
+      document.querySelectorAll('#helpNav a').forEach(a => {
+        const isActive = a.getAttribute('href') === '#' + currentId;
+        a.style.backgroundColor = isActive ? '#404040' : '';
+        a.style.color = isActive ? '#ffffff' : '#000';
+        a.style.fontWeight = isActive ? 'bold' : '';
+      });
+    });
+
+    // Smooth scroll for sidebar links
+    document.addEventListener('click', e => {
+      const link = e.target.closest('#helpNav a');
+      if (!link) return;
+      const href = link.getAttribute('href');
+      if (!href || !href.startsWith('#')) return;
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  </script>
+</body>
+
+</html>

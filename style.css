@@ -81,7 +81,7 @@ body {
   height: 100vh;
   width: 100vw;
   display: grid;
-  grid-template-areas: 
+  grid-template-areas:
     "nav"
     "main"
     "footer";
@@ -334,7 +334,7 @@ body {
 .summary-stat-card h6 {
   font-size: 0.75rem;
   margin-bottom: 2px;
-  color: #000080;
+  color: #404040;
 }
 
 .stat-value {
@@ -402,8 +402,8 @@ footer {
 .status-dot {
   width: 8px;
   height: 8px;
-  background-color: #00ff00;
-  border: 1px solid #008000;
+  background-color: #cccccc;
+  border: 1px solid #888888;
 }
 
 .footer-credit {
@@ -455,9 +455,11 @@ footer {
   /* Allow clicking outside if needed or just make it invisible */
 }
 
-.modal, #toastContainer {
+.modal,
+#toastContainer {
   position: fixed !important;
-  grid-row: 1; /* Assign to existing row to avoid creating new implicit rows */
+  grid-row: 1;
+  /* Assign to existing row to avoid creating new implicit rows */
 }
 
 .modal-content {
@@ -523,6 +525,7 @@ footer {
   gap: 10px !important;
   background-color: var(--bg-main) !important;
 }
+
 /* Retro Progress Bar (Win95 Style) */
 .retro-progress-container {
   border: 2px solid;
@@ -537,23 +540,44 @@ footer {
   height: 100%;
   width: 0%;
   background: #404040;
-  background-image: linear-gradient(
-    to right,
-    #404040 0%,
-    #404040 80%,
-    #fff 80%,
-    #fff 100%
-  );
+  background-image: linear-gradient(to right,
+      #404040 0%,
+      #404040 80%,
+      #fff 80%,
+      #fff 100%);
   background-size: 15px 100%;
 }
 
 /* Professional Summary Styling */
-.bg-navy { background-color: #000080 !important; }
-.ledger-row { transition: background-color 0.2s ease; }
-.ledger-row:hover { background-color: #f8f9fa; }
-.ledger-label { font-size: 0.85rem; color: #666; text-transform: uppercase; letter-spacing: 0.5px; }
-.ledger-value { font-family: 'Courier New', Courier, monospace; font-size: 1.1rem; }
-.chart-container { background: #fff; border: 1px solid #ddd; box-shadow: inset 2px 2px 5px rgba(0,0,0,0.05); }
+.bg-navy {
+  background-color: #404040 !important;
+}
+
+.ledger-row {
+  transition: background-color 0.2s ease;
+}
+
+.ledger-row:hover {
+  background-color: #f8f8f8;
+}
+
+.ledger-label {
+  font-size: 0.85rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ledger-value {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.1rem;
+}
+
+.chart-container {
+  background: #fff;
+  border: 1px solid #ddd;
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.05);
+}
 
 /* Mobile Blocking Screen (Desktop Only Aesthetic) */
 #mobile-block {
@@ -574,17 +598,17 @@ footer {
   border: 2px solid;
   border-color: #FFF #808080 #808080 #FFF;
   padding: 3px;
-  box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .win95-title-bar {
-  background-color: #000080;
+  background-color: #808080;
   color: #FFF;
   padding: 3px 6px;
   font-weight: bold;
   font-size: 14px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -620,7 +644,284 @@ footer {
   #mobile-block {
     display: flex;
   }
-  nav, .container, footer, #toastContainer, .modal {
+
+  nav,
+  .container,
+  footer,
+  #toastContainer,
+  .modal {
     display: none !important;
   }
+}
+
+.budget-needs {
+  background-color: #808080 !important;
+  color: white !important;
+}
+
+.budget-wants {
+  background-color: #606060 !important;
+  color: white !important;
+}
+
+.budget-savings {
+  background-color: #404040 !important;
+  color: white !important;
+}
+
+.accordion-item {
+  border-radius: 0 !important;
+  border: 2px solid !important;
+  border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark) !important;
+}
+
+.accordion-button {
+  background-color: var(--bg-main) !important;
+  color: #000 !important;
+  border-radius: 0 !important;
+  font-size: 0.85rem !important;
+  box-shadow: none !important;
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: #d0d0d0 !important;
+  color: #000 !important;
+  box-shadow: none !important;
+}
+
+.accordion-button::after {
+  filter: grayscale(100%);
+}
+
+.accordion-body {
+  background-color: #fff !important;
+  padding: 0 !important;
+}
+
+.table tbody tr:hover td {
+  background-color: #d0d0d0 !important;
+  color: #000 !important;
+}
+
+/* Neutralize Bootstrap semantic border colors globally */
+.border-primary,
+.border-success,
+.border-danger,
+.border-info,
+.border-warning {
+  border-color: var(--border-dark) !important;
+}
+
+/* Neutralize Bootstrap card defaults */
+.card {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Neutralize alert-dark */
+.alert-dark {
+  background-color: #eeeeee !important;
+  color: #000 !important;
+  border-color: var(--border-dark) !important;
+}
+
+/* Neutralize Bootstrap badges */
+.badge {
+  background-color: var(--bg-main) !important;
+  color: #000 !important;
+  border: 1px solid var(--border-dark) !important;
+  border-radius: 0 !important;
+  font-weight: 400 !important;
+}
+
+/* Override all Bootstrap rounding utilities */
+.rounded,
+.rounded-1,
+.rounded-2,
+.rounded-3,
+.rounded-pill,
+.rounded-circle {
+  border-radius: 0 !important;
+}
+
+/* Win95 Fieldset & Legend for Modal Organization */
+.win95-fieldset {
+  border: 2px solid !important;
+  border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark) !important;
+  padding: 1.25rem !important;
+  margin-bottom: 1.5rem !important;
+  position: relative;
+}
+
+.win95-legend {
+  float: none;
+  width: auto;
+  padding: 0 8px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: var(--bg-main);
+  margin-bottom: 0;
+  position: absolute;
+  top: -10px;
+  left: 10px;
+}
+
+.modal-body-scroll {
+  min-height: 400px;
+  max-height: 65vh;
+  overflow-y: auto;
+  padding: 1.5rem;
+}
+
+.win95-sidebar {
+  width: 160px;
+  background-color: #d0d0d0 !important;
+  border-right: 1px solid var(--border-dark);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.win95-modal-footer {
+  padding: 1rem;
+  border-top: 1px solid var(--border-dark);
+  display: flex;
+  justify-content: center !important;
+  gap: 10px;
+  background-color: var(--bg-main);
+}
+
+/* 2-column layout for modal fields */
+.prof-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .prof-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Dashboard Widget System */
+.widget-slot {
+  aspect-ratio: 1 / 1 !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  flex: 0 0 auto !important;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  background-color: #ffffff;
+  border: 2px dashed #808080;
+  padding: 0;
+  /* Remove padding to let container fill it */
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.widget-slot:hover {
+  background-color: #f0f0f0;
+}
+
+.widget-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #c0c0c0;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.widget-title-bar {
+  background-color: #808080;
+  color: #ffffff;
+  padding: 2px 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+  flex-shrink: 0;
+}
+
+.widget-close-btn {
+  background-color: #c0c0c0;
+  color: #000;
+  border: 1px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  width: 16px;
+  height: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 900;
+  font-family: 'Courier New', monospace;
+  line-height: 1;
+}
+
+.widget-body {
+  background-color: #ffffff;
+  border: 1px solid #808080;
+  margin: 3px;
+  padding: 8px;
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+/* Widget Picker Styles */
+.widget-choice {
+  background-color: #ffffff;
+  color: #000000;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  padding: 0.75rem;
+  cursor: pointer;
+  text-align: center;
+  overflow: hidden;
+  height: 100%;
+}
+
+.widget-choice:hover {
+  background-color: #eeeeee;
+}
+
+.widget-choice i {
+  font-size: 1.25rem;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.widget-choice .widget-name {
+  font-size: 0.8rem;
+  font-weight: bold;
+  display: block;
+}
+
+.widget-choice .widget-desc {
+  font-size: 0.7rem;
+  color: #555;
+}
+
+.widget-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 15px;
 }

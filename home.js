@@ -49,11 +49,11 @@ function addExpense() {
     let existingId = expenses[editIndexExpense].id;
     expenses[editIndexExpense] = { id: existingId, amount: Number(amount), category, date, description };
     editIndexExpense = -1;
-    let btn = document.querySelector("#expense .btn-primary");
+    let btn = document.getElementById("addExpenseBtn");
     if (btn) btn.textContent = "Add Expense Entry";
     showToast("Expense updated successfully", "success");
   } else {
-    expenses.push({ id: Date.now() + Math.random(), amount: Number(amount), category, date, description });
+    expenses.push({ id: Date.now().toString() + Math.random().toString(36).slice(2), amount: Number(amount), category, date, description });
     if (isRecurring) {
       let day = new Date(date).getDate();
       let monthKey = date.slice(0, 7);
@@ -94,18 +94,12 @@ function editExpense(index) {
   let tab = document.getElementById("expense-tab");
   if (tab) tab.click();
 
-  let btn = document.querySelector("#expense .btn-primary");
+  let btn = document.getElementById("addExpenseBtn");
   if (btn) btn.textContent = "Update Expense Entry";
 
   scrollToCard('expense');
 }
 
-function editExpenseById(id) {
-  const index = expenses.findIndex(e => String(e.id) === String(id));
-  if (index !== -1) {
-    editExpense(index);
-  }
-}
 
 function addEMI() {
   let name = document.getElementById("emiName").value;
@@ -126,11 +120,11 @@ function addEMI() {
   if (editIndexEMI > -1) {
     emis[editIndexEMI] = { name, amount: amountValue, date };
     editIndexEMI = -1;
-    let btn = document.querySelector("#emi .btn-warning");
+    let btn = document.querySelector("#emi .btn");
     if (btn) btn.textContent = "Schedule EMI Payment";
     showToast("EMI updated successfully", "success");
   } else {
-    emis.push({ name, amount: amountValue, date });
+    emis.push({ id: Date.now().toString() + Math.random().toString(36).slice(2), name, amount: amountValue, date });
     showToast("EMI added successfully", "success");
   }
 
@@ -152,7 +146,7 @@ function editEMI(index) {
   let tab = document.getElementById("emi-tab");
   if (tab) tab.click();
 
-  let btn = document.querySelector("#emi .btn-warning");
+  let btn = document.querySelector("#emi .btn");
   if (btn) btn.textContent = "Update EMI Payment";
 
   scrollToCard('emi');
@@ -178,11 +172,11 @@ function addPerson() {
   if (editIndexPerson > -1) {
     people[editIndexPerson] = { name, amount: amountValue, type, status: people[editIndexPerson].status, description };
     editIndexPerson = -1;
-    let btn = document.querySelector("#person .btn-info");
+    let btn = document.querySelector("#person .btn");
     if (btn) btn.textContent = "Save Ledger Record";
     showToast("Person record updated successfully", "success");
   } else {
-    people.push({ name, amount: amountValue, type, status: "open", description });
+    people.push({ id: Date.now().toString() + Math.random().toString(36).slice(2), name, amount: amountValue, type, status: "open", description });
     showToast("Person record added successfully", "success");
   }
 
@@ -205,7 +199,7 @@ function editPerson(index) {
   let tab = document.getElementById("person-tab");
   if (tab) tab.click();
 
-  let btn = document.querySelector("#person .btn-info");
+  let btn = document.querySelector("#person .btn");
   if (btn) btn.textContent = "Update Ledger Record";
 
   scrollToCard('person');
@@ -309,9 +303,9 @@ function renderReminders() {
     let origIdx = reminders.findIndex(x => x.label === r.label && x.date === r.date);
     let isOverdue = r.date < today;
     let li = document.createElement("li");
-    li.className = `list-group-item d-flex justify-content-between align-items-center ${isOverdue ? "text-danger" : ""}`;
+    li.className = `list-group-item d-flex justify-content-between align-items-center`;
     li.innerHTML = `<span>${r.label} - ${formatDate(r.date)} ${isOverdue ? "(overdue)" : ""}</span>
-      <button class="btn btn-danger btn-sm" onclick="deleteReminder(${origIdx})">Delete</button>`;
+      <button class="btn btn-sm" onclick="deleteReminder(${origIdx})">Delete</button>`;
     list.appendChild(li);
   });
 
@@ -332,7 +326,7 @@ function renderRecentExpenses() {
 
   sorted.forEach(e => {
     let li = document.createElement("li");
-    li.className = "list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 mb-2";
+    li.className = "list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-3 mb-2";
     li.innerHTML = `
       <div>
         <span class="fw-bold text-dark">${e.category}</span>
@@ -385,7 +379,7 @@ function renderRecurringExpenses() {
     let li = document.createElement("li");
     li.className = "list-group-item d-flex justify-content-between align-items-center";
     li.innerHTML = `<span><strong>${re.category}</strong> - ${getCurrency()}${formatMoney(re.amount)} (Day ${re.dayOfMonth})</span>
-      <button class="btn btn-danger btn-sm" onclick="deleteRecurringExpense('${re.id}')">Delete</button>`;
+      <button class="btn btn-sm" onclick="deleteRecurringExpense('${re.id}')">Delete</button>`;
     list.appendChild(li);
   });
 }
@@ -510,7 +504,7 @@ function copySplitSummary() {
     return `${name}: ${amount}`;
   }).join(", ");
   let total = document.getElementById("splitTotalAmount").value;
-  let text = `${summary} — Total: ${getCurrency()}${total}`;
+  let text = `${summary}  Total: ${getCurrency()}${total}`;
   
   navigator.clipboard.writeText(text).then(() => {
     showToast("Split summary copied to clipboard!", "success");
@@ -530,4 +524,17 @@ document.addEventListener('DOMContentLoaded', () => {
   displayQuickNote();
   setDefaultExpenseDate();
   renderCategoryOptions();
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const editId = urlParams.get('editExpense');
+  const editEMIId = urlParams.get('editEMI');
+  const editPersonId = urlParams.get('editPerson');
+  
+  if (editId) {
+    setTimeout(() => editExpenseById(editId), 100);
+  } else if (editEMIId) {
+    setTimeout(() => editEMIById(editEMIId), 100);
+  } else if (editPersonId) {
+    setTimeout(() => editPersonById(editPersonId), 100);
+  }
 });

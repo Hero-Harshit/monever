@@ -7,7 +7,7 @@
   <link rel="icon" href="assets/Monever%20Logo.png" sizes="32x32">
   <link rel="shortcut icon" href="assets/Monever%20Logo.png">
   <link rel="apple-touch-icon" href="assets/Monever%20Logo.png">
-  <meta name="theme-color" content="#000080">
+  <meta name="theme-color" content="#404040">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
   <link rel="stylesheet" href="style.css">
@@ -20,124 +20,691 @@
         <span>⚠️ Incompatible Device</span>
       </div>
       <div class="win95-dialog-body">
-        <p>This application is optimised for desktop computers. Mobile handsets were not commonplace during the era this software was designed for. Please access Monever from a desktop or laptop computer for the intended experience.</p>
-        <p class="mt-4 fw-bold text-uppercase" style="font-size: 12px; letter-spacing: 1px; color: #800000;">Access from a computer</p>
+        <p>This application is optimised for desktop computers. Mobile handsets were not commonplace during the era this
+          software was designed for. Please access Monever from a desktop or laptop computer for the intended
+          experience.</p>
+        <p class="mt-4 fw-bold text-uppercase" style="font-size: 12px; letter-spacing: 1px; color: #606060;">Access from
+          a computer</p>
       </div>
     </div>
   </div>
 
 
-  <nav class="navbar">
-    <div class="container-fluid px-4">
-      <a class="navbar-brand" href="index.html">
+  <nav class="navbar" style="position: relative;">
+    <div class="container-fluid px-4" style="display: flex; justify-content: space-between; align-items: center;">
+      <a class="navbar-brand" href="index.html" style="flex: 1; display: flex; align-items: center;">
         <img src="assets/Monever%20Logo.png" alt="Monever" height="40" class="brand-logo">
         <div class="brand-wordmark">
           <span class="brand-name">Monever</span>
           <span class="brand-tagline">Money Saver, Forever</span>
         </div>
       </a>
-      <div class="navbar-nav ms-auto d-flex flex-row gap-4">
-        <a class="nav-link" href="index.html">Home</a>
-        <a class="nav-link" href="data.html">Insights</a>
-        <a class="nav-link" href="tools.html">Tools</a>
-        <a class="nav-link active" href="about.html">About</a>
+
+      <!-- PROFILE BUTTON - CENTERED VIA FLEX -->
+      <button id="profileNavBtn" onclick="openProfileModal()" style="background-color: #c0c0c0; border: 2px solid; border-color: #ffffff #808080 #808080 #ffffff;
+        padding: 2px 10px; font-size: 0.8rem; cursor: pointer; display: flex; align-items: center; gap: 5px;
+        white-space: nowrap; flex-shrink: 0;" title="My Profile" onmouseenter="this.style.backgroundColor='#d0d0d0'"
+        onmouseleave="this.style.backgroundColor='#c0c0c0'">
+        <i class="bi bi-person-fill"></i> My Profile
+      </button>
+
+      <div class="navbar-nav ms-0 d-flex flex-row gap-1" style="flex: 1; justify-content: flex-end;">
+        <a class="nav-link" href="index.html"><i class="bi bi-house-door me-2"></i>Home</a>
+        <a class="nav-link" href="data.html"><i class="bi bi-bar-chart me-2"></i>Insights</a>
+        <a class="nav-link" href="tools.html"><i class="bi bi-tools me-2"></i>Tools</a>
+        <a class="nav-link" href="lab.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black"
+            class="me-2" viewBox="0 0 16 16" style="vertical-align: -0.125em; position: relative; top: 0.5px;">
+            <path
+              d="M2 4.5A.5.5 0 0 1 2.5 4h1a.5.5 0 0 1 .5.5v.5h1v-1a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v1h1v-.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1.238L14.502 11h-1.074l-3.292-3.292A.5.5 0 0 0 9.782 7.5h-3.564a.5.5 0 0 0-.354.146L2.572 11H1.498L2 5.738V4.5zM13.372 12l1.64-1.64a.5.5 0 0 0 .134-.354V8.5h-1v1.238L11.502 12h1.87zM2.628 12 1 10.36V8.5h1v1.238L4.498 12H2.628zM10 13H6v1h4v-1zm4 1.5c0 .276-.224.5-.5.5h-11a.5.5 0 0 1-.5-.5V14h12v.5z" />
+          </svg>Lab</a>
+        <a class="nav-link active" href="about.html"><i class="bi bi-info-circle me-2"></i>About</a>
+        <li class="nav-item">
+          <a class="nav-link" href="help.html">
+            <i class="bi bi-question-circle me-1"></i>Help
+          </a>
+        </li>
       </div>
     </div>
   </nav>
 
   <div class="container mt-4">
     <section class="hero-banner mb-4">
-      <h1 class="page-title">Mission-Critical Financial Infrastructure</h1>
-      <p class="hero-subtitle">Empowering Fiscal Sovereignty through Precision Engineering. Monever stands as a
-        testament to the philosophy that comprehensive capital management should be accessible, high-performance, and
-        fundamentally secure by design. Our platform is built to provide an uncompromising environment for those who
-        prioritize financial clarity.</p>
-      <div class="d-flex justify-content-center gap-2 mt-4 flex-wrap">
-        <span class="tech-pill px-3 py-2">Legacy-Compliant HTML5</span>
-        <span class="tech-pill px-3 py-2">Standardized CSS3</span>
-        <span class="tech-pill px-3 py-2">High-Performance JavaScript</span>
-        <span class="tech-pill px-3 py-2">Advanced Chart.js Integration</span>
-        <span class="tech-pill px-3 py-2">Enterprise Bootstrap 5</span>
-      </div>
+      <h1 class="page-title">About Monever</h1>
+      <p class="hero-subtitle">A personal finance platform built with personality.</p>
     </section>
 
+    <!-- SECTION 2: THE STORY -->
     <div class="card section-card mb-4">
       <div class="card-body">
-        <h4 class="fw-bold mb-3">Institutional Project Overview</h4>
-        <p class="about-paragraph">Monever is a utility-focused financial application engineered for high-efficiency
-          expense tracking and organizational fiscal management. At Monever Corporation, we recognize that data is the
-          ultimate asset. Our platform is architected to provide a streamlined, zero-latency environment for tracking
-          capital flow. By leveraging local-first storage protocols, we ensure total data sovereignty for our users,
-          effectively mitigating the security risks associated with third-party cloud dependencies.</p>
-        <p class="about-paragraph mt-3">Our objective is to deliver a robust toolset that facilitates informed
-          decision-making through accurate data representation. Whether managing daily micro-transactions or overseeing
-          long-term debt cycles, Monever provides the stability and performance required for modern financial
-          stewardship.</p>
+        <h4 class="fw-bold mb-3">THE STORY</h4>
+        <p class="about-paragraph">Monever is a personal finance tracker built with a Windows 95 aesthetic, designed for
+          students and young professionals in India who want something more characterful than a spreadsheet. It combines
+          nostalgia with high-utility tools, providing a unique environment for managing your financial life without the
+          sterile feel of modern corporate apps.</p>
+        <p class="about-paragraph mt-3">Why the 90s theme? It represents an era before UX dark patterns, before
+          subscription walls, and before tracking pixels. Software back then just worked. Monever tries to capture that
+          spirit  it is local-first, private-by-default, and requires no accounts or data harvesting. Your data stays
+          in your browser, exactly where it belongs.</p>
       </div>
     </div>
 
-    <h4 class="mb-4 fw-bold">Functional Core Architecture</h4>
-    <div class="row g-3 mb-5">
-      <div class="col-md-4">
-        <div class="card h-100 section-card p-3">
-          <div class="icon-circle mb-3"><i class="bi bi-calculator"></i></div>
-          <h6 class="fw-bold">Accounting Ledger Engine</h6>
-          <p class="text-muted small">A high-fidelity transaction logging system utilizing a non-volatile local data
-            structure. Engineered for rapid entry and precise categorization of multi-variant fiscal events with
-            instantaneous persistence.</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card h-100 section-card p-3">
-          <div class="icon-circle mb-3"><i class="bi bi-calendar3"></i></div>
-          <h6 class="fw-bold">Liabilities Management</h6>
-          <p class="text-muted small">Systematic monitoring of scheduled EMIs and debt cycles. Our algorithm-driven
-            reminder system ensures that periodic financial obligations are managed with zero margin for error.</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card h-100 section-card p-3">
-          <div class="icon-circle mb-3"><i class="bi bi-table"></i></div>
-          <h6 class="fw-bold">Analytics & Intelligence</h6>
-          <p class="text-muted small">Advanced visualization suite for comparative fiscal analysis. Utilizing
-            industry-standard charting algorithms to identify spending trends and optimize strategic capital
-            allocation.</p>
-        </div>
-      </div>
-    </div>
-
-    <h2 class="mb-5 fw-bold text-center">Corporate Development Milestones</h2>
-    <div class="timeline mb-5 px-3 px-md-5">
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <div class="timeline-time">Q1: Conceptual Systems Design</div>
-          <h5 class="fw-bold">Phase 1: Logic Integration</h5>
-          <p class="text-muted">Deconstructed the primary variables of modern fiscal flow and established the initial
-            data schemas. Focused on creating a user-centric model that prioritizes data integrity over aesthetic
-            excess.</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <div class="timeline-time">Q2: Standards & Frameworks</div>
-          <h5 class="fw-bold">Phase 2: Visual Standardization</h5>
-          <p class="text-muted">Established a professional, utility-first legacy design system inspired by high-stability
-            enterprise UIs. Development focused on cognitive efficiency and cross-platform layout stability.</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <div class="timeline-time">Q3: Operational Readiness</div>
-          <h5 class="fw-bold">Phase 3: Core Computational Engine</h5>
-          <p class="text-muted">Implementation of the non-volatile local storage engine and complex logic for multi-page
-            data synchronization. Finalizing the production-ready build for mission-critical deployment.</p>
+    <!-- SECTION 3: BY THE NUMBERS -->
+    <div class="card section-card mb-4">
+      <div class="card-body">
+        <h4 class="fw-bold mb-3">BY THE NUMBERS</h4>
+        <div class="row g-3">
+          <div class="col-md-3 col-6">
+            <div class="summary-stat-card">
+              <div class="stat-value">5</div>
+              <div class="stat-label">Pages</div>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="summary-stat-card">
+              <div class="stat-value">67</div>
+              <div class="stat-label">Widgets</div>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="summary-stat-card">
+              <div class="stat-value">9</div>
+              <div class="stat-label">Lab Tools</div>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="summary-stat-card">
+              <div class="stat-value">15+</div>
+              <div class="stat-label">Financial Calculators</div>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="summary-stat-card">
+              <div class="stat-value">100%</div>
+              <div class="stat-label">Local Data</div>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="summary-stat-card">
+              <div class="stat-value">0</div>
+              <div class="stat-label">Servers</div>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="summary-stat-card">
+              <div class="stat-value">0</div>
+              <div class="stat-label">Accounts Required</div>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="summary-stat-card">
+              <div class="stat-value">© 1995</div>
+              <div class="stat-label">Founding Year</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
+    <!-- SECTION 4: FEATURE MANIFEST -->
+    <div class="card section-card mb-4">
+      <div class="card-body">
+        <h4 class="fw-bold mb-4">FEATURE MANIFEST</h4>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <h6 class="fw-bold text-uppercase mb-3"
+              style="color: #404040; border-bottom: 2px solid #404040; display: inline-block;">Track</h6>
+            <ul class="list-unstyled">
+              <li class="mb-1">• Expense logging</li>
+              <li class="mb-1">• EMI scheduler</li>
+              <li class="mb-1">• Person ledger</li>
+              <li class="mb-1">• Quick notes</li>
+              <li class="mb-1">• Reminders</li>
+              <li class="mb-1">• Bill splitter</li>
+              <li class="mb-1">• Recurring expenses</li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h6 class="fw-bold text-uppercase mb-3"
+              style="color: #404040; border-bottom: 2px solid #404040; display: inline-block;">Analyse</h6>
+            <ul class="list-unstyled">
+              <li class="mb-1">• Spending heatmap</li>
+              <li class="mb-1">• Category breakdown</li>
+              <li class="mb-1">• Net worth tracker</li>
+              <li class="mb-1">• Financial goals</li>
+              <li class="mb-1">• Budget alerts</li>
+              <li class="mb-1">• Savings rate</li>
+              <li class="mb-1">• Historical export</li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h6 class="fw-bold text-uppercase mb-3"
+              style="color: #404040; border-bottom: 2px solid #404040; display: inline-block;">Explore</h6>
+            <ul class="list-unstyled">
+              <li class="mb-1">• 9 Lab experiments</li>
+              <li class="mb-1">• Financial calculators</li>
+              <li class="mb-1">• 67 customizable widgets</li>
+              <li class="mb-1">• Salary breakup</li>
+              <li class="mb-1">• Tax estimator</li>
+              <li class="mb-1">• SIP / FD / PPF tools</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 5: BUILT BY -->
+    <div class="card section-card mb-5">
+      <div class="card-body text-center">
+        <h4 class="fw-bold mb-3">BUILT BY</h4>
+        <div class="mx-auto mb-4"
+          style="width: 80px; height: 80px; background: #c0c0c0; border: 2px solid; border-color: #808080 #ffffff #ffffff #808080; display: flex; align-items: center; justify-content: center; font-size: 2rem;">
+          👨‍💻</div>
+        <h5 class="fw-bold mb-1">Hero Harshit</h5>
+        <p class="text-muted small mb-3">Student · Developer · Designer</p>
+        <p class="about-paragraph mx-auto" style="max-width: 600px;">Monever started as a personal project to solve my
+          own
+          frustration with overly complex financial apps that felt more like social networks than tools. I wanted to
+          build something that respected the user's intelligence and privacy, wrapped in a design language that
+          celebrates the golden age of personal computing.</p>
+        <hr class="my-4">
+        <p class="text-muted" style="font-size: 0.7rem; font-family: 'Courier New', monospace;">Crafted with vanilla
+          HTML,
+          CSS, and JavaScript. No frameworks were harmed in the making of this application.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal" id="profileModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">SYSTEM PROPERTIES & USER PROFILE</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="d-flex" style="min-height: 500px;">
+          <!-- Left Navigation (Win95 style sidebar tabs) -->
+          <div class="win95-sidebar d-none d-md-flex">
+            <div class="nav flex-column nav-pills" id="profileTabs" role="tablist">
+              <button class="nav-link active mb-1 text-start" id="profile-bio-tab" data-bs-toggle="pill"
+                data-bs-target="#profile-bio" type="button" role="tab"><i class="bi bi-person-badge me-2"></i>User
+                Bio</button>
+              <button class="nav-link mb-1 text-start" id="profile-cash-tab" data-bs-toggle="pill"
+                data-bs-target="#profile-cash" type="button" role="tab"><i
+                  class="bi bi-wallet2 me-2"></i>Cashflow</button>
+              <button class="nav-link mb-1 text-start" id="profile-strat-tab" data-bs-toggle="pill"
+                data-bs-target="#profile-strat" type="button" role="tab"><i
+                  class="bi bi-graph-up-arrow me-2"></i>Strategy</button>
+              <button class="nav-link mb-1 text-start" id="profile-settings-tab" data-bs-toggle="pill"
+                data-bs-target="#profile-settings" type="button" role="tab"><i
+                  class="bi bi-gear me-2"></i>Settings</button>
+            </div>
+            <div class="mt-auto p-2 text-center">
+              <img src="assets/Monever%20Logo.png" alt="Monever"
+                style="width: 40px; opacity: 0.5; filter: grayscale(1);">
+              <div class="small text-muted mt-2" style="font-size: 0.65rem; line-height: 1.2;">
+                Made With love,<br>Made For You,<br>By Hero Harshit.
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Content Area -->
+          <div class="flex-grow-1 d-flex flex-column">
+            <div class="modal-body-scroll flex-grow-1">
+              <div class="tab-content" id="profileTabsContent">
+
+                <!-- TAB 1: BIO -->
+                <div class="tab-pane fade show active" id="profile-bio" role="tabpanel">
+                  <fieldset class="win95-fieldset">
+                    <legend class="win95-legend">Identity Card</legend>
+                    <div class="prof-grid">
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Full Name</label>
+                        <input type="text" id="profName" class="form-control" placeholder="User Name">
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Age</label>
+                        <input type="number" id="profAge" class="form-control" placeholder="25">
+                      </div>
+                    </div>
+                    <div class="prof-grid">
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Employment</label>
+                        <select id="profEmployment" class="form-control">
+                          <option value="">Select Type</option>
+                          <option value="Salaried">Salaried</option>
+                          <option value="Freelancer">Freelancer</option>
+                          <option value="Business Owner">Business Owner</option>
+                          <option value="Student">Student</option>
+                        </select>
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Partner's Name</label>
+                        <input type="text" id="profPartnerName" class="form-control">
+                      </div>
+                    </div>
+                  </fieldset>
+
+                  <fieldset class="win95-fieldset">
+                    <legend class="win95-legend">Regional Identity</legend>
+                    <div class="prof-grid">
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Location (City)</label>
+                        <select id="profCity" class="form-control">
+                          <option value="">Select City</option>
+                          <option value="Mumbai">Mumbai</option>
+                          <option value="Delhi">Delhi</option>
+                          <option value="Bangalore">Bangalore</option>
+                          <option value="Hyderabad">Hyderabad</option>
+                          <option value="Chennai">Chennai</option>
+                          <option value="Pune">Pune</option>
+                          <option value="Kolkata">Kolkata</option>
+                          <option value="Other">Other</option>
+                        </select>
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">City Tier</label>
+                        <select id="profCityType" class="form-control">
+                          <option value="">Select Tier</option>
+                          <option value="Metro">Tier 1 (Metro)</option>
+                          <option value="Non-Metro">Tier 2/3 (Non-Metro)</option>
+                        </select>
+                      </div>
+                    </div>
+                  </fieldset>
+                </div>
+
+                <!-- TAB 2: CASHFLOW -->
+                <div class="tab-pane fade" id="profile-cash" role="tabpanel">
+                  <fieldset class="win95-fieldset">
+                    <legend class="win95-legend">Monthly Liquidity</legend>
+                    <div class="prof-grid">
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">In-Hand Salary (₹)</label>
+                        <input type="number" id="profInHand" class="form-control">
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Side Income (₹)</label>
+                        <input type="number" id="profSideIncome" class="form-control" value="0">
+                      </div>
+                    </div>
+                    <div class="prof-grid">
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Fixed Expenses (₹)</label>
+                        <input type="number" id="profExpenses" class="form-control">
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Monthly Rent (₹)</label>
+                        <input type="number" id="profRent" class="form-control" value="0">
+                      </div>
+                    </div>
+                  </fieldset>
+
+                  <fieldset class="win95-fieldset">
+                    <legend class="win95-legend">Budgeting Constraints</legend>
+                    <div class="prof-grid">
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Spending Limit (₹)</label>
+                        <input type="number" id="profBudget" class="form-control">
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Target Savings (₹)</label>
+                        <input type="number" id="profMonthlySavings" class="form-control">
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label text-muted small fw-bold">Income for Tracking (₹)</label>
+                      <input type="number" id="profTrackingIncome" class="form-control">
+                      <div class="form-text text-muted small" style="font-size: 0.65rem;">Used as base for percentage
+                        calculations.</div>
+                    </div>
+                  </fieldset>
+                </div>
+
+                <!-- TAB 3: STRATEGY -->
+                <div class="tab-pane fade" id="profile-strat" role="tabpanel">
+                  <fieldset class="win95-fieldset">
+                    <legend class="win95-legend">Wealth Strategy</legend>
+                    <div class="prof-grid">
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Current Net Worth (₹)</label>
+                        <input type="number" id="profCorpus" class="form-control">
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Expected Return (%)</label>
+                        <input type="number" id="profExpectedReturn" class="form-control" value="12">
+                      </div>
+                    </div>
+                    <div class="prof-grid">
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Risk Appetite</label>
+                        <select id="profRisk" class="form-control">
+                          <option value="">Select Risk</option>
+                          <option value="Conservative">Conservative</option>
+                          <option value="Moderate">Moderate</option>
+                          <option value="Aggressive">Aggressive</option>
+                        </select>
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Primary Goal</label>
+                        <select id="profGoal" class="form-control">
+                          <option value="">Select Goal</option>
+                          <option value="Wealth Building">Wealth Building</option>
+                          <option value="Early Retirement">Early Retirement</option>
+                          <option value="Buying a Home">Buying a Home</option>
+                          <option value="Emergency Fund">Emergency Fund</option>
+                          <option value="Child's Education">Child's Education</option>
+                          <option value="Business">Business</option>
+                        </select>
+                      </div>
+                    </div>
+                  </fieldset>
+
+                  <fieldset class="win95-fieldset">
+                    <legend class="win95-legend">Professional Profile</legend>
+                    <div class="prof-grid">
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Annual CTC (₹)</label>
+                        <input type="number" id="profCTC" class="form-control">
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Basic Salary %</label>
+                        <select id="profBasicPercent" class="form-control">
+                          <option value="">Select %</option>
+                          <option value="40%">40% of CTC</option>
+                          <option value="50%">50% of CTC</option>
+                          <option value="60%">60% of CTC</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="prof-grid">
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Tax Regime</label>
+                        <select id="profTaxRegime" class="form-control">
+                          <option value="">Select Regime</option>
+                          <option value="New Regime">New Regime</option>
+                          <option value="Old Regime">Old Regime</option>
+                        </select>
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Target Retirement Age</label>
+                        <input type="number" id="profRetirementAge" class="form-control" value="60">
+                      </div>
+                    </div>
+                  </fieldset>
+
+                  <fieldset class="win95-fieldset">
+                    <legend class="win95-legend">Work & Taxes (Advanced)</legend>
+                    <div class="prof-grid">
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Work Hours/Day</label>
+                        <input type="number" id="profWorkHours" class="form-control" value="8">
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Work Days/Week</label>
+                        <input type="number" id="profWorkDays" class="form-control" value="5">
+                      </div>
+                    </div>
+                    <div class="prof-grid">
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">PF Contribution</label>
+                        <select id="profPF" class="form-control">
+                          <option value="">Select PF</option>
+                          <option value="12% of Basic (Standard)">12% (Standard)</option>
+                          <option value="Opt Out">Opt Out</option>
+                        </select>
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">HRA % of Basic</label>
+                        <select id="profHRAPercent" class="form-control">
+                          <option value="">Select %</option>
+                          <option value="40% (Non-Metro)">40% (Non-Metro)</option>
+                          <option value="50% (Metro)">50% (Metro)</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="prof-grid">
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">WFH Days/Week</label>
+                        <input type="number" id="profWFHDays" class="form-control" value="0">
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Prof. Tax State</label>
+                        <select id="profProfTax" class="form-control">
+                          <option value="">Select State</option>
+                          <option value="Maharashtra (₹2400/yr)">Maharashtra</option>
+                          <option value="Karnataka (₹2400/yr)">Karnataka</option>
+                          <option value="Other (₹0)">Other</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="prof-grid">
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Commute (min)</label>
+                        <input type="number" id="profCommute" class="form-control" value="0">
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Monthly Work Exp (₹)</label>
+                        <input type="number" id="profWorkExpenses" class="form-control" value="0">
+                      </div>
+                    </div>
+                  </fieldset>
+                </div>
+
+                <!-- TAB 4: SETTINGS -->
+                <div class="tab-pane fade" id="profile-settings" role="tabpanel">
+                  <fieldset class="win95-fieldset">
+                    <legend class="win95-legend">Budget & Income</legend>
+                    <div class="mb-3">
+                      <label class="form-label text-muted small fw-bold">Monthly Budget</label>
+                      <div class="input-group">
+                        <span class="input-group-text currency-prefix">₹</span>
+                        <input type="number" id="monthlyBudgetInput" class="form-control" placeholder="0.00">
+                        <button class="btn btn-secondary" onclick="saveBudget()">Save</button>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label text-muted small fw-bold">Monthly Income</label>
+                      <div class="input-group">
+                        <span class="input-group-text currency-prefix">₹</span>
+                        <input type="number" id="incomeInput" class="form-control" placeholder="0.00">
+                        <button class="btn btn-secondary" onclick="saveIncome()">Save</button>
+                      </div>
+                    </div>
+
+                    <div class="mt-4">
+                      <h6 class="fw-bold mb-3"><i class="bi bi-tag me-2"></i>Category Budgets</h6>
+                      <div class="row g-2 mb-3">
+                        <div class="col-6">
+                          <input type="text" id="budgetCategoryName" class="form-control" placeholder="Category"
+                            list="categoryList">
+                        </div>
+                        <div class="col-6">
+                          <div class="input-group">
+                            <span class="input-group-text currency-prefix">₹</span>
+                            <input type="number" id="budgetCategoryAmount" class="form-control" placeholder="Limit">
+                          </div>
+                        </div>
+                        <div class="col-12 mt-2">
+                          <button class="btn btn-secondary w-100" onclick="addCategoryBudget()">Set Category
+                            Limit</button>
+                        </div>
+                      </div>
+                      <ul id="categoryBudgetList" class="list-group small mb-2"></ul>
+                    </div>
+                  </fieldset>
+
+                  <fieldset class="win95-fieldset">
+                    <legend class="win95-legend">Display & Regional</legend>
+                    <div class="prof-grid">
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Currency Symbol</label>
+                        <div class="input-group">
+                          <input type="text" id="currencySymbol" class="form-control" maxlength="3" placeholder="₹">
+                          <button class="btn btn-secondary" onclick="savePreferences()">Apply</button>
+                        </div>
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Date Format</label>
+                        <select id="dateFormat" class="form-control">
+                          <option value="DD/MM/YYYY">DD/MM/YYYY</option>
+                          <option value="MM/DD/YYYY">MM/DD/YYYY</option>
+                          <option value="YYYY-MM-DD">YYYY-MM-DD</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label text-muted small fw-bold">Background Style</label>
+                      <div class="input-group">
+                        <select id="bgStyle" class="form-control">
+                          <option value="Soft Gradient">Soft Gradient</option>
+                          <option value="Corporate Blue">Corporate Blue</option>
+                          <option value="Classic Gray">Classic Gray</option>
+                        </select>
+                        <button class="btn btn-secondary" onclick="saveAppearance()">Apply</button>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label text-muted small fw-bold">Widget Layout</label>
+                      <select id="widgetSeparation" class="form-control">
+                        <option value="global">Global (Same on all pages)</option>
+                        <option value="local">Local (Different for each page)</option>
+                      </select>
+                    </div>
+                  </fieldset>
+
+                  <fieldset class="win95-fieldset">
+                    <legend class="win95-legend">Maintenance & Data</legend>
+                    <div class="mb-3">
+                      <div class="row g-2">
+                        <div class="col-6"><button class="btn btn-secondary w-100 btn-sm" data-bs-toggle="modal"
+                            data-bs-target="#compactModal">Compact DB</button></div>
+                        <div class="col-6"><button class="btn btn-secondary w-100 btn-sm" data-bs-toggle="modal"
+                            data-bs-target="#rebuildModal">Rebuild Index</button></div>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label text-muted small fw-bold">Portability</label>
+                      <div class="row g-2">
+                        <div class="col-4"><button class="btn btn-secondary w-100 btn-sm"
+                            onclick="exportData()">JSON</button></div>
+                        <div class="col-4"><button class="btn btn-secondary w-100 btn-sm"
+                            onclick="exportCSV()">CSV</button></div>
+                        <div class="col-4">
+                          <label for="importFile" class="btn btn-secondary w-100 btn-sm mb-0">Import</label>
+                          <input type="file" id="importFile" hidden accept=".json" onchange="importData()">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="p-2 border border-secondary mt-3">
+                      <button class="btn btn-sm w-100" onclick="showEraseModal()">FACTORY RESET SYSTEM</button>
+                    </div>
+                  </fieldset>
+
+                  <fieldset class="win95-fieldset mt-3">
+                    <legend class="win95-legend">Evaluation & Testing</legend>
+                    <div class="mb-2">
+                      <button onclick="loadDemoData()" id="demo-load-btn" class="btn btn-primary w-100 btn-sm">▶ Load
+                        Demo Data</button>
+                    </div>
+                    <div id="demo-banner" style="display:none; background-color:#c0c0c0; color:#000;
+                      padding:6px 12px; font-size:0.75rem; font-family:'Courier New',monospace;
+                      margin-top:8px; display:flex; justify-content:space-between; align-items:center;
+                      border:2px solid; border-color:#808080 #ffffff #ffffff #808080;">
+                      <span style="font-weight:bold;">⚠ DEMO ACTIVE</span>
+                      <button onclick="clearDemoData()" style="background:#c0c0c0; color:#000;
+                        border:2px solid; border-color:#fff #808080 #808080 #fff;
+                        font-size:0.7rem; padding:1px 8px; cursor:pointer; font-family:inherit;">
+                        [Clear]
+                      </button>
+                    </div>
+                  </fieldset>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="win95-modal-footer">
+              <button type="button" class="btn btn-secondary" onclick="clearProfile()">Wipe Profile</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-primary px-4" onclick="saveProfile()">Apply Changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAINTENANCE MODALS -->
+  <div class="modal" id="compactModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Compact Database</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          This will optimize the local storage and remove empty data fragments. Proceed with optimization?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" onclick="runMaintenanceTask('Compact Database')">Execute
+            Optimization</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="rebuildModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Rebuild Index</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to rebuild the data indexes? This may take a few seconds.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" onclick="runMaintenanceTask('Rebuild Index')">Rebuild
+            Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="eraseModal" tabindex="-1" aria-labelledby="eraseLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="eraseLabel">Confirm Erase</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to permanently erase all data? This action cannot be undone.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn" onclick="eraseAllData()">Erase All Data</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="maintenanceProgressModal" tabindex="-1" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="maintenanceTaskTitle">System Maintenance</h5>
+        </div>
+        <div class="modal-body">
+          <p id="maintenanceStatus" class="mb-3">Initializing subsystem...</p>
+          <div class="retro-progress-container">
+            <div id="retroProgressBar" class="retro-progress-bar"></div>
+          </div>
+          <p class="text-muted small mt-2">Please do not close your browser or navigate away.</p>
+        </div>
+      </div>
+    </div>
   </div>
 
   <footer>
@@ -150,19 +717,21 @@
         <span>&copy; 1995 Monever</span>
       </div>
       <div>
-        <span class="footer-credit">v2.4.0-Stable</span>
+        <span class="footer-credit">Classic Edition</span>
       </div>
     </div>
   </footer>
 
-  <div id="toastContainer" class="position-fixed bottom-0 end-0 p-3"></div>
-
+  <div id="toastContainer" class="toast-container position-fixed bottom-0 end-0 p-3"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="utils.js"></script>
+  <script src="profile.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      normalizeData();
       applyAppearance();
+      loadSettings();
     });
   </script>
 </body>

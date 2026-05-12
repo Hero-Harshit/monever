@@ -7,7 +7,7 @@
   <link rel="icon" href="assets/Monever%20Logo.png" sizes="32x32">
   <link rel="shortcut icon" href="assets/Monever%20Logo.png">
   <link rel="apple-touch-icon" href="assets/Monever%20Logo.png">
-  <meta name="theme-color" content="#000080">
+  <meta name="theme-color" content="#404040">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
   <link rel="stylesheet" href="style.css">
@@ -21,405 +21,906 @@
         <span>⚠️ Incompatible Device</span>
       </div>
       <div class="win95-dialog-body">
-        <p>This application is optimised for desktop computers. Mobile handsets were not commonplace during the era this software was designed for. Please access Monever from a desktop or laptop computer for the intended experience.</p>
-        <p class="mt-4 fw-bold text-uppercase" style="font-size: 12px; letter-spacing: 1px; color: #800000;">Access from a computer</p>
+        <p>This application is optimised for desktop computers. Mobile handsets were not commonplace during the era this
+          software was designed for. Please access Monever from a desktop or laptop computer for the intended
+          experience.</p>
+        <p class="mt-4 fw-bold text-uppercase" style="font-size: 12px; letter-spacing: 1px; color: #606060;">Access from
+          a computer</p>
       </div>
     </div>
   </div>
 
 
-  <nav class="navbar">
-    <div class="container-fluid px-4">
-      <a class="navbar-brand" href="index.html">
+  <nav class="navbar" style="position: relative;">
+    <div class="container-fluid px-4" style="display: flex; justify-content: space-between; align-items: center;">
+      <a class="navbar-brand" href="index.html" style="flex: 1; display: flex; align-items: center;">
         <img src="assets/Monever%20Logo.png" alt="Monever" height="40" class="brand-logo">
         <div class="brand-wordmark">
           <span class="brand-name">Monever</span>
           <span class="brand-tagline">Money Saver, Forever</span>
         </div>
       </a>
-      <div class="navbar-nav ms-auto d-flex flex-row gap-4">
-        <a class="nav-link" href="index.html">Home</a>
-        <a class="nav-link active" href="data.html">Insights</a>
-        <a class="nav-link" href="tools.html">Tools</a>
-        <a class="nav-link" href="about.html">About</a>
+
+      <!-- PROFILE BUTTON - CENTERED VIA FLEX -->
+      <button id="profileNavBtn" onclick="openProfileModal()" style="background-color: #c0c0c0; border: 2px solid; border-color: #ffffff #808080 #808080 #ffffff;
+        padding: 2px 10px; font-size: 0.8rem; cursor: pointer; display: flex; align-items: center; gap: 5px;
+        white-space: nowrap; flex-shrink: 0;" title="My Profile" onmouseenter="this.style.backgroundColor='#d0d0d0'"
+        onmouseleave="this.style.backgroundColor='#c0c0c0'">
+        <i class="bi bi-person-fill"></i> My Profile
+      </button>
+
+      <div class="navbar-nav ms-0 d-flex flex-row gap-1" style="flex: 1; justify-content: flex-end;">
+        <a class="nav-link" href="index.html"><i class="bi bi-house-door me-2"></i>Home</a>
+        <a class="nav-link active" href="data.html"><i class="bi bi-bar-chart me-2"></i>Insights</a>
+        <a class="nav-link" href="tools.html"><i class="bi bi-tools me-2"></i>Tools</a>
+        <a class="nav-link" href="lab.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black"
+            class="me-2" viewBox="0 0 16 16" style="vertical-align: -0.125em; position: relative; top: 0.5px;">
+            <path
+              d="M2 4.5A.5.5 0 0 1 2.5 4h1a.5.5 0 0 1 .5.5v.5h1v-1a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v1h1v-.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1.238L14.502 11h-1.074l-3.292-3.292A.5.5 0 0 0 9.782 7.5h-3.564a.5.5 0 0 0-.354.146L2.572 11H1.498L2 5.738V4.5zM13.372 12l1.64-1.64a.5.5 0 0 0 .134-.354V8.5h-1v1.238L11.502 12h1.87zM2.628 12 1 10.36V8.5h1v1.238L4.498 12H2.628zM10 13H6v1h4v-1zm4 1.5c0 .276-.224.5-.5.5h-11a.5.5 0 0 1-.5-.5V14h12v.5z" />
+          </svg>Lab</a>
+        <a class="nav-link" href="about.html"><i class="bi bi-info-circle me-2"></i>About</a>
+        <li class="nav-item">
+          <a class="nav-link" href="help.html">
+            <i class="bi bi-question-circle me-1"></i>Help
+          </a>
+        </li>
       </div>
     </div>
   </nav>
 
-  <div class="container mt-5">
-    <ul class="nav nav-pills mb-5" id="dataTabs" role="tablist">
-      <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="stats-tab" data-bs-toggle="tab" data-bs-target="#stats" type="button"
-          role="tab">Overview</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="expenses-tab" data-bs-toggle="tab" data-bs-target="#expenses" type="button"
-          role="tab">Expenses</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="emis-tab" data-bs-toggle="tab" data-bs-target="#emis" type="button"
-          role="tab">EMIs</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="people-tab" data-bs-toggle="tab" data-bs-target="#people" type="button"
-          role="tab">Ledger</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="history-tab" data-bs-toggle="tab" data-bs-target="#history" type="button"
-          role="tab">History</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="summary-tab" data-bs-toggle="tab" data-bs-target="#summary" type="button"
-          role="tab">Summary</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button"
-          role="tab">Settings</button>
-      </li>
-    </ul>
+  <div class="container"
+    style="max-width: 100% !important; padding: 0 1rem; overflow-y: hidden; display: flex; flex-direction: column;">
+    <div id="pageLayout"
+      style="display: grid; grid-template-columns: 200px 1fr 200px; gap: 12px; align-items: stretch; padding-top: 1rem; flex: 1; overflow: hidden;">
 
-    <div class="tab-content" id="dataTabsContent">
-      <div class="tab-pane fade show active" id="stats" role="tabpanel">
-        <div class="card section-card">
-          <h4 class="mb-4">Monthly Financial Overview</h4>
-          <div class="row g-4 mb-4 align-items-end">
-            <div class="col-md-4">
-              <label for="monthSelector" class="form-label text-muted small fw-bold">Select Analysis Month</label>
-              <input type="month" id="monthSelector" class="form-control" onchange="updateStats()">
-            </div>
-            <div class="col-md-8">
-              <div id="budgetAlert"></div>
-              <div id="categoryAlerts" class="mt-2"></div>
-            </div>
+      <!-- LEFT WIDGETS COLUMN -->
+      <div id="leftWidgets"
+        style="display: flex; flex-direction: column; gap: 12px; position: sticky; top: 0; height: 100%;">
+        <div class="widget-slot" id="slot-L1">
+          <div class="widget-add-btn" onclick="openWidgetPicker('slot-L1')"
+            style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; cursor: pointer;">
+            <span style="font-size: 1.75rem; color: #808080; display: block; margin-bottom: 6px;">
+              <i class="bi bi-plus-lg"></i>
+            </span>
+            <span
+              style="font-size: 0.75rem; color: #808080; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px;">
+              Add Widget
+            </span>
           </div>
-
-          <div class="row g-4 mb-5">
-            <div class="col-md-3">
-              <div class="summary-stat-card shadow-sm">
-                <h6>Monthly Spend</h6>
-                <p id="totalExpense" class="stat-value text-primary">₹0</p>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="summary-stat-card shadow-sm">
-                <h6>Daily Burn</h6>
-                <p id="avgDaily" class="stat-value">₹0</p>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="summary-stat-card shadow-sm">
-                <h6>Projected Total</h6>
-                <p id="projected" class="stat-value text-secondary">₹0</p>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="summary-stat-card shadow-sm">
-                <h6>Savings Rate</h6>
-                <p id="savingsRate" class="stat-value">—</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Chart moved to Summary Tab -->
         </div>
-      </div>
-      <div class="tab-pane fade" id="expenses" role="tabpanel" aria-labelledby="expenses-tab">
-        <h3>Expenses</h3>
-        <ul id="expenseList" class="list-group mb-3"></ul>
-      </div>
-      <div class="tab-pane fade" id="emis" role="tabpanel" aria-labelledby="emis-tab">
-        <h3 class="mt-4">EMIs</h3>
-        <ul id="emiList" class="list-group mb-3"></ul>
-      </div>
-      <div class="tab-pane fade" id="people" role="tabpanel" aria-labelledby="people-tab">
-        <h3 class="mt-4">People Ledger</h3>
-        <ul id="peopleList" class="list-group"></ul>
-      </div>
-      <div class="tab-pane fade" id="history" role="tabpanel" aria-labelledby="history-tab">
-        <div class="card p-3">
-          <h4>Expense History</h4>
-          <div class="mb-3">
-            <input type="text" id="historySearchInput" class="form-control" placeholder="Search by category..."
-              onkeyup="filterHistory()">
-            <p id="historyCount" class="mt-2 text-muted">Showing 0 of 0 expenses</p>
+        <div class="widget-slot" id="slot-L2">
+          <div class="widget-add-btn" onclick="openWidgetPicker('slot-L2')"
+            style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; cursor: pointer;">
+            <span style="font-size: 1.75rem; color: #808080; display: block; margin-bottom: 6px;">
+              <i class="bi bi-plus-lg"></i>
+            </span>
+            <span
+              style="font-size: 0.75rem; color: #808080; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px;">
+              Add Widget
+            </span>
           </div>
-          <ul id="historyList" class="list-group"></ul>
         </div>
-      </div>
-      <div class="tab-pane fade" id="summary" role="tabpanel">
-        <div class="card section-card">
-          <h4 class="mb-4 text-dark border-0">Financial Summary</h4>
-          <div class="row g-3 mb-4">
-            <div class="col-md-3">
-              <div class="summary-stat-card">
-                <h6><i class="bi bi-wallet2 me-2"></i>All-Time Total</h6>
-                <p id="allTimeTotal" class="stat-value">₹0</p>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-              <div class="summary-stat-card shadow-sm">
-                <h6><i class="bi bi-fire me-2"></i>Biggest Spend</h6>
-                <p id="biggestExpense" class="stat-value text-danger">—</p>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-              <div class="summary-stat-card shadow-sm">
-                <h6><i class="bi bi-tag me-2"></i>Top Category</h6>
-                <p id="topCategory" class="stat-value text-primary">—</p>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-              <div class="summary-stat-card shadow-sm">
-                <h6><i class="bi bi-arrow-left-right me-2"></i>Net Lent</h6>
-                <p id="totalLent" class="stat-value">₹0</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="row g-3">
-            <div class="col-md-6">
-              <div class="card section-card p-3">
-                <h4 class="mb-3">Spending Distribution</h4>
-                <canvas id="expenseChart" style="max-height: 350px;"></canvas>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="card section-card p-3">
-                <h4 class="mb-3">Expenditure Trends</h4>
-                <canvas id="summaryChart" style="max-height: 350px;"></canvas>
-              </div>
-            </div>
+        <div class="widget-slot" id="slot-L3">
+          <div class="widget-add-btn" onclick="openWidgetPicker('slot-L3')"
+            style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; cursor: pointer;">
+            <span style="font-size: 1.75rem; color: #808080; display: block; margin-bottom: 6px;">
+              <i class="bi bi-plus-lg"></i>
+            </span>
+            <span
+              style="font-size: 0.75rem; color: #808080; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px;">
+              Add Widget
+            </span>
           </div>
         </div>
       </div>
-      <div class="tab-pane fade" id="settings" role="tabpanel">
-        <div class="card section-card">
-          <h4 class="mb-4">Application Settings</h4>
 
-          <div class="row g-5">
-            <!-- LEFT COLUMN -->
-            <div class="col-md-6">
-              <div class="mb-5">
-                <h5 class="mb-4 fw-bold"><i class="bi bi-cash-stack me-2"></i>Core Financials</h5>
-                <div class="mb-4">
-                  <label class="form-label text-muted small fw-bold">Monthly Budget</label>
-                  <div class="input-group">
-                    <span class="input-group-text currency-prefix border-end-0">₹</span>
-                    <input type="number" id="monthlyBudget" class="form-control border-start-0" placeholder="0.00">
-                    <button class="btn btn-primary" onclick="saveBudget()">Save Budget</button>
+      <!-- MAIN CONTENT COLUMN -->
+      <div id="mainContent" style="overflow-y: auto; padding-right: 8px; height: 100%; padding-bottom: 2rem;">
+        <section class="hero-banner">
+          <h1 class="page-title">Financial Insights</h1>
+          <p id="profileGreeting" style="display:none; font-size: 0.85rem; color: #404040; font-weight: bold;"></p>
+          <p class="hero-subtitle">Deep dive into your spending habits and financial health.</p>
+          <div class="quote-box">
+            <div class="quote-label">Financial Wisdom</div>
+            <div class="quote-inner">
+              <span>"Beware of little expenses; a small leak will sink a great ship." ~ Benjamin Franklin</span>
+            </div>
+          </div>
+        </section>
+
+        <div class="text-center">
+          <ul class="nav nav-pills mb-5" id="dataTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="stats-tab" data-bs-toggle="tab" data-bs-target="#stats" type="button"
+                role="tab">
+                <i class="bi bi-eye me-2"></i>Overview
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="expenses-tab" data-bs-toggle="tab" data-bs-target="#expenses" type="button"
+                role="tab">
+                <i class="bi bi-cart me-2"></i>Expenses
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="emis-tab" data-bs-toggle="tab" data-bs-target="#emis" type="button"
+                role="tab">
+                <i class="bi bi-calendar-check me-2"></i>EMIs
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="people-tab" data-bs-toggle="tab" data-bs-target="#people" type="button"
+                role="tab">
+                <i class="bi bi-people me-2"></i>Ledger
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="history-tab" data-bs-toggle="tab" data-bs-target="#history" type="button"
+                role="tab">
+                <i class="bi bi-clock-history me-2"></i>History
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="summary-tab" data-bs-toggle="tab" data-bs-target="#summary" type="button"
+                role="tab">
+                <i class="bi bi-graph-up me-2"></i>Analytics
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="goals-tab" data-bs-toggle="pill" data-bs-target="#goals" type="button"
+                role="tab">
+                <i class="bi bi-flag me-2"></i>Goals
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="networth-tab" data-bs-toggle="pill" data-bs-target="#networth" type="button"
+                role="tab">
+                <i class="bi bi-bank me-2"></i>Net Worth
+              </button>
+            </li>
+          </ul>
+
+          <div class="tab-content" id="dataTabsContent">
+            <div class="tab-pane fade show active" id="stats" role="tabpanel">
+              <div class="card section-card">
+                <div class="win95-title-bar mb-4">
+                  <i class="bi bi-eye me-2"></i>MONTHLY FINANCIAL OVERVIEW
+                </div>
+                <div class="row g-4 mb-4 align-items-end">
+                  <div class="col-md-4">
+                    <label for="monthSelector" class="form-label text-muted small fw-bold">Select Analysis Month</label>
+                    <input type="month" id="monthSelector" class="form-control" onchange="updateStats()">
+                  </div>
+                  <div class="col-md-8">
+                    <div id="budgetAlert"></div>
+                    <div id="categoryAlerts" class="mt-2"></div>
                   </div>
                 </div>
 
-                <div class="mb-4">
-                  <label class="form-label text-muted small fw-bold">Monthly Income</label>
-                  <div class="input-group">
-                    <span class="input-group-text currency-prefix border-end-0">₹</span>
-                    <input type="number" id="monthlyIncome" class="form-control border-start-0" placeholder="0.00">
-                    <button class="btn btn-primary" onclick="saveIncome()">Save Income</button>
+                <div class="row g-4 mb-5">
+                  <div class="col-md-3">
+                    <div class="summary-stat-card shadow-sm">
+                      <h6>Monthly Spend</h6>
+                      <p id="totalExpense" class="stat-value">₹0</p>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="summary-stat-card shadow-sm">
+                      <h6>Daily Burn</h6>
+                      <p id="avgDaily" class="stat-value">₹0</p>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="summary-stat-card shadow-sm">
+                      <h6>Projected Total</h6>
+                      <p id="projected" class="stat-value text-secondary">₹0</p>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="summary-stat-card shadow-sm">
+                      <h6>Savings Rate</h6>
+                      <p id="savingsRate" class="stat-value"></p>
+                    </div>
                   </div>
                 </div>
 
-                <div class="mb-4">
-                  <label class="form-label text-muted small fw-bold">Currency Symbol</label>
-                  <input type="text" id="currencySymbol" class="form-control" maxlength="3" placeholder="₹">
+                <!-- Chart moved to Summary Tab -->
+              </div>
+            </div>
+            <div class="tab-pane fade" id="expenses" role="tabpanel" aria-labelledby="expenses-tab">
+              <div class="card section-card">
+                <div class="win95-title-bar mb-4">
+                  <i class="bi bi-cart me-2"></i>EXPENSE LISTING
                 </div>
-
-                <div class="mb-4">
-                  <label class="form-label text-muted small fw-bold">Default Expense Category</label>
-                  <input type="text" id="defaultCategory" class="form-control" placeholder="General">
+                <ul id="expenseList" class="list-group mb-3"></ul>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="emis" role="tabpanel" aria-labelledby="emis-tab">
+              <div class="card section-card mt-4">
+                <div class="win95-title-bar mb-4">
+                  <i class="bi bi-calendar-check me-2"></i>EMI SCHEDULES
+                </div>
+                <ul id="emiList" class="list-group mb-3"></ul>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="people" role="tabpanel" aria-labelledby="people-tab">
+              <div class="card section-card mt-4">
+                <div class="win95-title-bar mb-4">
+                  <i class="bi bi-people me-2"></i>PEOPLE LEDGER
+                </div>
+                <ul id="peopleList" class="list-group"></ul>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="history" role="tabpanel" aria-labelledby="history-tab">
+              <div class="card section-card p-0">
+                <div class="win95-title-bar mb-4">
+                  <i class="bi bi-clock-history me-2"></i>EXPENSE HISTORY
+                </div>
+                <div class="p-3">
+                  <div class="mb-3">
+                    <input type="text" id="historySearchInput" class="form-control" placeholder="Search by category..."
+                      onkeyup="filterHistory()">
+                    <p id="historyCount" class="mt-2 text-muted">Showing 0 of 0 expenses</p>
+                  </div>
+                  <ul id="historyList" class="list-group"></ul>
                 </div>
               </div>
-
-              <div class="mt-5">
-                <h5 class="mb-4 fw-bold"><i class="bi bi-tools me-2"></i>Operations & Maintenance</h5>
-                <div class="mb-4">
-                  <label class="form-label text-muted small fw-bold">Database Maintenance</label>
-                  <div class="d-flex gap-2">
-                    <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#compactModal">Compact
-                      Database</button>
-                    <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#rebuildModal">Rebuild
-                      Index</button>
+            </div>
+            <div class="tab-pane fade" id="summary" role="tabpanel">
+              <div class="card section-card">
+                <div class="win95-title-bar mb-4">
+                  <i class="bi bi-graph-up me-2"></i>DEEP ANALYTICS
+                </div>
+                <div class="row g-3 mb-4">
+                  <div class="col-md-3">
+                    <div class="summary-stat-card">
+                      <h6><i class="bi bi-wallet2 me-2"></i>All-Time Total</h6>
+                      <p id="allTimeTotal" class="stat-value">&#8377;0</p>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="summary-stat-card shadow-sm">
+                      <h6><i class="bi bi-fire me-2"></i>Biggest Spend</h6>
+                      <p id="biggestExpense" class="stat-value">&mdash;</p>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="summary-stat-card shadow-sm">
+                      <h6><i class="bi bi-tag me-2"></i>Top Category</h6>
+                      <p id="topCategory" class="stat-value">&mdash;</p>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="summary-stat-card shadow-sm">
+                      <h6><i class="bi bi-arrow-left-right me-2"></i>Net Lent</h6>
+                      <p id="totalLent" class="stat-value">&#8377;0</p>
+                    </div>
                   </div>
                 </div>
-
-                <div class="mb-4">
-                  <label class="form-label text-muted small fw-bold">Local Data Portability</label>
-                  <div class="row g-2">
-                    <div class="col-4">
-                      <button class="btn btn-primary w-100" onclick="exportData()">Export JSON</button>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <div class="card section-card p-0">
+                      <div class="win95-title-bar mb-3" style="font-size:0.8rem;">SPENDING DISTRIBUTION</div>
+                      <div class="p-3"><canvas id="expenseChart" style="max-height:350px;"></canvas></div>
                     </div>
-                    <div class="col-4">
-                      <button class="btn btn-primary w-100" onclick="exportCSV()">Export CSV</button>
-                    </div>
-                    <div class="col-4">
-                      <label for="importFile" class="btn btn-primary w-100 mb-0 text-nowrap">Import JSON</label>
-                      <input type="file" id="importFile" hidden accept=".json" onchange="importData()">
+                  </div>
+                  <div class="col-md-6">
+                    <div class="card section-card p-0">
+                      <div class="win95-title-bar mb-3" style="font-size:0.8rem;">EXPENDITURE TRENDS</div>
+                      <div class="p-3"><canvas id="summaryChart" style="max-height:350px;"></canvas></div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- RIGHT COLUMN -->
-            <div class="col-md-6">
-              <div class="mb-5">
-                <h5 class="mb-4 fw-bold"><i class="bi bi-tag me-2"></i>Category Budgets</h5>
-                <div class="row g-2 mb-3">
-                  <div class="col-6">
-                    <input type="text" id="budgetCategoryName" class="form-control" placeholder="Category"
-                      list="categoryList">
+            <div class="tab-pane fade" id="goals" role="tabpanel">
+              <div class="card section-card">
+                <h4><i class="bi bi-flag me-3"></i>Financial Goals</h4>
+
+                <!-- Add Goal Form -->
+                <div class="row g-3 mb-4">
+                  <div class="col-md-4">
+                    <label class="form-label text-muted small fw-bold">Goal Name</label>
+                    <input type="text" id="goalName" class="form-control" placeholder="Europe Trip, Emergency Fund...">
                   </div>
-                  <div class="col-6">
+                  <div class="col-md-4">
+                    <label class="form-label text-muted small fw-bold">Target Amount</label>
                     <div class="input-group">
                       <span class="input-group-text currency-prefix">₹</span>
-                      <input type="number" id="budgetCategoryAmount" class="form-control" placeholder="Limit">
+                      <input type="number" id="goalTarget" class="form-control" placeholder="0.00">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label text-muted small fw-bold">Target Date</label>
+                    <input type="date" id="goalDate" class="form-control">
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label text-muted small fw-bold">Starting Amount (optional)</label>
+                    <div class="input-group">
+                      <span class="input-group-text currency-prefix">₹</span>
+                      <input type="number" id="goalStarting" class="form-control" placeholder="0.00">
                     </div>
                   </div>
                   <div class="col-12 mt-2">
-                    <button class="btn btn-primary w-100" onclick="addCategoryBudget()">Set Category Limit</button>
+                    <button class="btn btn-primary btn-wide" onclick="addGoal()">
+                      Add Financial Goal
+                    </button>
                   </div>
                 </div>
-                <ul id="categoryBudgetList" class="list-group small mb-4"></ul>
+
+                <!-- Goals List -->
+                <h5 class="fw-bold mb-3 border-top pt-4">Your Goals</h5>
+                <div id="goalsList" class="row g-3"></div>
               </div>
+            </div>
 
-              <div class="mb-5">
-                <h5 class="mb-4 fw-bold"><i class="bi bi-palette me-2"></i>Interface & Regional</h5>
-                <div class="mb-4">
-                  <label class="form-label text-muted small fw-bold">Background Style</label>
-                  <div class="input-group">
-                    <select id="bgStyle" class="form-control">
-                      <option value="Soft Gradient">Soft Gradient</option>
-                      <option value="Corporate Blue">Corporate Blue</option>
-                      <option value="Classic Gray">Classic Gray</option>
-                    </select>
-                    <button class="btn btn-primary" onclick="saveAppearance()">Apply Theme</button>
+            <div class="tab-pane fade" id="networth" role="tabpanel">
+              <div class="card section-card">
+                <h4><i class="bi bi-bank me-3"></i>Net Worth Tracker</h4>
+                <p class="text-muted small mb-4">Track your assets and liabilities to see your true financial picture.
+                </p>
+
+                <div class="row g-4">
+                  <!-- Assets Column -->
+                  <div class="col-md-6">
+                    <h5 class="fw-bold mb-3" style="color: #808080;">
+                      <i class="bi bi-plus-circle me-2"></i>Assets
+                    </h5>
+                    <div class="row g-2 mb-3">
+                      <div class="col-7">
+                        <input type="text" id="assetName" class="form-control"
+                          placeholder="Asset name (Savings, Stocks...)">
+                      </div>
+                      <div class="col-5">
+                        <div class="input-group">
+                          <span class="input-group-text currency-prefix">₹</span>
+                          <input type="number" id="assetAmount" class="form-control" placeholder="Value">
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <select id="assetType" class="form-control">
+                          <option value="Cash">Cash / Savings</option>
+                          <option value="Investments">Investments</option>
+                          <option value="Property">Property</option>
+                          <option value="Other">Other</option>
+                        </select>
+                      </div>
+                      <div class="col-12">
+                        <button class="btn btn-primary w-100" onclick="addAsset()">
+                          Add Asset
+                        </button>
+                      </div>
+                    </div>
+                    <ul id="assetList" class="list-group list-group-flush"></ul>
+                    <div class="mt-3 fw-bold">
+                      Total Assets: <span id="totalAssetsDisplay" style="color: #808080;">₹0</span>
+                    </div>
+                  </div>
+
+                  <!-- Liabilities Column -->
+                  <div class="col-md-6">
+                    <h5 class="fw-bold mb-3" style="color: #606060;">
+                      <i class="bi bi-dash-circle me-2"></i>Liabilities
+                    </h5>
+                    <div class="row g-2 mb-3">
+                      <div class="col-7">
+                        <input type="text" id="liabilityName" class="form-control"
+                          placeholder="Liability name (Loan, Credit Card...)">
+                      </div>
+                      <div class="col-5">
+                        <div class="input-group">
+                          <span class="input-group-text currency-prefix">₹</span>
+                          <input type="number" id="liabilityAmount" class="form-control" placeholder="Amount">
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <button class="btn btn-primary w-100" onclick="addLiability()">
+                          Add Liability
+                        </button>
+                      </div>
+                    </div>
+                    <ul id="liabilityList" class="list-group list-group-flush"></ul>
+                    <div class="mt-3 fw-bold">
+                      Total Liabilities: <span id="totalLiabilitiesDisplay" style="color:#606060;">₹0</span>
+                    </div>
                   </div>
                 </div>
 
-                <div class="mb-4">
-                  <label class="form-label text-muted small fw-bold">Display Date Format</label>
-                  <select id="dateFormat" class="form-control">
-                    <option value="DD/MM/YYYY">DD/MM/YYYY</option>
-                    <option value="MM/DD/YYYY">MM/DD/YYYY</option>
-                    <option value="YYYY-MM-DD">YYYY-MM-DD</option>
-                  </select>
-                </div>
-                <button class="btn btn-primary w-100" onclick="savePreferences()">Save All Regional Preferences</button>
-              </div>
-
-              <div class="mt-5">
-                <h5 class="mb-4 fw-bold"><i class="bi bi-info-circle me-2"></i>System Info & Danger Zone</h5>
-                <div class="row g-3 mb-4">
-                  <div class="col-6">
-                    <label class="form-label text-muted small fw-bold">App Version</label>
-                    <input type="text" class="form-control" value="v2.4.0-Stable" disabled>
+                <!-- Net Worth Summary -->
+                <div class="mt-5 border-top pt-4">
+                  <div class="row g-3 text-center">
+                    <div class="col-md-4">
+                      <div class="summary-stat-card">
+                        <div class="stat-value" id="nwAssetsTotal">₹0</div>
+                        <div class="stat-label">Total Assets</div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="summary-stat-card">
+                        <div class="stat-value" id="nwLiabilitiesTotal">₹0</div>
+                        <div class="stat-label">Total Liabilities</div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="summary-stat-card">
+                        <div class="stat-value" id="nwNetTotal">₹0</div>
+                        <div class="stat-label">Net Worth</div>
+                      </div>
+                    </div>
                   </div>
-                  <div class="col-6">
-                    <label class="form-label text-muted small fw-bold">Storage Type</label>
-                    <input type="text" class="form-control" value="Local-Only" disabled>
-                  </div>
-                </div>
-
-                <div class="p-3 border border-danger">
-                  <label class="form-label text-danger small fw-bold mb-3">Hard Reset (Destructive)</label>
-                  <button class="btn btn-danger w-100" onclick="showEraseModal()">Wipe All Local Data
-                    Permanently</button>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      </div> <!-- end mainContent -->
 
-          <div class="mt-5 text-center border-top pt-5">
-            <h5 class="mb-4 fw-bold"><i class="bi bi-rocket-takeoff me-2"></i>Product Development Roadmap</h5>
-            <button class="btn btn-primary btn-wide mb-3" type="button" data-bs-toggle="collapse"
-              data-bs-target="#upcomingFeaturesCollapse" aria-expanded="false" aria-controls="upcomingFeaturesCollapse">
-              View Future Milestones
-            </button>
+      <!-- RIGHT WIDGETS COLUMN -->
+      <div id="rightWidgets"
+        style="display: flex; flex-direction: column; gap: 12px; position: sticky; top: 0; height: 100%;">
+        <div class="widget-slot" id="slot-R1">
+          <div class="widget-add-btn" onclick="openWidgetPicker('slot-R1')"
+            style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; cursor: pointer;">
+            <span style="font-size: 1.75rem; color: #808080; display: block; margin-bottom: 6px;">
+              <i class="bi bi-plus-lg"></i>
+            </span>
+            <span
+              style="font-size: 0.75rem; color: #808080; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px;">
+              Add Widget
+            </span>
+          </div>
+        </div>
+        <div class="widget-slot" id="slot-R2">
+          <div class="widget-add-btn" onclick="openWidgetPicker('slot-R2')"
+            style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; cursor: pointer;">
+            <span style="font-size: 1.75rem; color: #808080; display: block; margin-bottom: 6px;">
+              <i class="bi bi-plus-lg"></i>
+            </span>
+            <span
+              style="font-size: 0.75rem; color: #808080; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px;">
+              Add Widget
+            </span>
+          </div>
+        </div>
+        <div class="widget-slot" id="slot-R3">
+          <div class="widget-add-btn" onclick="openWidgetPicker('slot-R3')"
+            style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; cursor: pointer;">
+            <span style="font-size: 1.75rem; color: #808080; display: block; margin-bottom: 6px;">
+              <i class="bi bi-plus-lg"></i>
+            </span>
+            <span
+              style="font-size: 0.75rem; color: #808080; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px;">
+              Add Widget
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </div> <!-- end pageLayout -->
+  </div> <!-- end container -->
+
+  <div class="modal" id="profileModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">SYSTEM PROPERTIES & USER PROFILE</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="d-flex" style="min-height: 500px;">
+          <!-- Left Navigation (Win95 style sidebar tabs) -->
+          <div class="win95-sidebar d-none d-md-flex">
+            <div class="nav flex-column nav-pills" id="profileTabs" role="tablist">
+              <button class="nav-link active mb-1 text-start" id="profile-bio-tab" data-bs-toggle="pill"
+                data-bs-target="#profile-bio" type="button" role="tab"><i class="bi bi-person-badge me-2"></i>User
+                Bio</button>
+              <button class="nav-link mb-1 text-start" id="profile-cash-tab" data-bs-toggle="pill"
+                data-bs-target="#profile-cash" type="button" role="tab"><i
+                  class="bi bi-wallet2 me-2"></i>Cashflow</button>
+              <button class="nav-link mb-1 text-start" id="profile-strat-tab" data-bs-toggle="pill"
+                data-bs-target="#profile-strat" type="button" role="tab"><i
+                  class="bi bi-graph-up-arrow me-2"></i>Strategy</button>
+              <button class="nav-link mb-1 text-start" id="profile-settings-tab" data-bs-toggle="pill"
+                data-bs-target="#profile-settings" type="button" role="tab"><i
+                  class="bi bi-gear me-2"></i>Settings</button>
+            </div>
+            <div class="mt-auto p-2 text-center">
+              <img src="assets/Monever%20Logo.png" alt="Monever"
+                style="width: 40px; opacity: 0.5; filter: grayscale(1);">
+              <div class="small text-muted mt-2" style="font-size: 0.65rem; line-height: 1.2;">
+                Made With love,<br>Made For You,<br>By Hero Harshit.
+              </div>
+            </div>
           </div>
 
-          <div class="collapse" id="upcomingFeaturesCollapse">
-            <div class="upcoming-features-container mt-4 mb-3 text-center">
-              <div class="card section-card feature-card mx-auto p-3">
-                <div class="d-flex flex-column align-items-center justify-content-between gap-3 mb-3">
-                  <div class="text-center">
-                    <h4 class="mb-1 border-0">Upcoming Roadmap</h4>
-                    <p class="text-muted small mb-0">Standard utility updates and technical milestones.</p>
-                  </div>
-                  <div class="d-flex gap-2 justify-content-center">
-                    <button class="btn btn-primary btn-wide feature-control" type="button"
-                      data-bs-target="#featureCarousel" data-bs-slide="prev">
-                      <i class="bi bi-chevron-left"></i>
-                    </button>
-                    <button class="btn btn-primary btn-wide feature-control" type="button"
-                      data-bs-target="#featureCarousel" data-bs-slide="next">
-                      <i class="bi bi-chevron-right"></i>
-                    </button>
-                  </div>
+          <!-- Right Content Area -->
+          <div class="flex-grow-1 d-flex flex-column">
+            <div class="modal-body-scroll flex-grow-1">
+              <div class="tab-content" id="profileTabsContent">
+
+                <!-- TAB 1: BIO -->
+                <div class="tab-pane fade show active" id="profile-bio" role="tabpanel">
+                  <fieldset class="win95-fieldset">
+                    <legend class="win95-legend">Identity Card</legend>
+                    <div class="prof-grid">
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Full Name</label>
+                        <input type="text" id="profName" class="form-control" placeholder="User Name">
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Age</label>
+                        <input type="number" id="profAge" class="form-control" placeholder="25">
+                      </div>
+                    </div>
+                    <div class="prof-grid">
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Employment</label>
+                        <select id="profEmployment" class="form-control">
+                          <option value="">Select Type</option>
+                          <option value="Salaried">Salaried</option>
+                          <option value="Freelancer">Freelancer</option>
+                          <option value="Business Owner">Business Owner</option>
+                          <option value="Student">Student</option>
+                        </select>
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Partner's Name</label>
+                        <input type="text" id="profPartnerName" class="form-control">
+                      </div>
+                    </div>
+                  </fieldset>
+
+                  <fieldset class="win95-fieldset">
+                    <legend class="win95-legend">Regional Identity</legend>
+                    <div class="prof-grid">
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Location (City)</label>
+                        <select id="profCity" class="form-control">
+                          <option value="">Select City</option>
+                          <option value="Mumbai">Mumbai</option>
+                          <option value="Delhi">Delhi</option>
+                          <option value="Bangalore">Bangalore</option>
+                          <option value="Hyderabad">Hyderabad</option>
+                          <option value="Chennai">Chennai</option>
+                          <option value="Pune">Pune</option>
+                          <option value="Kolkata">Kolkata</option>
+                          <option value="Other">Other</option>
+                        </select>
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">City Tier</label>
+                        <select id="profCityType" class="form-control">
+                          <option value="">Select Tier</option>
+                          <option value="Metro">Tier 1 (Metro)</option>
+                          <option value="Non-Metro">Tier 2/3 (Non-Metro)</option>
+                        </select>
+                      </div>
+                    </div>
+                  </fieldset>
                 </div>
-                <div id="featureCarousel" class="carousel slide feature-carousel" data-bs-ride="false">
-                  <div class="carousel-inner">
-                    <div class="carousel-item active">
-                      <div class="row g-4">
-                        <div class="col-md-4">
-                          <div class="card feature-card-small">
-                            <div class="icon-circle mb-3">🔐</div>
-                            <h6>Authentication</h6>
-                            <p class="text-muted small">Secure cloud sync for your data.</p>
+
+                <!-- TAB 2: CASHFLOW -->
+                <div class="tab-pane fade" id="profile-cash" role="tabpanel">
+                  <fieldset class="win95-fieldset">
+                    <legend class="win95-legend">Monthly Liquidity</legend>
+                    <div class="prof-grid">
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">In-Hand Salary (₹)</label>
+                        <input type="number" id="profInHand" class="form-control">
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Side Income (₹)</label>
+                        <input type="number" id="profSideIncome" class="form-control" value="0">
+                      </div>
+                    </div>
+                    <div class="prof-grid">
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Fixed Expenses (₹)</label>
+                        <input type="number" id="profExpenses" class="form-control">
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Monthly Rent (₹)</label>
+                        <input type="number" id="profRent" class="form-control" value="0">
+                      </div>
+                    </div>
+                  </fieldset>
+
+                  <fieldset class="win95-fieldset">
+                    <legend class="win95-legend">Budgeting Constraints</legend>
+                    <div class="prof-grid">
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Spending Limit (₹)</label>
+                        <input type="number" id="profBudget" class="form-control">
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Target Savings (₹)</label>
+                        <input type="number" id="profMonthlySavings" class="form-control">
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label text-muted small fw-bold">Income for Tracking (₹)</label>
+                      <input type="number" id="profTrackingIncome" class="form-control">
+                      <div class="form-text text-muted small" style="font-size: 0.65rem;">Used as base for percentage
+                        calculations.</div>
+                    </div>
+                  </fieldset>
+                </div>
+
+                <!-- TAB 3: STRATEGY -->
+                <div class="tab-pane fade" id="profile-strat" role="tabpanel">
+                  <fieldset class="win95-fieldset">
+                    <legend class="win95-legend">Wealth Strategy</legend>
+                    <div class="prof-grid">
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Current Net Worth (₹)</label>
+                        <input type="number" id="profCorpus" class="form-control">
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Expected Return (%)</label>
+                        <input type="number" id="profExpectedReturn" class="form-control" value="12">
+                      </div>
+                    </div>
+                    <div class="prof-grid">
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Risk Appetite</label>
+                        <select id="profRisk" class="form-control">
+                          <option value="">Select Risk</option>
+                          <option value="Conservative">Conservative</option>
+                          <option value="Moderate">Moderate</option>
+                          <option value="Aggressive">Aggressive</option>
+                        </select>
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Primary Goal</label>
+                        <select id="profGoal" class="form-control">
+                          <option value="">Select Goal</option>
+                          <option value="Wealth Building">Wealth Building</option>
+                          <option value="Early Retirement">Early Retirement</option>
+                          <option value="Buying a Home">Buying a Home</option>
+                          <option value="Emergency Fund">Emergency Fund</option>
+                          <option value="Child's Education">Child's Education</option>
+                          <option value="Business">Business</option>
+                        </select>
+                      </div>
+                    </div>
+                  </fieldset>
+
+                  <fieldset class="win95-fieldset">
+                    <legend class="win95-legend">Professional Profile</legend>
+                    <div class="prof-grid">
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Annual CTC (₹)</label>
+                        <input type="number" id="profCTC" class="form-control">
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Basic Salary %</label>
+                        <select id="profBasicPercent" class="form-control">
+                          <option value="">Select %</option>
+                          <option value="40%">40% of CTC</option>
+                          <option value="50%">50% of CTC</option>
+                          <option value="60%">60% of CTC</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="prof-grid">
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Tax Regime</label>
+                        <select id="profTaxRegime" class="form-control">
+                          <option value="">Select Regime</option>
+                          <option value="New Regime">New Regime</option>
+                          <option value="Old Regime">Old Regime</option>
+                        </select>
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Target Retirement Age</label>
+                        <input type="number" id="profRetirementAge" class="form-control" value="60">
+                      </div>
+                    </div>
+                  </fieldset>
+
+                  <fieldset class="win95-fieldset">
+                    <legend class="win95-legend">Work & Taxes (Advanced)</legend>
+                    <div class="prof-grid">
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Work Hours/Day</label>
+                        <input type="number" id="profWorkHours" class="form-control" value="8">
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Work Days/Week</label>
+                        <input type="number" id="profWorkDays" class="form-control" value="5">
+                      </div>
+                    </div>
+                    <div class="prof-grid">
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">PF Contribution</label>
+                        <select id="profPF" class="form-control">
+                          <option value="">Select PF</option>
+                          <option value="12% of Basic (Standard)">12% (Standard)</option>
+                          <option value="Opt Out">Opt Out</option>
+                        </select>
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">HRA % of Basic</label>
+                        <select id="profHRAPercent" class="form-control">
+                          <option value="">Select %</option>
+                          <option value="40% (Non-Metro)">40% (Non-Metro)</option>
+                          <option value="50% (Metro)">50% (Metro)</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="prof-grid">
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">WFH Days/Week</label>
+                        <input type="number" id="profWFHDays" class="form-control" value="0">
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Prof. Tax State</label>
+                        <select id="profProfTax" class="form-control">
+                          <option value="">Select State</option>
+                          <option value="Maharashtra (₹2400/yr)">Maharashtra</option>
+                          <option value="Karnataka (₹2400/yr)">Karnataka</option>
+                          <option value="Other (₹0)">Other</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="prof-grid">
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Commute (min)</label>
+                        <input type="number" id="profCommute" class="form-control" value="0">
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Monthly Work Exp (₹)</label>
+                        <input type="number" id="profWorkExpenses" class="form-control" value="0">
+                      </div>
+                    </div>
+                  </fieldset>
+                </div>
+
+                <!-- TAB 4: SETTINGS -->
+                <div class="tab-pane fade" id="profile-settings" role="tabpanel">
+                  <fieldset class="win95-fieldset">
+                    <legend class="win95-legend">Budget & Income</legend>
+                    <div class="mb-3">
+                      <label class="form-label text-muted small fw-bold">Monthly Budget</label>
+                      <div class="input-group">
+                        <span class="input-group-text currency-prefix">₹</span>
+                        <input type="number" id="monthlyBudgetInput" class="form-control" placeholder="0.00">
+                        <button class="btn btn-primary" onclick="saveBudget()">Save</button>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label text-muted small fw-bold">Monthly Income</label>
+                      <div class="input-group">
+                        <span class="input-group-text currency-prefix">₹</span>
+                        <input type="number" id="incomeInput" class="form-control" placeholder="0.00">
+                        <button class="btn btn-primary" onclick="saveIncome()">Save</button>
+                      </div>
+                    </div>
+
+                    <div class="mt-4">
+                      <h6 class="fw-bold mb-3"><i class="bi bi-tag me-2"></i>Category Budgets</h6>
+                      <div class="row g-2 mb-3">
+                        <div class="col-6">
+                          <input type="text" id="budgetCategoryName" class="form-control" placeholder="Category"
+                            list="categoryList">
+                        </div>
+                        <div class="col-6">
+                          <div class="input-group">
+                            <span class="input-group-text currency-prefix">₹</span>
+                            <input type="number" id="budgetCategoryAmount" class="form-control" placeholder="Limit">
                           </div>
                         </div>
-                        <div class="col-md-4">
-                          <div class="card feature-card-small">
-                            <div class="icon-circle mb-3">📱</div>
-                            <h6>Mobile PWA</h6>
-                            <p class="text-muted small">Native app feel for quick access.</p>
-                          </div>
+                        <div class="col-12 mt-2">
+                          <button class="btn btn-primary w-100" onclick="addCategoryBudget()">Set Category
+                            Limit</button>
                         </div>
-                        <div class="col-md-4">
-                          <div class="card feature-card-small">
-                            <div class="icon-circle mb-3">🤖</div>
-                            <h6>AI Insights</h6>
-                            <p class="text-muted small">Smart suggestions for spending.</p>
-                          </div>
+                      </div>
+                      <ul id="categoryBudgetList" class="list-group small mb-2"></ul>
+                    </div>
+                  </fieldset>
+
+                  <fieldset class="win95-fieldset">
+                    <legend class="win95-legend">Display & Regional</legend>
+                    <div class="prof-grid">
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Currency Symbol</label>
+                        <div class="input-group">
+                          <input type="text" id="currencySymbol" class="form-control" maxlength="3" placeholder="₹">
+                          <button class="btn btn-primary" onclick="savePreferences()">Apply</button>
+                        </div>
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Date Format</label>
+                        <select id="dateFormat" class="form-control">
+                          <option value="DD/MM/YYYY">DD/MM/YYYY</option>
+                          <option value="MM/DD/YYYY">MM/DD/YYYY</option>
+                          <option value="YYYY-MM-DD">YYYY-MM-DD</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label text-muted small fw-bold">Background Style</label>
+                      <div class="input-group">
+                        <select id="bgStyle" class="form-control">
+                          <option value="Soft Gradient">Soft Gradient</option>
+                          <option value="Corporate Blue">Corporate Blue</option>
+                          <option value="Classic Gray">Classic Gray</option>
+                        </select>
+                        <button class="btn btn-primary" onclick="saveAppearance()">Apply</button>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label text-muted small fw-bold">Widget Layout</label>
+                      <select id="widgetSeparation" class="form-control">
+                        <option value="global">Global (Same on all pages)</option>
+                        <option value="local">Local (Different for each page)</option>
+                      </select>
+                    </div>
+                  </fieldset>
+
+                  <fieldset class="win95-fieldset">
+                    <legend class="win95-legend">Maintenance & Data</legend>
+                    <div class="mb-3">
+                      <div class="row g-2">
+                        <div class="col-6"><button class="btn btn-primary w-100 btn-sm" data-bs-toggle="modal"
+                            data-bs-target="#compactModal">Compact DB</button></div>
+                        <div class="col-6"><button class="btn btn-primary w-100 btn-sm" data-bs-toggle="modal"
+                            data-bs-target="#rebuildModal">Rebuild Index</button></div>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label text-muted small fw-bold">Portability</label>
+                      <div class="row g-2">
+                        <div class="col-4"><button class="btn btn-primary w-100 btn-sm"
+                            onclick="exportData()">JSON</button></div>
+                        <div class="col-4"><button class="btn btn-primary w-100 btn-sm"
+                            onclick="exportCSV()">CSV</button></div>
+                        <div class="col-4">
+                          <label for="importFile" class="btn btn-primary w-100 btn-sm mb-0">Import</label>
+                          <input type="file" id="importFile" hidden accept=".json" onchange="importData()">
                         </div>
                       </div>
                     </div>
-                    <div class="carousel-item">
-                      <div class="row g-4">
-                        <div class="col-md-4">
-                          <div class="card feature-card-small">
-                            <div class="icon-circle mb-3">🧾</div>
-                            <h6>OCR Scanning</h6>
-                            <p class="text-muted small">Snap a photo to auto-log expenses.</p>
-                          </div>
-                        </div>
-                        <div class="col-md-4">
-                          <div class="card feature-card-small">
-                            <div class="icon-circle mb-3">👥</div>
-                            <h6>Split Bills</h6>
-                            <p class="text-muted small">Split expenses with friends.</p>
-                          </div>
-                        </div>
-                        <div class="col-md-4">
-                          <div class="card feature-card-small">
-                            <div class="icon-circle mb-3">📊</div>
-                            <h6>Deep Analytics</h6>
-                            <p class="text-muted small">Export custom financial reports.</p>
-                          </div>
-                        </div>
-                      </div>
+                    <div class="p-2 border" style="border-color:#808080 !important; margin-top:1rem;">
+                      <button class="btn btn-sm w-100" onclick="showEraseModal()">FACTORY RESET SYSTEM</button>
                     </div>
-                  </div>
+                  </fieldset>
+
+                  <fieldset class="win95-fieldset mt-3">
+                    <legend class="win95-legend">Evaluation & Testing</legend>
+                    <div class="mb-2">
+                      <button onclick="loadDemoData()" id="demo-load-btn" class="btn btn-primary w-100 btn-sm">▶ Load
+                        Demo Data</button>
+                    </div>
+                    <div id="demo-banner" style="display:none; background-color:#c0c0c0; color:#000;
+                      padding:6px 12px; font-size:0.75rem; font-family:'Courier New',monospace;
+                      margin-top:8px; display:flex; justify-content:space-between; align-items:center;
+                      border:2px solid; border-color:#808080 #ffffff #ffffff #808080;">
+                      <span style="font-weight:bold;">⚠ DEMO ACTIVE</span>
+                      <button onclick="clearDemoData()" style="background:#c0c0c0; color:#000;
+                        border:2px solid; border-color:#fff #808080 #808080 #fff;
+                        font-size:0.7rem; padding:1px 8px; cursor:pointer; font-family:inherit;">
+                        [Clear]
+                      </button>
+                    </div>
+                  </fieldset>
                 </div>
+
               </div>
+            </div>
+
+            <div class="win95-modal-footer">
+              <button type="button" class="btn btn-secondary" onclick="clearProfile()">Wipe Profile</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-primary px-4" onclick="saveProfile()">Apply Changes</button>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  </div>
-  </div>
 
+  <!-- MAINTENANCE MODALS -->
   <div class="modal" id="compactModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -428,7 +929,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          Database compaction scheduled. This will optimize storage and improve performance.
+          This will optimize the local storage and remove empty data fragments. Proceed with optimization?
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" onclick="runMaintenanceTask('Compact Database')">Execute
@@ -468,7 +969,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-danger" onclick="eraseAllData()">Erase All Data</button>
+          <button type="button" class="btn" onclick="eraseAllData()">Erase All Data</button>
         </div>
       </div>
     </div>
@@ -491,10 +992,6 @@
     </div>
   </div>
 
-  <div id="toastContainer" class="position-fixed bottom-0 end-0 p-3" style="z-index: 1050;"></div>
-  <div id="centerToastContainer" class="position-fixed top-50 start-50 translate-middle p-3" style="z-index: 1060;">
-  </div>
-
   <footer>
     <div class="footer-content">
       <div class="status-indicator">
@@ -505,7 +1002,7 @@
         <span>&copy; 1995 Monever</span>
       </div>
       <div>
-        <span class="footer-credit">v2.4.0-Stable</span>
+        <span class="footer-credit">Classic Edition</span>
       </div>
     </div>
   </footer>
@@ -514,7 +1011,564 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="utils.js"></script>
+  <script src="profile.js"></script>
+  <script src="widget.js"></script>
   <script src="insights.js"></script>
+  <!-- WIDGET PICKER MODAL -->
+  <!-- WIDGET PICKER MODAL -->
+  <div class="modal" id="widgetPickerModal" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable" style="max-width: 95vw; margin: 2.5vh auto;">
+      <div class="modal-content" style="height: 95vh; display: flex; flex-direction: column;">
+        <div class="modal-header">
+          <h5 class="modal-title">ADD WIDGET</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" style="padding: 1rem; overflow-y: auto; flex: 1;">
+          <ul class="nav nav-pills mb-4" id="widgetPickerTabs" role="tablist"
+            style="justify-content: center; gap: 5px;">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="tab-all" data-bs-toggle="tab" data-bs-target="#panel-all"
+                type="button" role="tab">All Widgets</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="tab-core" data-bs-toggle="tab" data-bs-target="#panel-core" type="button"
+                role="tab">Financial</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="tab-analytical" data-bs-toggle="tab" data-bs-target="#panel-analytical"
+                type="button" role="tab">Analytical</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="tab-visual" data-bs-toggle="tab" data-bs-target="#panel-visual" type="button"
+                role="tab">Visual & Fun</button>
+            </li>
+          </ul>
+
+          <div class="tab-content" id="widgetPickerTabsContent">
+            <!-- ALL WIDGETS -->
+            <div class="tab-pane fade show active" id="panel-all" role="tabpanel">
+              <div class="widget-grid">
+                <!-- Core -->
+                <div class="widget-choice" onclick="selectWidget('smart-insights')">
+                  <i class="bi bi-lightbulb"></i> <span class="widget-name">Smart Insights</span> <span
+                    class="widget-desc">Daily tips from your spending</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('budget-tracker')">
+                  <i class="bi bi-wallet2"></i> <span class="widget-name">Budget Tracker</span> <span
+                    class="widget-desc">Monthly budget at a glance</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('upcoming-payments')">
+                  <i class="bi bi-calendar-event"></i> <span class="widget-name">Upcoming Payments</span> <span
+                    class="widget-desc">EMIs and reminders due soon</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('health-score')">
+                  <i class="bi bi-heart-pulse"></i> <span class="widget-name">Financial Health</span> <span
+                    class="widget-desc">Your financial health score</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('daily-average')">
+                  <i class="bi bi-bar-chart-line"></i> <span class="widget-name">Daily Average</span> <span
+                    class="widget-desc">Average spend today vs last month</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('savings-xp')">
+                  <i class="bi bi-controller"></i> <span class="widget-name">Savings XP Bar</span> <span
+                    class="widget-desc">Level up your savings game</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('networth-snapshot')">
+                  <i class="bi bi-bank"></i> <span class="widget-name">Net Worth</span> <span class="widget-desc">Assets
+                    minus liabilities at a glance</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('combo-streak')">
+                  <i class="bi bi-lightning-charge"></i> <span class="widget-name">Combo Streak</span> <span
+                    class="widget-desc">Consecutive under-budget days</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('piggy-bank')">
+                  <i class="bi bi-piggy-bank"></i> <span class="widget-name">Piggy Bank</span> <span
+                    class="widget-desc">Fills up as savings grow</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('pinball')">
+                  <i class="bi bi-controller"></i> <span class="widget-name">Budget Pinball</span> <span
+                    class="widget-desc">Each expense is a pinball</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('savings-rate')">
+                  <i class="bi bi-percent"></i> <span class="widget-name">Savings Rate</span> <span
+                    class="widget-desc">% of income saved this month</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('breakeven-day')">
+                  <i class="bi bi-calendar-x"></i> <span class="widget-name">Break-Even Day</span> <span
+                    class="widget-desc">When your budget runs out</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('tax-estimator')">
+                  <i class="bi bi-receipt"></i> <span class="widget-name">Tax Estimator</span> <span
+                    class="widget-desc">Indian income tax estimate</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('emi-burden')">
+                  <i class="bi bi-credit-card"></i> <span class="widget-name">EMI Burden</span> <span
+                    class="widget-desc">EMI as % of your income</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('monthly-pnl')">
+                  <i class="bi bi-table"></i> <span class="widget-name">Monthly P&L</span> <span
+                    class="widget-desc">Income minus all costs = net</span>
+                </div>
+                <!-- Analytical -->
+                <div class="widget-choice" onclick="selectWidget('spending-heatmap')">
+                  <i class="bi bi-calendar3"></i> <span class="widget-name">Spending Heatmap</span> <span
+                    class="widget-desc">Calendar view of spending</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('suspicious-alert')">
+                  <i class="bi bi-exclamation-triangle"></i> <span class="widget-name">Spending Alert</span> <span
+                    class="widget-desc">Unusual spending detector</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('expense-dna')">
+                  <i class="bi bi-fingerprint"></i> <span class="widget-name">Expense DNA</span> <span
+                    class="widget-desc">Your unique spending fingerprint</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('weekend-weekday')">
+                  <i class="bi bi-calendar-week"></i> <span class="widget-name">Weekend vs Weekday</span> <span
+                    class="widget-desc">Where does your money go?</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('spending-personality')">
+                  <i class="bi bi-person-badge"></i> <span class="widget-name">Spending Personality</span> <span
+                    class="widget-desc">What does your spending say?</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('peer-comparison')">
+                  <i class="bi bi-people"></i> <span class="widget-name">Peer Comparison</span> <span
+                    class="widget-desc">How do you compare to others?</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('spending-spiral')">
+                  <i class="bi bi-circle"></i> <span class="widget-name">Spending Spiral</span> <span
+                    class="widget-desc">Circular visual of spending</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('alter-ego')">
+                  <i class="bi bi-person-fill"></i> <span class="widget-name">Alter Ego</span> <span
+                    class="widget-desc">Responsible vs Impulsive You</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('doppelganger')">
+                  <i class="bi bi-arrow-left-right"></i> <span class="widget-name">Doppelganger</span> <span
+                    class="widget-desc">What if you invested every buy?</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('pixel-portrait')">
+                  <i class="bi bi-person-square"></i> <span class="widget-name">Pixel Portrait</span> <span
+                    class="widget-desc">Your financial identity in pixels</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('fire-number')">
+                  <i class="bi bi-fire"></i> <span class="widget-name">FIRE Number</span> <span class="widget-desc">Your
+                    financial independence target</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('debt-payoff')">
+                  <i class="bi bi-hourglass"></i> <span class="widget-name">Debt Payoff</span> <span
+                    class="widget-desc">Months to clear all debt</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('rule-of-72')">
+                  <i class="bi bi-clock-fill"></i> <span class="widget-name">Rule of 72</span> <span
+                    class="widget-desc">When your corpus doubles</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('expense-ratio')">
+                  <i class="bi bi-list-ol"></i> <span class="widget-name">Expense Ratio</span> <span
+                    class="widget-desc">Category % of income ledger</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('inflation-eroder')">
+                  <i class="bi bi-graph-down"></i> <span class="widget-name">Inflation</span> <span
+                    class="widget-desc">What money is worth over time</span>
+                </div>
+                <!-- Visual & Fun -->
+                <div class="widget-choice" onclick="selectWidget('horoscope')">
+                  <i class="bi bi-stars"></i> <span class="widget-name">Daily Horoscope</span> <span
+                    class="widget-desc">Financial stars predictions</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('achievements')">
+                  <i class="bi bi-trophy"></i> <span class="widget-name">Achievements</span> <span
+                    class="widget-desc">Financial milestones unlocked</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('weather-spend')">
+                  <i class="bi bi-cloud-sun"></i> <span class="widget-name">Weather & Spend</span> <span
+                    class="widget-desc">Does weather affect your wallet?</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('clippy-advisor')">
+                  <i class="bi bi-chat-square-text"></i> <span class="widget-name">Clippy Advisor</span> <span
+                    class="widget-desc">Passive-aggressive advice</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('this-day-finance')">
+                  <i class="bi bi-calendar2-event"></i> <span class="widget-name">This Day in Finance</span> <span
+                    class="widget-desc">Financial history facts</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('moon-phase')">
+                  <i class="bi bi-moon-stars"></i> <span class="widget-name">Moon & Spending</span> <span
+                    class="widget-desc">Lunar financial influence</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('festival-calendar')">
+                  <i class="bi bi-gift"></i> <span class="widget-name">Festival Calendar</span> <span
+                    class="widget-desc">Upcoming festivals & warnings</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('tamagotchi')">
+                  <i class="bi bi-heart-pulse"></i> <span class="widget-name">Tamagotchi Pet</span> <span
+                    class="widget-desc">A pixel pet that lives by your budget</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('money-tree')">
+                  <i class="bi bi-tree"></i> <span class="widget-name">Money Tree</span> <span class="widget-desc">Grows
+                    with your net worth</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('savings-garden')">
+                  <i class="bi bi-flower1"></i> <span class="widget-name">Savings Garden</span> <span
+                    class="widget-desc">Goals bloom as flowers</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('coral-reef')">
+                  <i class="bi bi-water"></i> <span class="widget-name">Coral Reef</span> <span
+                    class="widget-desc">Savings health underwater</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('city-skyline')">
+                  <i class="bi bi-buildings"></i> <span class="widget-name">City Skyline</span> <span
+                    class="widget-desc">Wealth builds your city</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('space-colony')">
+                  <i class="bi bi-globe"></i> <span class="widget-name">Space Colony</span> <span
+                    class="widget-desc">Net worth builds your colony</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('grandfather-clock')">
+                  <i class="bi bi-clock"></i> <span class="widget-name">Grandfather Clock</span> <span
+                    class="widget-desc">Ticks with your budget rhythm</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('hourglass')">
+                  <i class="bi bi-hourglass-split"></i> <span class="widget-name">Hourglass</span> <span
+                    class="widget-desc">Sand falls with your budget</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('time-capsule')">
+                  <i class="bi bi-envelope-paper"></i> <span class="widget-name">Time Capsule</span> <span
+                    class="widget-desc">A message to your future self</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('lava-lamp')">
+                  <i class="bi bi-droplet-half"></i> <span class="widget-name">Lava Lamp</span> <span
+                    class="widget-desc">Blobs rise with transactions</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('vinyl-record')">
+                  <i class="bi bi-disc"></i> <span class="widget-name">Vinyl Record</span> <span
+                    class="widget-desc">Spins with your spending</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('kaleidoscope')">
+                  <i class="bi bi-symmetry-vertical"></i> <span class="widget-name">Kaleidoscope</span> <span
+                    class="widget-desc">Patterns from spending data</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('lucky-cat')">
+                  <i class="bi bi-hand-index"></i> <span class="widget-name">Lucky Cat</span> <span
+                    class="widget-desc">Waves when finances are good</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('wall-of-fame')">
+                  <i class="bi bi-award"></i> <span class="widget-name">Wall of Fame</span> <span
+                    class="widget-desc">Frames for your milestones</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('black-hole')">
+                  <i class="bi bi-circle"></i> <span class="widget-name">Black Hole</span> <span
+                    class="widget-desc">Grows with debt</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('fortune-cookie')">
+                  <i class="bi bi-chat-quote"></i> <span class="widget-name">Fortune Cookie</span> <span
+                    class="widget-desc">Daily financial fortune</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('financial-butterfly')">
+                  <i class="bi bi-bug"></i> <span class="widget-name">Financial Butterfly</span> <span
+                    class="widget-desc">Transforms as savings grow</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('screensaver')">
+                  <i class="bi bi-display"></i> <span class="widget-name">Screensaver</span> <span
+                    class="widget-desc">Bouncing Monever logo</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- FINANCIAL -->
+            <div class="tab-pane fade" id="panel-core" role="tabpanel">
+              <div class="widget-grid">
+                <div class="widget-choice" onclick="selectWidget('smart-insights')">
+                  <i class="bi bi-lightbulb"></i> <span class="widget-name">Smart Insights</span> <span
+                    class="widget-desc">Daily tips from your spending</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('budget-tracker')">
+                  <i class="bi bi-wallet2"></i> <span class="widget-name">Budget Tracker</span> <span
+                    class="widget-desc">Monthly budget at a glance</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('upcoming-payments')">
+                  <i class="bi bi-calendar-event"></i> <span class="widget-name">Upcoming Payments</span> <span
+                    class="widget-desc">EMIs and reminders due soon</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('health-score')">
+                  <i class="bi bi-heart-pulse"></i> <span class="widget-name">Financial Health</span> <span
+                    class="widget-desc">Your financial health score</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('daily-average')">
+                  <i class="bi bi-bar-chart-line"></i> <span class="widget-name">Daily Average</span> <span
+                    class="widget-desc">Average spend today vs last month</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('savings-xp')">
+                  <i class="bi bi-controller"></i> <span class="widget-name">Savings XP Bar</span> <span
+                    class="widget-desc">Level up your savings game</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('networth-snapshot')">
+                  <i class="bi bi-bank"></i> <span class="widget-name">Net Worth</span> <span class="widget-desc">Assets
+                    minus liabilities at a glance</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('combo-streak')">
+                  <i class="bi bi-lightning-charge"></i> <span class="widget-name">Combo Streak</span> <span
+                    class="widget-desc">Consecutive under-budget days</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('piggy-bank')">
+                  <i class="bi bi-piggy-bank"></i> <span class="widget-name">Piggy Bank</span> <span
+                    class="widget-desc">Fills up as savings grow</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('pinball')">
+                  <i class="bi bi-controller"></i> <span class="widget-name">Budget Pinball</span> <span
+                    class="widget-desc">Each expense is a pinball</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('burn-rate-clock')">
+                  <i class="bi bi-speedometer2"></i> <span class="widget-name">Burn Rate</span> <span
+                    class="widget-desc">How fast you're burning budget</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('payday-countdown')">
+                  <i class="bi bi-calendar-check"></i> <span class="widget-name">Pay Day</span> <span
+                    class="widget-desc">Days until next salary</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('subscription-drain')">
+                  <i class="bi bi-droplet"></i> <span class="widget-name">Sub Drain</span> <span
+                    class="widget-desc">Monthly locked EMI spend</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('impulse-tax-jar')">
+                  <i class="bi bi-archive"></i> <span class="widget-name">Impulse Jar</span> <span
+                    class="widget-desc">10% tax on impulse buys</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('zero-day-tracker')">
+                  <i class="bi bi-check2-circle"></i> <span class="widget-name">Zero Days</span> <span
+                    class="widget-desc">No-spend days this month</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('cashflow-tide')">
+                  <i class="bi bi-water"></i> <span class="widget-name">Cash Tide</span> <span
+                    class="widget-desc">Income vs expenses wave</span>
+                </div>
+                <!-- Data-Heavy Financial -->
+                <div class="widget-choice" onclick="selectWidget('savings-rate')">
+                  <i class="bi bi-percent"></i> <span class="widget-name">Savings Rate</span> <span
+                    class="widget-desc">% of income saved</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('fire-number')">
+                  <i class="bi bi-fire"></i> <span class="widget-name">FIRE Number</span> <span
+                    class="widget-desc">Financial Independence goal</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('tax-estimator')">
+                  <i class="bi bi-receipt"></i> <span class="widget-name">Tax Estimator</span> <span
+                    class="widget-desc">Monthly tax (New Regime)</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('debt-payoff')">
+                  <i class="bi bi-bank2"></i> <span class="widget-name">Debt Payoff</span> <span
+                    class="widget-desc">Months to clear all debts</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('monthly-pnl')">
+                  <i class="bi bi-file-earmark-ruled"></i> <span class="widget-name">Monthly P&L</span> <span
+                    class="widget-desc">Cash flow statement</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('emi-burden')">
+                  <i class="bi bi-shield-exclamation"></i> <span class="widget-name">EMI Burden</span> <span
+                    class="widget-desc">Debt-to-income ratio</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- ANALYTICAL -->
+            <div class="tab-pane fade" id="panel-analytical" role="tabpanel">
+              <div class="widget-grid">
+                <div class="widget-choice" onclick="selectWidget('spending-heatmap')">
+                  <i class="bi bi-calendar3"></i> <span class="widget-name">Spending Heatmap</span> <span
+                    class="widget-desc">Calendar view of spending</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('suspicious-alert')">
+                  <i class="bi bi-exclamation-triangle"></i> <span class="widget-name">Spending Alert</span> <span
+                    class="widget-desc">Unusual spending detector</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('expense-dna')">
+                  <i class="bi bi-fingerprint"></i> <span class="widget-name">Expense DNA</span> <span
+                    class="widget-desc">Your unique spending fingerprint</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('weekend-weekday')">
+                  <i class="bi bi-calendar-week"></i> <span class="widget-name">Weekend vs Weekday</span> <span
+                    class="widget-desc">Where does your money go?</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('spending-personality')">
+                  <i class="bi bi-person-badge"></i> <span class="widget-name">Spending Personality</span> <span
+                    class="widget-desc">What does your spending say?</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('peer-comparison')">
+                  <i class="bi bi-people"></i> <span class="widget-name">Peer Comparison</span> <span
+                    class="widget-desc">How do you compare to others?</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('spending-spiral')">
+                  <i class="bi bi-circle"></i> <span class="widget-name">Spending Spiral</span> <span
+                    class="widget-desc">Circular visual of spending</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('alter-ego')">
+                  <i class="bi bi-person-fill"></i> <span class="widget-name">Alter Ego</span> <span
+                    class="widget-desc">Responsible vs Impulsive You</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('doppelganger')">
+                  <i class="bi bi-arrow-left-right"></i> <span class="widget-name">Doppelganger</span> <span
+                    class="widget-desc">What if you invested every buy?</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('pixel-portrait')">
+                  <i class="bi bi-person-square"></i> <span class="widget-name">Pixel Portrait</span> <span
+                    class="widget-desc">Your financial identity in pixels</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('category-drift')">
+                  <i class="bi bi-arrow-left-right"></i> <span class="widget-name">Category Drift</span> <span
+                    class="widget-desc">Top category shift vs last month</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('spending-clock')">
+                  <i class="bi bi-clock-history"></i> <span class="widget-name">Spend Clock</span> <span
+                    class="widget-desc">Spending by time of day</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('merchant-loyalty')">
+                  <i class="bi bi-shop"></i> <span class="widget-name">Loyalty Map</span> <span class="widget-desc">Your
+                    top 3 spending habits</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('fifty-thirty-twenty')">
+                  <i class="bi bi-pie-chart"></i> <span class="widget-name">50-30-20</span> <span
+                    class="widget-desc">Ideal budget split meter</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('expense-volatility')">
+                  <i class="bi bi-activity"></i> <span class="widget-name">Volatility</span> <span
+                    class="widget-desc">Spending stability score</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('night-owl')">
+                  <i class="bi bi-moon"></i> <span class="widget-name">Night Owl</span> <span class="widget-desc">When
+                    do you spend most?</span>
+                </div>
+                <!-- Data-Heavy Analytical -->
+                <div class="widget-choice" onclick="selectWidget('breakeven-day')">
+                  <i class="bi bi-calendar-x"></i> <span class="widget-name">Break-Even</span> <span
+                    class="widget-desc">When you will hit ₹0</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('rule-of-72')">
+                  <i class="bi bi-hourglass-top"></i> <span class="widget-name">Rule of 72</span> <span
+                    class="widget-desc">Years to double money</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('expense-ratio')">
+                  <i class="bi bi-list-ol"></i> <span class="widget-name">Exp. Ratio</span> <span
+                    class="widget-desc">Top categories as % of income</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('inflation-eroder')">
+                  <i class="bi bi-ghost"></i> <span class="widget-name">Eroder</span> <span class="widget-desc">Future
+                    value of ₹1,000</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- VISUAL & FUN -->
+            <div class="tab-pane fade" id="panel-visual" role="tabpanel">
+              <div class="widget-grid">
+                <div class="widget-choice" onclick="selectWidget('horoscope')">
+                  <i class="bi bi-stars"></i> <span class="widget-name">Daily Horoscope</span> <span
+                    class="widget-desc">Financial stars predictions</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('achievements')">
+                  <i class="bi bi-trophy"></i> <span class="widget-name">Achievements</span> <span
+                    class="widget-desc">Financial milestones unlocked</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('weather-spend')">
+                  <i class="bi bi-cloud-sun"></i> <span class="widget-name">Weather & Spend</span> <span
+                    class="widget-desc">Does weather affect your wallet?</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('clippy-advisor')">
+                  <i class="bi bi-chat-square-text"></i> <span class="widget-name">Clippy Advisor</span> <span
+                    class="widget-desc">Passive-aggressive advice</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('this-day-finance')">
+                  <i class="bi bi-calendar2-event"></i> <span class="widget-name">This Day in Finance</span> <span
+                    class="widget-desc">Financial history facts</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('moon-phase')">
+                  <i class="bi bi-moon-stars"></i> <span class="widget-name">Moon & Spending</span> <span
+                    class="widget-desc">Lunar financial influence</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('festival-calendar')">
+                  <i class="bi bi-gift"></i> <span class="widget-name">Festival Calendar</span> <span
+                    class="widget-desc">Upcoming festivals & warnings</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('tamagotchi')">
+                  <i class="bi bi-heart-pulse"></i> <span class="widget-name">Tamagotchi Pet</span> <span
+                    class="widget-desc">A pixel pet that lives by your budget</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('money-tree')">
+                  <i class="bi bi-tree"></i> <span class="widget-name">Money Tree</span> <span class="widget-desc">Grows
+                    with your net worth</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('savings-garden')">
+                  <i class="bi bi-flower1"></i> <span class="widget-name">Savings Garden</span> <span
+                    class="widget-desc">Goals bloom as flowers</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('coral-reef')">
+                  <i class="bi bi-water"></i> <span class="widget-name">Coral Reef</span> <span
+                    class="widget-desc">Savings health underwater</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('city-skyline')">
+                  <i class="bi bi-buildings"></i> <span class="widget-name">City Skyline</span> <span
+                    class="widget-desc">Wealth builds your city</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('space-colony')">
+                  <i class="bi bi-globe"></i> <span class="widget-name">Space Colony</span> <span
+                    class="widget-desc">Net worth builds your colony</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('grandfather-clock')">
+                  <i class="bi bi-clock"></i> <span class="widget-name">Grandfather Clock</span> <span
+                    class="widget-desc">Ticks with your budget rhythm</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('hourglass')">
+                  <i class="bi bi-hourglass-split"></i> <span class="widget-name">Hourglass</span> <span
+                    class="widget-desc">Sand falls with your budget</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('time-capsule')">
+                  <i class="bi bi-envelope-paper"></i> <span class="widget-name">Time Capsule</span> <span
+                    class="widget-desc">A message to your future self</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('lava-lamp')">
+                  <i class="bi bi-droplet-half"></i> <span class="widget-name">Lava Lamp</span> <span
+                    class="widget-desc">Blobs rise with transactions</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('vinyl-record')">
+                  <i class="bi bi-disc"></i> <span class="widget-name">Vinyl Record</span> <span
+                    class="widget-desc">Spins with your spending</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('kaleidoscope')">
+                  <i class="bi bi-symmetry-vertical"></i> <span class="widget-name">Kaleidoscope</span> <span
+                    class="widget-desc">Patterns from spending data</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('lucky-cat')">
+                  <i class="bi bi-hand-index"></i> <span class="widget-name">Lucky Cat</span> <span
+                    class="widget-desc">Waves when finances are good</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('wall-of-fame')">
+                  <i class="bi bi-award"></i> <span class="widget-name">Wall of Fame</span> <span
+                    class="widget-desc">Frames for your milestones</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('black-hole')">
+                  <i class="bi bi-circle"></i> <span class="widget-name">Black Hole</span> <span
+                    class="widget-desc">Grows with debt</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('fortune-cookie')">
+                  <i class="bi bi-chat-quote"></i> <span class="widget-name">Fortune Cookie</span> <span
+                    class="widget-desc">Daily financial fortune</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('financial-butterfly')">
+                  <i class="bi bi-bug"></i> <span class="widget-name">Financial Butterfly</span> <span
+                    class="widget-desc">Transforms as savings grow</span>
+                </div>
+                <div class="widget-choice" onclick="selectWidget('screensaver')">
+                  <i class="bi bi-display"></i> <span class="widget-name">Screensaver</span> <span
+                    class="widget-desc">Bouncing Monever logo</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>
