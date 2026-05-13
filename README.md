@@ -310,30 +310,6 @@ Monever is intentionally a **desktop-only application**. A blocking screen appea
 
 ---
 
-## Screenshots
-
-### Home Page — Expense Dashboard
-![Home Page](assets/screenshots/home.png)
-
-### Insights Page — Financial Analytics
-![Insights Page](assets/screenshots/insights.png)
-
-### Tools Page — Financial Calculators
-![Tools Page](assets/screenshots/tools.png)
-
-### Monever Lab
-![Lab Page](assets/screenshots/lab.png)
-
-### Widget System
-![Widgets](assets/screenshots/widgets.png)
-
-### Help Documentation
-![Help Page](assets/screenshots/help.png)
-
-> 📸 Screenshots taken with demo data loaded. Click `▶ Load Demo Data` on the Home page to see Monever with all charts and widgets populated.
-
----
-
 ## What Makes This Different
 
 Most personal finance apps in 2026 require you to:
