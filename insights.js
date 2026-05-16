@@ -396,7 +396,16 @@ function renderSummaryChart() {
   const patterns = getChartPatterns();
   summaryChartInstance = new Chart(ctx, {
     type: 'bar',
-    data: { labels: labels, datasets: [{ label: `Monthly Spending (${getCurrency()})`, data: data, backgroundColor: '#808080', borderColor: '#000000', borderWidth: 1 }] },
+    data: { 
+      labels: labels, 
+      datasets: [{ 
+        label: `Monthly Spending (${getCurrency()})`, 
+        data: data, 
+        backgroundColor: patterns, 
+        borderColor: '#000000', 
+        borderWidth: 1 
+      }] 
+    },
     options: { responsive: true, scales: { y: { beginAtZero: true, title: { display: true, text: `Amount (${getCurrency()})` } } }, plugins: { legend: { display: true } } }
   });
 }

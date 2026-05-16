@@ -81,8 +81,30 @@ function getChartPatterns() {
   ctx.stroke();
   patterns.push(ctx.createPattern(canvas, 'repeat'));
 
-  // Add some solid grays if needed
-  patterns.push('#c0c0c0', '#808080', '#404040');
+  // 7. Square Grid
+  ctx.clearRect(0, 0, 10, 10);
+  ctx.strokeStyle = '#000';
+  ctx.beginPath();
+  ctx.moveTo(0, 5); ctx.lineTo(10, 5);
+  ctx.moveTo(5, 0); ctx.lineTo(5, 10);
+  ctx.stroke();
+  patterns.push(ctx.createPattern(canvas, 'repeat'));
+
+  // 8. Grid Dots
+  ctx.clearRect(0, 0, 10, 10);
+  ctx.fillStyle = '#000';
+  ctx.beginPath();
+  ctx.arc(2, 2, 1, 0, Math.PI * 2);
+  ctx.arc(7, 7, 1, 0, Math.PI * 2);
+  ctx.fill();
+  patterns.push(ctx.createPattern(canvas, 'repeat'));
+
+  // 9. Checkerboard
+  ctx.clearRect(0, 0, 10, 10);
+  ctx.fillStyle = '#000';
+  ctx.fillRect(0, 0, 5, 5);
+  ctx.fillRect(5, 5, 5, 5);
+  patterns.push(ctx.createPattern(canvas, 'repeat'));
 
   return patterns;
 }
@@ -463,11 +485,16 @@ function eraseAllData() {
 }
 
 function exportData() {
-  let data = { 
-    expenses, emis, people, reminders, recurringExpenses, categoryBudgets,
-    currencySymbol, defaultCategory, dateFormat, bgStyle, monthlyBudget, monthlyIncome,
-    profile: JSON.parse(localStorage.getItem('userProfile')) || {}
-  };
+  let data = {};
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    try {
+      const val = localStorage.getItem(key);
+      data[key] = val.startsWith('{') || val.startsWith('[') ? JSON.parse(val) : val;
+    } catch(e) {
+      data[key] = localStorage.getItem(key);
+    }
+  }
   let blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
   let url = URL.createObjectURL(blob);
   let a = document.createElement('a'); a.href = url; a.download = 'monever_system_backup.json'; a.click();
@@ -502,13 +529,27 @@ function importData() {
   reader.onload = function (e) {
     try {
       let data = JSON.parse(e.target.result);
-      if (data.expenses) localStorage.setItem("moneverExpenses", JSON.stringify(data.expenses));
-      if (data.emis) localStorage.setItem("moneverEMIs", JSON.stringify(data.emis));
-      if (data.reminders) localStorage.setItem("moneverReminders", JSON.stringify(data.reminders));
-      if (data.people) localStorage.setItem("people", JSON.stringify(data.people));
-      if (data.profile) localStorage.setItem("userProfile", JSON.stringify(data.profile));
-      if (data.currencySymbol) localStorage.setItem("currencySymbol", data.currencySymbol);
-      // ... and so on
+      
+      const keyMap = {
+        'expenses': 'moneverExpenses',
+        'emis': 'moneverEMIs',
+        'reminders': 'moneverReminders',
+        'people': 'moneverPeople',
+        'userProfile': 'moneverProfile',
+        'assets': 'moneverAssets',
+        'liabilities': 'moneverLiabilities'
+      };
+
+      for (const oldKey in data) {
+        const newKey = keyMap[oldKey] || oldKey;
+        const val = data[oldKey];
+        if (typeof val === 'object' && val !== null) {
+          localStorage.setItem(newKey, JSON.stringify(val));
+        } else {
+          localStorage.setItem(newKey, val);
+        }
+      }
+      
       showToast("Data imported. System reloading...", "success");
       setTimeout(() => location.reload(), 1500);
     } catch (err) { 

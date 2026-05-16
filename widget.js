@@ -2935,12 +2935,16 @@ function initPeerComparison() {
 
 function initNetWorthSnapshot() {
   const profile = JSON.parse(localStorage.getItem('moneverProfile') || '{}');
-  const people = JSON.parse(localStorage.getItem('people') || '[]');
+  const people = JSON.parse(localStorage.getItem('moneverPeople') || localStorage.getItem('people') || '[]');
   
+  const assets = JSON.parse(localStorage.getItem('moneverAssets') || localStorage.getItem('assets') || '[]');
+  const liabs = JSON.parse(localStorage.getItem('moneverLiabilities') || localStorage.getItem('liabilities') || '[]');
+
   let totalAssets = parseFloat(profile.profCorpus || '0');
   totalAssets += people.filter(p => p.type === 'lent' && p.status === 'open').reduce((sum, p) => sum + p.amount, 0);
+  totalAssets += assets.reduce((s, a) => s + parseFloat(a.amount || 0), 0);
   
-  const totalLiabs = people.filter(p => p.type === 'borrowed' && p.status === 'open').reduce((sum, p) => sum + p.amount, 0);
+  const totalLiabs = people.filter(p => p.type === 'borrowed' && p.status === 'open').reduce((sum, p) => sum + p.amount, 0) + liabs.reduce((s, l) => s + parseFloat(l.amount || 0), 0);
   const netWorth = totalAssets - totalLiabs;
 
   const totalVal = totalAssets + totalLiabs;
@@ -4058,12 +4062,16 @@ function ssTogglePause() {
 
 function initMoneyTree() {
   const profile = JSON.parse(localStorage.getItem('moneverProfile') || '{}');
-  const people = JSON.parse(localStorage.getItem('people') || '[]');
+  const people = JSON.parse(localStorage.getItem('moneverPeople') || localStorage.getItem('people') || '[]');
   
+  const assets = JSON.parse(localStorage.getItem('moneverAssets') || localStorage.getItem('assets') || '[]');
+  const liabs = JSON.parse(localStorage.getItem('moneverLiabilities') || localStorage.getItem('liabilities') || '[]');
+
   let totalAssets = parseFloat(profile.profCorpus || '0');
   totalAssets += people.filter(p => p.type === 'lent' && p.status === 'open').reduce((sum, p) => sum + p.amount, 0);
+  totalAssets += assets.reduce((s, a) => s + parseFloat(a.amount || 0), 0);
   
-  const totalLiabilities = people.filter(p => p.type === 'borrowed' && p.status === 'open').reduce((sum, p) => sum + p.amount, 0);
+  const totalLiabilities = people.filter(p => p.type === 'borrowed' && p.status === 'open').reduce((sum, p) => sum + p.amount, 0) + liabs.reduce((s, l) => s + parseFloat(l.amount || 0), 0);
   const netWorth = totalAssets - totalLiabilities;
 
   let stage = 1;
@@ -4549,12 +4557,16 @@ function initCoralReef() {
 
 function initCitySkyline() {
   const profile = JSON.parse(localStorage.getItem('moneverProfile') || '{}');
-  const people = JSON.parse(localStorage.getItem('people') || '[]');
+  const people = JSON.parse(localStorage.getItem('moneverPeople') || localStorage.getItem('people') || '[]');
   
+  const assets = JSON.parse(localStorage.getItem('moneverAssets') || localStorage.getItem('assets') || '[]');
+  const liabs = JSON.parse(localStorage.getItem('moneverLiabilities') || localStorage.getItem('liabilities') || '[]');
+
   let totalAssets = parseFloat(profile.profCorpus || '0');
   totalAssets += people.filter(p => p.type === 'lent' && p.status === 'open').reduce((sum, p) => sum + p.amount, 0);
+  totalAssets += assets.reduce((s, a) => s + parseFloat(a.amount || 0), 0);
   
-  const totalLiabilities = people.filter(p => p.type === 'borrowed' && p.status === 'open').reduce((sum, p) => sum + p.amount, 0);
+  const totalLiabilities = people.filter(p => p.type === 'borrowed' && p.status === 'open').reduce((sum, p) => sum + p.amount, 0) + liabs.reduce((s, l) => s + parseFloat(l.amount || 0), 0);
   const netWorth = totalAssets - totalLiabilities;
 
   let stage = 1;
@@ -4660,12 +4672,16 @@ function initCitySkyline() {
 
 function initSpaceColony() {
   const profile = JSON.parse(localStorage.getItem('moneverProfile') || '{}');
-  const people = JSON.parse(localStorage.getItem('people') || '[]');
+  const people = JSON.parse(localStorage.getItem('moneverPeople') || localStorage.getItem('people') || '[]');
   
+  const assets = JSON.parse(localStorage.getItem('moneverAssets') || localStorage.getItem('assets') || '[]');
+  const liabs = JSON.parse(localStorage.getItem('moneverLiabilities') || localStorage.getItem('liabilities') || '[]');
+
   let totalAssets = parseFloat(profile.profCorpus || '0');
   totalAssets += people.filter(p => p.type === 'lent' && p.status === 'open').reduce((sum, p) => sum + p.amount, 0);
+  totalAssets += assets.reduce((s, a) => s + parseFloat(a.amount || 0), 0);
   
-  const totalLiabilities = people.filter(p => p.type === 'borrowed' && p.status === 'open').reduce((sum, p) => sum + p.amount, 0);
+  const totalLiabilities = people.filter(p => p.type === 'borrowed' && p.status === 'open').reduce((sum, p) => sum + p.amount, 0) + liabs.reduce((s, l) => s + parseFloat(l.amount || 0), 0);
   const netWorth = totalAssets - totalLiabilities;
 
   let stage = 1;
@@ -6001,8 +6017,9 @@ function drawWallOfFame(ctx, achs) {
 let bhState = { rotation: 0, intervalId: null };
 
 function initBlackHole() {
-  const people = JSON.parse(localStorage.getItem('people') || '[]');
-  const totalDebt = people.filter(p => p.type === 'borrowed' && p.status === 'open').reduce((sum, p) => sum + p.amount, 0);
+  const people = JSON.parse(localStorage.getItem('moneverPeople') || localStorage.getItem('people') || '[]');
+  const liabs = JSON.parse(localStorage.getItem('moneverLiabilities') || localStorage.getItem('liabilities') || '[]');
+  const totalDebt = people.filter(p => p.type === 'borrowed' && p.status === 'open').reduce((sum, p) => sum + p.amount, 0) + liabs.reduce((s, l) => s + parseFloat(l.amount || 0), 0);
   
   const budget = parseFloat(localStorage.getItem('monthlyBudget') || '0');
   const expenses = JSON.parse(localStorage.getItem('moneverExpenses') || localStorage.getItem('expenses') || '[]');
@@ -7381,10 +7398,16 @@ function initFireNumber() {
   const fireNumber = annualExp * 25;
   
   // Current corpus (use net worth if available)
-  const assets = JSON.parse(localStorage.getItem('assets') || '[]');
-  const liabs = JSON.parse(localStorage.getItem('liabilities') || '[]');
-  const totalAssets = assets.reduce((s, a) => s + parseFloat(a.value || 0), 0);
-  const totalLiabs = liabs.reduce((s, l) => s + parseFloat(l.value || 0), 0);
+  const profile = JSON.parse(localStorage.getItem('moneverProfile') || '{}');
+  const people = JSON.parse(localStorage.getItem('moneverPeople') || localStorage.getItem('people') || '[]');
+  const assets = JSON.parse(localStorage.getItem('moneverAssets') || localStorage.getItem('assets') || '[]');
+  const liabs = JSON.parse(localStorage.getItem('moneverLiabilities') || localStorage.getItem('liabilities') || '[]');
+
+  let totalAssets = parseFloat(profile.profCorpus || '0');
+  totalAssets += people.filter(p => p.type === 'lent' && p.status === 'open').reduce((sum, p) => sum + p.amount, 0);
+  totalAssets += assets.reduce((s, a) => s + parseFloat(a.amount || 0), 0);
+
+  const totalLiabs = people.filter(p => p.type === 'borrowed' && p.status === 'open').reduce((sum, p) => sum + p.amount, 0) + liabs.reduce((s, l) => s + parseFloat(l.amount || 0), 0);
   const corpus = Math.max(0, totalAssets - totalLiabs);
   
   const numEl = document.getElementById('fire-num');
@@ -7424,8 +7447,9 @@ function initTaxEstimator() {
 }
 
 function initDebtPayoff() {
-  const liabs = JSON.parse(localStorage.getItem('liabilities') || '[]');
-  const totalDebt = liabs.reduce((s, l) => s + parseFloat(l.value || 0), 0);
+  const liabs = JSON.parse(localStorage.getItem('moneverLiabilities') || localStorage.getItem('liabilities') || '[]');
+  const people = JSON.parse(localStorage.getItem('moneverPeople') || localStorage.getItem('people') || '[]');
+  const totalDebt = liabs.reduce((s, l) => s + parseFloat(l.amount || 0), 0) + people.filter(p => p.type === 'borrowed' && p.status === 'open').reduce((sum, p) => sum + p.amount, 0);
   
   const income = parseFloat(localStorage.getItem('monthlyIncome') || '0');
   const expenses = JSON.parse(localStorage.getItem('moneverExpenses') || localStorage.getItem('expenses') || '[]');
@@ -7520,8 +7544,13 @@ function initRuleOf72() {
   const rate = 12; // Assume 12% avg market return
   const years = 72 / rate;
   
-  const assets = JSON.parse(localStorage.getItem('assets') || '[]');
-  const totalAssets = assets.reduce((s, a) => s + parseFloat(a.value || 0), 0);
+  const profile = JSON.parse(localStorage.getItem('moneverProfile') || '{}');
+  const people = JSON.parse(localStorage.getItem('moneverPeople') || localStorage.getItem('people') || '[]');
+  const assets = JSON.parse(localStorage.getItem('moneverAssets') || localStorage.getItem('assets') || '[]');
+  
+  let totalAssets = parseFloat(profile.profCorpus || '0');
+  totalAssets += people.filter(p => p.type === 'lent' && p.status === 'open').reduce((sum, p) => sum + p.amount, 0);
+  totalAssets += assets.reduce((s, a) => s + parseFloat(a.amount || 0), 0);
   
   const yearsEl = document.getElementById('r72-years');
   const targetEl = document.getElementById('r72-target');
