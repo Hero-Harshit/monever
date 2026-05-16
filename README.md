@@ -18,7 +18,8 @@ Monever is a fully-featured personal finance web application that runs entirely 
 
 The application is built with a deliberate **Windows 95 / late-1990s desktop aesthetic**, not as a gimmick, but as a product decision. Software from that era was direct, functional, and free of dark patterns, subscription walls, and data harvesting. Monever tries to carry that spirit into personal finance in 2026.
 
-Built entirely with **vanilla HTML, CSS, and JavaScript**, no React, no Vue, no Node.js, no npm, no build step, no dependencies beyond Bootstrap 5 and Chart.js loaded from CDN. Open `index.html` in any modern browser and it works.
+Built entirely with vanilla Html, Css, & Love <3.
+
 ---
 
 ## Pages & Features
