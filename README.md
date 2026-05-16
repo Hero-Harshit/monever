@@ -19,15 +19,6 @@ Monever is a fully-featured personal finance web application that runs entirely 
 The application is built with a deliberate **Windows 95 / late-1990s desktop aesthetic**, not as a gimmick, but as a product decision. Software from that era was direct, functional, and free of dark patterns, subscription walls, and data harvesting. Monever tries to carry that spirit into personal finance in 2026.
 
 Built entirely with **vanilla HTML, CSS, and JavaScript**, no React, no Vue, no Node.js, no npm, no build step, no dependencies beyond Bootstrap 5 and Chart.js loaded from CDN. Open `index.html` in any modern browser and it works.
-
----
-
-## Live Demo
-
-> 🚀 **[Try Monever Live →](https://your-github-username.github.io/monever)**
-
-Or clone the repo and open `index.html` directly in your browser, no server required.
-
 ---
 
 ## Pages & Features
@@ -175,41 +166,6 @@ Bootstrap handles responsive grid, modal, and tab primitives. The entire Bootstr
 
 ---
 
-## Getting Started
-
-### Option 1 :- Open directly (simplest)
-
-```bash
-# Clone the repository
-git clone https://github.com/your-username/monever.git
-
-# Open in browser, no server needed
-open monever/index.html
-# or simply double-click index.html in your file explorer
-```
-
-### Option 2 :- Local server (optional, for development)
-
-```bash
-# Using Python
-cd monever
-python -m http.server 8000
-# Open http://localhost:8000
-
-# Using Node.js (if installed)
-npx serve monever
-```
-
-### Option 3 :- GitHub Pages (live URL)
-
-1. Fork or push this repository to GitHub
-2. Go to repository **Settings → Pages**
-3. Set source to `main` branch, root folder
-4. Your live URL will be `https://your-username.github.io/monever`
-
-> There is no build step, no `npm install`, no configuration. The project runs exactly as the files are.
-
----
 
 ## First Steps After Opening
 
